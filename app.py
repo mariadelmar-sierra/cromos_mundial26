@@ -263,7 +263,7 @@ df_filtrado = df_filtrado.sort_values("orden_album")
 st.write(f"Mostrando **{len(df_filtrado)}** cromos")
 st.divider()
 
-COLUMNAS = 10
+COLUMNAS = 9
 
 for inicio in range(0, len(df_filtrado), COLUMNAS):
 
