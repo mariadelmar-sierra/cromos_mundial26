@@ -20,7 +20,7 @@ st.markdown("""
 <style>
 
 .block-container {
-    padding-top: 1rem;
+    padding-top: 0.8rem;
     padding-bottom: 2rem;
 }
 
@@ -29,13 +29,12 @@ st.markdown("""
 ========================= */
 
 .card {
-    border-radius: 16px;
-    padding: 10px;
-    margin-bottom: 10px;
+    border-radius: 14px;
+    padding: 8px;
+    margin-bottom: 6px;
     background-color: white;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     transition: 0.2s;
-    min-height: 110px;
 }
 
 .card:hover {
@@ -66,30 +65,30 @@ st.markdown("""
 ========================= */
 
 .code {
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 800;
 }
 
 .name {
-    font-size: 13px;
+    font-size: 11px;
     font-weight: 700;
-    margin-top: 6px;
+    margin-top: 4px;
     line-height: 1.2;
 }
 
 .team {
     color: #666;
-    font-size: 11px;
-    margin-top: 3px;
+    font-size: 9px;
+    margin-top: 2px;
 }
 
 .badge {
     display: inline-block;
-    margin-top: 8px;
-    padding: 3px 8px;
+    margin-top: 5px;
+    padding: 2px 6px;
     border-radius: 999px;
     background-color: rgba(0,0,0,0.06);
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 600;
 }
 
@@ -99,6 +98,19 @@ st.markdown("""
 
 div[data-testid="stExpander"] {
     border: none !important;
+}
+
+/* =========================
+   MÁS COMPACTO EN MÓVIL
+========================= */
+
+@media (max-width: 768px) {
+
+    .block-container {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
 }
 
 </style>
@@ -155,7 +167,7 @@ def crear_csv_desde_excel():
 
     df = df.reset_index(drop=True)
 
-    # ORDEN ORIGINAL DEL ÁLBUM
+    # ORDEN REAL DEL ÁLBUM
     df["orden_album"] = df.index
 
     # =========================================
@@ -339,7 +351,7 @@ if busqueda:
     ]
 
 # =====================================================
-# ORDEN ORIGINAL DEL ÁLBUM
+# ORDEN REAL DEL ÁLBUM
 # =====================================================
 
 df_filtrado = df_filtrado.sort_values("orden_album")
@@ -352,7 +364,7 @@ st.divider()
 # GRID RESPONSIVE
 # =====================================================
 
-COLUMNAS = 6
+COLUMNAS = 2
 
 for inicio in range(0, len(df_filtrado), COLUMNAS):
 
