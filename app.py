@@ -20,7 +20,8 @@ st.markdown("""
 <style>
 
 .block-container {
-    padding-top: 2rem;
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
 }
 
 .card {
@@ -61,6 +62,7 @@ st.markdown("""
     font-size: 15px;
     font-weight: 700;
     margin-top: 8px;
+    line-height: 1.3;
 }
 
 .team {
@@ -77,6 +79,10 @@ st.markdown("""
     background-color: rgba(0,0,0,0.06);
     font-size: 12px;
     font-weight: 600;
+}
+
+div[data-testid="stExpander"] {
+    border: none !important;
 }
 
 </style>
@@ -133,7 +139,7 @@ def crear_csv_desde_excel():
 
     df = df.reset_index(drop=True)
 
-    # GUARDAR ORDEN REAL DEL ÁLBUM
+    # ORDEN ORIGINAL DEL ÁLBUM
     df["orden_album"] = df.index
 
     # =========================================
@@ -174,12 +180,12 @@ def clase_card(row):
 def estado_texto(row):
 
     if row["lo_tengo"] and row["repetidos"] > 0:
-        return f"✅ Tengo · 🔁 {row['repetidos']} repetidos"
+        return f"✅ Tengo · 🔁 {row['repetidos']}"
 
     if row["lo_tengo"]:
-        return "✅ Lo tengo"
+        return "✅ Tengo"
 
-    return "❌ Me falta"
+    return "❌ Falta"
 
 
 # =====================================================
@@ -227,7 +233,7 @@ st.divider()
 # FILTROS
 # =====================================================
 
-f1, f2, f3 = st.columns([2, 2, 2])
+f1, f2 = st.columns(2)
 
 with f1:
 
@@ -249,9 +255,7 @@ with f2:
         ]
     )
 
-with f3:
-
-    busqueda = st.text_input("Buscar cromo")
+busqueda = st.text_input("🔍 Buscar por nombre, código o selección")
 
 # =====================================================
 # FILTRADO
@@ -331,68 +335,71 @@ st.write(f"Mostrando **{len(df_filtrado)}** cromos")
 st.divider()
 
 # =====================================================
-# GRID DE CROMOS
+# GRID RESPONSIVE
 # =====================================================
 
-COLUMNAS = 5
+# 2 columnas en móvil aprox
+COLUMNAS = 2 if len(df_filtrado) < 10 else 5
 
-cols = st.columns(COLUMNAS)
+for inicio in range(0, len(df_filtrado), COLUMNAS):
 
-for i, row in df_filtrado.iterrows():
+    fila = df_filtrado.iloc[inicio:inicio + COLUMNAS]
 
-    col = cols[i % COLUMNAS]
+    cols = st.columns(COLUMNAS)
 
-    with col:
+    for col, (i, row) in zip(cols, fila.iterrows()):
 
-        st.markdown(
-            f"""
-            <div class="{clase_card(row)}">
-                <div class="code">{row['codigo']}</div>
-                <div class="name">{row['nombre']}</div>
-                <div class="team">{row['seleccion']}</div>
-                <div class="badge">{estado_texto(row)}</div>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
+        with col:
 
-        with st.expander("Editar"):
-
-            lo_tengo = st.checkbox(
-                "Lo tengo",
-                value=bool(row["lo_tengo"]),
-                key=f"tengo_{i}"
+            st.markdown(
+                f"""
+                <div class="{clase_card(row)}">
+                    <div class="code">{row['codigo']}</div>
+                    <div class="name">{row['nombre']}</div>
+                    <div class="team">{row['seleccion']}</div>
+                    <div class="badge">{estado_texto(row)}</div>
+                </div>
+                """,
+                unsafe_allow_html=True
             )
 
-            repetidos = st.number_input(
-                "Número de repetidos",
-                min_value=0,
-                value=int(row["repetidos"]),
-                step=1,
-                key=f"rep_{i}"
-            )
+            with st.expander("Editar"):
 
-            wishlist = st.checkbox(
-                "Wishlist",
-                value=bool(row["wishlist"]),
-                key=f"wish_{i}"
-            )
+                lo_tengo = st.checkbox(
+                    "Lo tengo",
+                    value=bool(row["lo_tengo"]),
+                    key=f"tengo_{i}"
+                )
 
-            if st.button(
-                "Guardar",
-                key=f"save_{i}"
-            ):
+                repetidos = st.number_input(
+                    "Repetidos",
+                    min_value=0,
+                    value=int(row["repetidos"]),
+                    step=1,
+                    key=f"rep_{i}"
+                )
 
-                idx = df[
-                    df["codigo"].astype(str) == str(row["codigo"])
-                ].index[0]
+                wishlist = st.checkbox(
+                    "Wishlist",
+                    value=bool(row["wishlist"]),
+                    key=f"wish_{i}"
+                )
 
-                df.at[idx, "lo_tengo"] = lo_tengo
-                df.at[idx, "repetidos"] = repetidos
-                df.at[idx, "wishlist"] = wishlist
+                if st.button(
+                    "Guardar",
+                    key=f"save_{i}"
+                ):
 
-                guardar_datos(df)
+                    idx = df[
+                        df["codigo"].astype(str) == str(row["codigo"])
+                    ].index[0]
 
-                st.success("Guardado correctamente")
+                    df.at[idx, "lo_tengo"] = lo_tengo
+                    df.at[idx, "repetidos"] = repetidos
+                    df.at[idx, "wishlist"] = wishlist
 
-                st.rerun()
+                    guardar_datos(df)
+
+                    st.success("Guardado correctamente")
+
+                    st.rerun()
