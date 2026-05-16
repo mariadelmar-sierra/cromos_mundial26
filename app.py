@@ -32,12 +32,12 @@ st.markdown("""
     width: 100%;
     aspect-ratio: 1 / 1;
 
-    border-radius: 14px;
+    border-radius: 17px;
     padding: 8px;
 
     background-color: white;
 
-    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
 
     transition: 0.2s;
 
@@ -76,14 +76,14 @@ st.markdown("""
 ========================= */
 
 .code {
-    font-size: 6px;
+    font-size: 7px;
     font-weight: 800;
 }
 
 .name {
-    font-size: 10px;
+    font-size: 7px;
     font-weight: 700;
-    line-height: 1.1;
+    line-height: 1;
 
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -94,17 +94,17 @@ st.markdown("""
 
 .team {
     color: #666;
-    font-size: 7px;
+    font-size: 5px;
     margin-top: 1px;
 }
 
 .badge {
     display: inline-block;
     margin-top: 3px;
-    padding: 1px 4px;
+    padding: 1px 3px;
     border-radius: 999px;
     background-color: rgba(0,0,0,0.06);
-    font-size: 7px;
+    font-size: 5px;
     font-weight: 600;
 }
 
@@ -380,7 +380,7 @@ st.divider()
 # GRID RESPONSIVE
 # =====================================================
 
-COLUMNAS = 5
+COLUMNAS = 6
 
 for inicio in range(0, len(df_filtrado), COLUMNAS):
 
