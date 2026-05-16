@@ -29,13 +29,23 @@ st.markdown("""
 ========================= */
 
 .card {
-    border-radius: 5px;
-    padding: 6px;
-    margin-bottom: 4px;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+
+    border-radius: 14px;
+    padding: 8px;
+
     background-color: white;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+
     transition: 0.2s;
-    min-height: 75px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    overflow: hidden;
 }
 
 .card:hover {
@@ -71,10 +81,15 @@ st.markdown("""
 }
 
 .name {
-    font-size: 9px;
+    font-size: 10px;
     font-weight: 700;
-    margin-top: 2px;
     line-height: 1.1;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
 }
 
 .team {
