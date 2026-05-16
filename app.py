@@ -29,7 +29,7 @@ st.markdown("""
 ========================= */
 
 .card {
-    border-radius: 12px;
+    border-radius: 6px;
     padding: 6px;
     margin-bottom: 4px;
     background-color: white;
