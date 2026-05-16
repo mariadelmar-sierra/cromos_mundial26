@@ -29,12 +29,13 @@ st.markdown("""
 ========================= */
 
 .card {
-    border-radius: 14px;
-    padding: 8px;
-    margin-bottom: 6px;
+    border-radius: 12px;
+    padding: 6px;
+    margin-bottom: 4px;
     background-color: white;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
     transition: 0.2s;
+    min-height: 75px;
 }
 
 .card:hover {
@@ -65,30 +66,30 @@ st.markdown("""
 ========================= */
 
 .code {
-    font-size: 15px;
+    font-size: 11px;
     font-weight: 800;
 }
 
 .name {
-    font-size: 11px;
+    font-size: 9px;
     font-weight: 700;
-    margin-top: 4px;
-    line-height: 1.2;
+    margin-top: 2px;
+    line-height: 1.1;
 }
 
 .team {
     color: #666;
-    font-size: 9px;
-    margin-top: 2px;
+    font-size: 7px;
+    margin-top: 1px;
 }
 
 .badge {
     display: inline-block;
-    margin-top: 5px;
-    padding: 2px 6px;
+    margin-top: 3px;
+    padding: 1px 4px;
     border-radius: 999px;
     background-color: rgba(0,0,0,0.06);
-    font-size: 9px;
+    font-size: 7px;
     font-weight: 600;
 }
 
@@ -364,7 +365,7 @@ st.divider()
 # GRID RESPONSIVE
 # =====================================================
 
-COLUMNAS = 2
+COLUMNAS = 5
 
 for inicio in range(0, len(df_filtrado), COLUMNAS):
 
@@ -388,7 +389,7 @@ for inicio in range(0, len(df_filtrado), COLUMNAS):
                 unsafe_allow_html=True
             )
 
-            with st.expander("Editar"):
+            with st.popover("⚙️"):
 
                 lo_tengo = st.checkbox(
                     "Lo tengo",
