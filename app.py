@@ -376,27 +376,27 @@ for inicio in range(0, len(df_filtrado), COLUMNAS):
             st.markdown(
                 f"""
                 <div class="{clase_card(row)}">
-
+            
                     <div>
-
+            
                         <div class="code">
                             {row['codigo']}
                         </div>
-
+            
                         <div class="name">
                             {row['nombre']}
                         </div>
-
+            
                         <div class="team">
                             {row['seleccion']}
                         </div>
-
+            
                     </div>
-
+            
                     <div class="badge">
                         {estado_texto(row)}
                     </div>
-
+            
                 </div>
                 """,
                 unsafe_allow_html=True
