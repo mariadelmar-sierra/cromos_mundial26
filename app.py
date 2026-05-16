@@ -133,6 +133,9 @@ def crear_csv_desde_excel():
 
     df = df.reset_index(drop=True)
 
+    # GUARDAR ORDEN REAL DEL ÁLBUM
+    df["orden_album"] = df.index
+
     # =========================================
 
     df["lo_tengo"] = False
@@ -316,6 +319,12 @@ if busqueda:
             .str.contains(busqueda_normalizada, na=False)
         )
     ]
+
+# =====================================================
+# ORDEN ORIGINAL DEL ÁLBUM
+# =====================================================
+
+df_filtrado = df_filtrado.sort_values("orden_album")
 
 st.write(f"Mostrando **{len(df_filtrado)}** cromos")
 
