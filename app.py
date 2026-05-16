@@ -1,11 +1,10 @@
 import os
-import pandas as pd
-import streamlit as st
+import html
+import textwrap
 import unicodedata
 
-# =====================================================
-# CONFIG
-# =====================================================
+import pandas as pd
+import streamlit as st
 
 EXCEL_FILE = "Cromos_Panini_Mundial_2026.xlsx"
 CSV_FILE = "album_guardado.csv"
@@ -16,55 +15,31 @@ st.set_page_config(
     layout="wide"
 )
 
-# =====================================================
-# CSS
-# =====================================================
-
 st.markdown("""
 <style>
-
-/* =========================
-   GENERAL
-========================= */
 
 .block-container {
     padding-top: 1rem;
     padding-bottom: 2rem;
 }
 
-/* =========================
-   CARDS
-========================= */
-
 .card {
-
     width: 100%;
     aspect-ratio: 1 / 1;
-
     border-radius: 12px;
-
     padding: 8px;
-
     background-color: white;
-
     box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-
     transition: 0.2s;
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
     overflow: hidden;
 }
 
 .card:hover {
     transform: translateY(-2px);
 }
-
-/* =========================
-   ESTADOS
-========================= */
 
 .card-owned {
     border: 2px solid #2ecc71;
@@ -81,59 +56,35 @@ st.markdown("""
     background-color: #fff8e7;
 }
 
-/* =========================
-   TEXTO
-========================= */
-
 .code {
     font-size: 16px;
     font-weight: 800;
 }
 
 .name {
-
     font-size: 10px;
-
     font-weight: 700;
-
     line-height: 1.1;
-
     margin-top: 4px;
-
     display: -webkit-box;
-
     -webkit-line-clamp: 3;
-
     -webkit-box-orient: vertical;
-
     overflow: hidden;
 }
 
 .team {
-
     font-size: 8px;
-
     color: #777;
-
     margin-top: 3px;
 }
 
 .badge {
-
     font-size: 8px;
-
     padding: 2px 6px;
-
     border-radius: 999px;
-
     background-color: rgba(0,0,0,0.06);
-
     width: fit-content;
 }
-
-/* =========================
-   POPOVER
-========================= */
 
 button[kind="secondary"] {
     border-radius: 10px !important;
@@ -142,25 +93,20 @@ button[kind="secondary"] {
 </style>
 """, unsafe_allow_html=True)
 
-# =====================================================
-# FUNCIONES
-# =====================================================
 
 def quitar_tildes(texto):
-
     if pd.isna(texto):
         return ""
 
     texto = str(texto)
 
-    return ''.join(
-        c for c in unicodedata.normalize('NFD', texto)
-        if unicodedata.category(c) != 'Mn'
+    return "".join(
+        c for c in unicodedata.normalize("NFD", texto)
+        if unicodedata.category(c) != "Mn"
     ).lower()
 
 
 def crear_csv_desde_excel():
-
     df = pd.read_excel(
         EXCEL_FILE,
         sheet_name="Listado de cromos",
@@ -183,21 +129,11 @@ def crear_csv_desde_excel():
         "seccion"
     ]].copy()
 
-    # =========================================
-    # LIMPIEZA
-    # =========================================
-
     df = df.dropna(subset=["codigo", "nombre"])
-
     df["codigo"] = df["codigo"].astype(str)
-
     df = df.reset_index(drop=True)
 
-    # ORDEN REAL DEL ÁLBUM
     df["orden_album"] = df.index
-
-    # =========================================
-
     df["lo_tengo"] = False
     df["repetidos"] = 0
     df["wishlist"] = False
@@ -208,61 +144,54 @@ def crear_csv_desde_excel():
 
 
 def cargar_datos():
-
     if os.path.exists(CSV_FILE):
-        return pd.read_csv(CSV_FILE)
+        df = pd.read_csv(CSV_FILE)
+
+        if "orden_album" not in df.columns:
+            df["orden_album"] = range(len(df))
+
+        return df
 
     return crear_csv_desde_excel()
 
 
 def guardar_datos(df):
-
     df.to_csv(CSV_FILE, index=False)
 
 
 def clase_card(row):
-
-    if row["repetidos"] > 0:
+    if int(row["repetidos"]) > 0:
         return "card card-repeated"
 
-    if row["lo_tengo"]:
+    if bool(row["lo_tengo"]):
         return "card card-owned"
 
     return "card card-missing"
 
 
 def estado_texto(row):
+    if bool(row["lo_tengo"]) and int(row["repetidos"]) > 0:
+        return f"✅ · 🔁 {int(row['repetidos'])}"
 
-    if row["lo_tengo"] and row["repetidos"] > 0:
-        return f"✅ · 🔁 {row['repetidos']}"
-
-    if row["lo_tengo"]:
+    if bool(row["lo_tengo"]):
         return "✅ Tengo"
 
     return "❌ Falta"
 
 
-# =====================================================
-# CARGAR DATOS
-# =====================================================
-
 df = cargar_datos()
 
-# =====================================================
-# FILTROS
-# =====================================================
+st.title("⚽ Álbum Mundial 2026")
 
 f1, f2 = st.columns(2)
 
 with f1:
-
     seleccion = st.selectbox(
         "Selección",
         ["Todas"] + sorted(df["seleccion"].dropna().unique().tolist())
     )
 
 with f2:
-
     estado = st.selectbox(
         "Estado",
         [
@@ -276,48 +205,34 @@ with f2:
 
 busqueda = st.text_input("🔍 Buscar cromo")
 
-# =====================================================
-# FILTRADO
-# =====================================================
-
 df_filtrado = df.copy()
 
 if seleccion != "Todas":
-
     df_filtrado = df_filtrado[
         df_filtrado["seleccion"] == seleccion
     ]
 
 if estado == "Los tengo":
-
     df_filtrado = df_filtrado[
         df_filtrado["lo_tengo"] == True
     ]
 
 elif estado == "Me faltan":
-
     df_filtrado = df_filtrado[
         df_filtrado["lo_tengo"] == False
     ]
 
 elif estado == "Repetidos":
-
     df_filtrado = df_filtrado[
         df_filtrado["repetidos"] > 0
     ]
 
 elif estado == "Wishlist":
-
     df_filtrado = df_filtrado[
         df_filtrado["wishlist"] == True
     ]
 
-# =====================================================
-# BUSCADOR SIN TILDES
-# =====================================================
-
 if busqueda:
-
     busqueda_normalizada = quitar_tildes(busqueda)
 
     df_filtrado = df_filtrado[
@@ -343,19 +258,10 @@ if busqueda:
         )
     ]
 
-# =====================================================
-# ORDEN REAL DEL ÁLBUM
-# =====================================================
-
 df_filtrado = df_filtrado.sort_values("orden_album")
 
 st.write(f"Mostrando **{len(df_filtrado)}** cromos")
-
 st.divider()
-
-# =====================================================
-# GRID TIPO ÁLBUM
-# =====================================================
 
 COLUMNAS = 10
 
@@ -368,46 +274,33 @@ for inicio in range(0, len(df_filtrado), COLUMNAS):
     for col, (i, row) in zip(cols, fila.iterrows()):
 
         with col:
-        
-            html_card = f"""
+
+            codigo = html.escape(str(row["codigo"]))
+            nombre = html.escape(str(row["nombre"]))
+            seleccion_txt = html.escape(str(row["seleccion"]))
+            estado_txt = html.escape(estado_texto(row))
+
+            html_card = textwrap.dedent(f"""
             <div class="{clase_card(row)}">
-        
                 <div>
-        
-                    <div class="code">
-                        {row['codigo']}
-                    </div>
-        
-                    <div class="name">
-                        {row['nombre']}
-                    </div>
-        
-                    <div class="team">
-                        {row['seleccion']}
-                    </div>
-        
+                    <div class="code">{codigo}</div>
+                    <div class="name">{nombre}</div>
+                    <div class="team">{seleccion_txt}</div>
                 </div>
-        
-                <div class="badge">
-                    {estado_texto(row)}
-                </div>
-        
+                <div class="badge">{estado_txt}</div>
             </div>
-            """
-        
-            st.markdown(
-                html_card,
-                unsafe_allow_html=True
-            )
-        
+            """)
+
+            st.markdown(html_card, unsafe_allow_html=True)
+
             with st.popover("⚙️"):
-        
+
                 lo_tengo = st.checkbox(
                     "Lo tengo",
                     value=bool(row["lo_tengo"]),
                     key=f"tengo_{i}"
                 )
-        
+
                 repetidos = st.number_input(
                     "Repetidos",
                     min_value=0,
@@ -415,26 +308,23 @@ for inicio in range(0, len(df_filtrado), COLUMNAS):
                     step=1,
                     key=f"rep_{i}"
                 )
-        
+
                 wishlist = st.checkbox(
                     "Wishlist",
                     value=bool(row["wishlist"]),
                     key=f"wish_{i}"
                 )
-        
-                if st.button(
-                    "Guardar",
-                    key=f"save_{i}"
-                ):
-        
+
+                if st.button("Guardar", key=f"save_{i}"):
+
                     idx = df[
                         df["codigo"].astype(str) == str(row["codigo"])
                     ].index[0]
-        
+
                     df.at[idx, "lo_tengo"] = lo_tengo
                     df.at[idx, "repetidos"] = repetidos
                     df.at[idx, "wishlist"] = wishlist
-        
+
                     guardar_datos(df)
-        
+
                     st.rerun()
