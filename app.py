@@ -368,52 +368,46 @@ for inicio in range(0, len(df_filtrado), COLUMNAS):
     for col, (i, row) in zip(cols, fila.iterrows()):
 
         with col:
-
-            # =========================================
-            # CARD
-            # =========================================
-
-            st.markdown(
-                f"""
-                <div class="{clase_card(row)}">
-            
-                    <div>
-            
-                        <div class="code">
-                            {row['codigo']}
-                        </div>
-            
-                        <div class="name">
-                            {row['nombre']}
-                        </div>
-            
-                        <div class="team">
-                            {row['seleccion']}
-                        </div>
-            
+        
+            html_card = f"""
+            <div class="{clase_card(row)}">
+        
+                <div>
+        
+                    <div class="code">
+                        {row['codigo']}
                     </div>
-            
-                    <div class="badge">
-                        {estado_texto(row)}
+        
+                    <div class="name">
+                        {row['nombre']}
                     </div>
-            
+        
+                    <div class="team">
+                        {row['seleccion']}
+                    </div>
+        
                 </div>
-                """,
+        
+                <div class="badge">
+                    {estado_texto(row)}
+                </div>
+        
+            </div>
+            """
+        
+            st.markdown(
+                html_card,
                 unsafe_allow_html=True
             )
-
-            # =========================================
-            # POPOVER
-            # =========================================
-
+        
             with st.popover("⚙️"):
-
+        
                 lo_tengo = st.checkbox(
                     "Lo tengo",
                     value=bool(row["lo_tengo"]),
                     key=f"tengo_{i}"
                 )
-
+        
                 repetidos = st.number_input(
                     "Repetidos",
                     min_value=0,
@@ -421,26 +415,26 @@ for inicio in range(0, len(df_filtrado), COLUMNAS):
                     step=1,
                     key=f"rep_{i}"
                 )
-
+        
                 wishlist = st.checkbox(
                     "Wishlist",
                     value=bool(row["wishlist"]),
                     key=f"wish_{i}"
                 )
-
+        
                 if st.button(
                     "Guardar",
                     key=f"save_{i}"
                 ):
-
+        
                     idx = df[
                         df["codigo"].astype(str) == str(row["codigo"])
                     ].index[0]
-
+        
                     df.at[idx, "lo_tengo"] = lo_tengo
                     df.at[idx, "repetidos"] = repetidos
                     df.at[idx, "wishlist"] = wishlist
-
+        
                     guardar_datos(df)
-
+        
                     st.rerun()
