@@ -3,6 +3,10 @@ import pandas as pd
 import streamlit as st
 import unicodedata
 
+# =====================================================
+# CONFIG
+# =====================================================
+
 EXCEL_FILE = "Cromos_Panini_Mundial_2026.xlsx"
 CSV_FILE = "album_guardado.csv"
 
@@ -19,25 +23,31 @@ st.set_page_config(
 st.markdown("""
 <style>
 
+/* =========================
+   GENERAL
+========================= */
+
 .block-container {
-    padding-top: 0.8rem;
+    padding-top: 1rem;
     padding-bottom: 2rem;
 }
 
 /* =========================
-   TARJETAS
+   CARDS
 ========================= */
 
 .card {
+
     width: 100%;
     aspect-ratio: 1 / 1;
 
-    border-radius: 17px;
+    border-radius: 12px;
+
     padding: 8px;
 
     background-color: white;
 
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
 
     transition: 0.2s;
 
@@ -76,57 +86,57 @@ st.markdown("""
 ========================= */
 
 .code {
-    font-size: 7px;
+    font-size: 16px;
     font-weight: 800;
 }
 
 .name {
-    font-size: 7px;
+
+    font-size: 10px;
+
     font-weight: 700;
-    line-height: 1;
+
+    line-height: 1.1;
+
+    margin-top: 4px;
 
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+
+    -webkit-line-clamp: 3;
+
     -webkit-box-orient: vertical;
 
     overflow: hidden;
 }
 
 .team {
-    color: #666;
-    font-size: 5px;
-    margin-top: 1px;
+
+    font-size: 8px;
+
+    color: #777;
+
+    margin-top: 3px;
 }
 
 .badge {
-    display: inline-block;
-    margin-top: 3px;
-    padding: 1px 3px;
+
+    font-size: 8px;
+
+    padding: 2px 6px;
+
     border-radius: 999px;
+
     background-color: rgba(0,0,0,0.06);
-    font-size: 5px;
-    font-weight: 600;
+
+    width: fit-content;
 }
 
 /* =========================
-   EXPANDER
+   POPOVER
 ========================= */
 
-div[data-testid="stExpander"] {
-    border: none !important;
-}
-
-/* =========================
-   MÁS COMPACTO EN MÓVIL
-========================= */
-
-@media (max-width: 768px) {
-
-    .block-container {
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
-    }
-
+button[kind="secondary"] {
+    border-radius: 10px !important;
 }
 
 </style>
@@ -239,39 +249,6 @@ def estado_texto(row):
 df = cargar_datos()
 
 # =====================================================
-# HEADER
-# =====================================================
-
-st.title("⚽ Álbum Panini Mundial 2026")
-
-# =====================================================
-# KPIS
-# =====================================================
-
-total = len(df)
-
-tengo = int(df["lo_tengo"].sum())
-
-faltan = total - tengo
-
-repetidos_total = int(df["repetidos"].sum())
-
-porcentaje = round((tengo / total) * 100, 2)
-
-c1, c2, c3, c4 = st.columns(4)
-
-c1.metric("Total", total)
-c2.metric("Tengo", tengo)
-c3.metric("Faltan", faltan)
-c4.metric("Repetidos", repetidos_total)
-
-st.progress(tengo / total)
-
-st.write(f"Álbum completado al **{porcentaje}%**")
-
-st.divider()
-
-# =====================================================
 # FILTROS
 # =====================================================
 
@@ -377,10 +354,10 @@ st.write(f"Mostrando **{len(df_filtrado)}** cromos")
 st.divider()
 
 # =====================================================
-# GRID RESPONSIVE
+# GRID TIPO ÁLBUM
 # =====================================================
 
-COLUMNAS = 6
+COLUMNAS = 10
 
 for inicio in range(0, len(df_filtrado), COLUMNAS):
 
@@ -392,17 +369,42 @@ for inicio in range(0, len(df_filtrado), COLUMNAS):
 
         with col:
 
+            # =========================================
+            # CARD
+            # =========================================
+
             st.markdown(
                 f"""
                 <div class="{clase_card(row)}">
-                    <div class="code">{row['codigo']}</div>
-                    <div class="name">{row['nombre']}</div>
-                    <div class="team">{row['seleccion']}</div>
-                    <div class="badge">{estado_texto(row)}</div>
+
+                    <div>
+
+                        <div class="code">
+                            {row['codigo']}
+                        </div>
+
+                        <div class="name">
+                            {row['nombre']}
+                        </div>
+
+                        <div class="team">
+                            {row['seleccion']}
+                        </div>
+
+                    </div>
+
+                    <div class="badge">
+                        {estado_texto(row)}
+                    </div>
+
                 </div>
                 """,
                 unsafe_allow_html=True
             )
+
+            # =========================================
+            # POPOVER
+            # =========================================
 
             with st.popover("⚙️"):
 
@@ -440,7 +442,5 @@ for inicio in range(0, len(df_filtrado), COLUMNAS):
                     df.at[idx, "wishlist"] = wishlist
 
                     guardar_datos(df)
-
-                    st.success("Guardado")
 
                     st.rerun()
