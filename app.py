@@ -20,23 +20,31 @@ st.markdown("""
 <style>
 
 .block-container {
-    padding-top: 1.5rem;
+    padding-top: 1rem;
     padding-bottom: 2rem;
 }
 
+/* =========================
+   TARJETAS
+========================= */
+
 .card {
-    border-radius: 20px;
-    padding: 16px;
-    margin-bottom: 15px;
+    border-radius: 16px;
+    padding: 10px;
+    margin-bottom: 10px;
     background-color: white;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     transition: 0.2s;
-    min-height: 170px;
+    min-height: 110px;
 }
 
 .card:hover {
-    transform: translateY(-3px);
+    transform: translateY(-2px);
 }
+
+/* =========================
+   ESTADOS
+========================= */
 
 .card-owned {
     border: 2px solid #2ecc71;
@@ -53,33 +61,41 @@ st.markdown("""
     background-color: #fff8e7;
 }
 
+/* =========================
+   TEXTO
+========================= */
+
 .code {
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 800;
 }
 
 .name {
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 700;
-    margin-top: 8px;
-    line-height: 1.3;
+    margin-top: 6px;
+    line-height: 1.2;
 }
 
 .team {
     color: #666;
-    font-size: 13px;
-    margin-top: 4px;
+    font-size: 11px;
+    margin-top: 3px;
 }
 
 .badge {
     display: inline-block;
-    margin-top: 10px;
-    padding: 4px 10px;
+    margin-top: 8px;
+    padding: 3px 8px;
     border-radius: 999px;
     background-color: rgba(0,0,0,0.06);
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 600;
 }
+
+/* =========================
+   EXPANDER
+========================= */
 
 div[data-testid="stExpander"] {
     border: none !important;
@@ -180,7 +196,7 @@ def clase_card(row):
 def estado_texto(row):
 
     if row["lo_tengo"] and row["repetidos"] > 0:
-        return f"✅ Tengo · 🔁 {row['repetidos']}"
+        return f"✅ · 🔁 {row['repetidos']}"
 
     if row["lo_tengo"]:
         return "✅ Tengo"
@@ -199,8 +215,6 @@ df = cargar_datos()
 # =====================================================
 
 st.title("⚽ Álbum Panini Mundial 2026")
-
-st.write("Gestiona tus cromos de forma visual.")
 
 # =====================================================
 # KPIS
@@ -255,7 +269,7 @@ with f2:
         ]
     )
 
-busqueda = st.text_input("🔍 Buscar por nombre, código o selección")
+busqueda = st.text_input("🔍 Buscar cromo")
 
 # =====================================================
 # FILTRADO
@@ -338,8 +352,7 @@ st.divider()
 # GRID RESPONSIVE
 # =====================================================
 
-# 2 columnas en móvil aprox
-COLUMNAS = 2 if len(df_filtrado) < 10 else 5
+COLUMNAS = 6
 
 for inicio in range(0, len(df_filtrado), COLUMNAS):
 
@@ -400,6 +413,6 @@ for inicio in range(0, len(df_filtrado), COLUMNAS):
 
                     guardar_datos(df)
 
-                    st.success("Guardado correctamente")
+                    st.success("Guardado")
 
                     st.rerun()
