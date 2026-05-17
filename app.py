@@ -248,6 +248,8 @@ for seleccion in selecciones_final:
 
     # coger las 3 primeras letras del código
     label = codigo_ejemplo[:3].upper()
+    if label == "00":
+        label = "FWC"
 
     # evitar pills duplicadas
     original = label
