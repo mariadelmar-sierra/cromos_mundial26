@@ -143,6 +143,8 @@ def crear_csv_desde_excel():
 
     df = df.reset_index(drop=True)
 
+    df["orden_original"] = df.index
+
     df["lo_tengo"] = False
     df["repetidos"] = 0
     df["wishlist"] = False
@@ -235,23 +237,24 @@ st.divider()
 # mantener orden ORIGINAL del dataset
 selecciones_final = list(dict.fromkeys(df["seleccion"].dropna().tolist()))
 
-pill_labels = []
+pill_labels = ["TODOS"]
+selecciones_final = ["TODOS"] + selecciones_final
 
-for seleccion in selecciones_final:
+for seleccion in selecciones_final[1:]:
 
-    # coger un ejemplo de código de esa selección
     codigo_ejemplo = (
         df[df["seleccion"] == seleccion]["codigo"]
         .astype(str)
         .iloc[0]
     )
 
-    # coger las 3 primeras letras del código
     label = codigo_ejemplo[:3].upper()
-    if label == "00":
+
+    # cambiar 000 por FWC
+    if label == "000":
         label = "FWC"
 
-    # evitar pills duplicadas
+    # evitar duplicados
     original = label
     contador = 2
 
@@ -270,7 +273,7 @@ pill = st.pills(
     "Selección",
     pill_labels,
     selection_mode="single",
-    default=pill_labels[0]
+    default="TODOS"
 )
 
 seleccion_actual = pill_map[pill]
@@ -306,9 +309,11 @@ with f2:
 df_filtrado = df.copy()
 
 # selección
-df_filtrado = df_filtrado[
-    df_filtrado["seleccion"] == seleccion_actual
-]
+if seleccion_actual != "TODOS":
+
+    df_filtrado = df_filtrado[
+        df_filtrado["seleccion"] == seleccion_actual
+    ]
 
 # buscador
 if busqueda:
@@ -329,8 +334,15 @@ if busqueda:
         .str.contains(busqueda_normalizada, na=False)
     )
 
+    mask_seleccion = (
+        df_filtrado["seleccion"]
+        .astype(str)
+        .apply(quitar_tildes)
+        .str.contains(busqueda_normalizada, na=False)
+    )
+
     df_filtrado = df_filtrado[
-        mask_codigo | mask_nombre
+        mask_codigo | mask_nombre | mask_seleccion
     ]
 
 # estado
@@ -352,8 +364,8 @@ elif estado == "Repetidos":
         df_filtrado["repetidos"] > 0
     ]
 
-# mantener orden original
-df_filtrado = df_filtrado.reset_index(drop=True)
+# mantener orden ORIGINAL
+df_filtrado = df_filtrado.sort_values("orden_original")
 
 st.write(f"Mostrando **{len(df_filtrado)}** cromos")
 
