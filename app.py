@@ -281,6 +281,17 @@ seleccion_actual = pill_map[pill]
 st.divider()
 
 # =====================================================
+# ATAJOS
+# =====================================================
+
+a1, a2 = st.columns([1, 5])
+
+with a1:
+
+    ver_repetidos = st.button("🔁 Repetidos")
+
+
+# =====================================================
 # FILTROS
 # =====================================================
 
@@ -345,6 +356,12 @@ if busqueda:
         mask_codigo | mask_nombre | mask_seleccion
     ]
 
+# botón repetidos
+if ver_repetidos:
+
+    df_filtrado = df_filtrado[
+        df_filtrado["repetidos"] > 0
+    ]
 # estado
 if estado == "Los tengo":
 
@@ -370,6 +387,7 @@ df_filtrado = df_filtrado.sort_values("orden_original")
 st.write(f"Mostrando **{len(df_filtrado)}** cromos")
 
 st.divider()
+
 
 # =====================================================
 # GRID DE CROMOS
