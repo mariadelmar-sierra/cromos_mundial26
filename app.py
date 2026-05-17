@@ -399,7 +399,7 @@ for inicio in range(0, len(df_filtrado), COLUMNAS):
                 unsafe_allow_html=True
             )
 
-            with st.popover("⚙️"):
+            with st.expander("⚙️"):
 
                 lo_tengo = st.checkbox(
                     "Lo tengo",
