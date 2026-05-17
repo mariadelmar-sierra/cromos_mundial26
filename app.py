@@ -250,8 +250,8 @@ for seleccion in selecciones_final[1:]:
 
     label = codigo_ejemplo[:3].upper()
 
-    # cambiar 000 por FWC
-    if label == "000":
+    # cambiar 00 por FWC
+    if label == "00":
         label = "FWC"
 
     # evitar duplicados
