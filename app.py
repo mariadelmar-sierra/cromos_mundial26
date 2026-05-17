@@ -20,7 +20,7 @@ st.markdown("""
 <style>
 
 .block-container {
-    padding-top: 1.5rem;
+    padding-top: 1.2rem;
     padding-bottom: 2rem;
 }
 
@@ -30,16 +30,16 @@ st.markdown("""
 
 .card {
     border-radius: 18px;
-    padding: 14px;
+    padding: 12px;
     margin-bottom: 12px;
     background-color: white;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    min-height: 150px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
     transition: 0.2s;
-    min-height: 160px;
 }
 
 .card:hover {
-    transform: translateY(-3px);
+    transform: translateY(-2px);
 }
 
 /* =========================
@@ -48,7 +48,7 @@ st.markdown("""
 
 .card-owned {
     border: 2px solid #2ecc71;
-    background-color: #f3fff8;
+    background-color: #f4fff8;
 }
 
 .card-missing {
@@ -58,7 +58,7 @@ st.markdown("""
 
 .card-repeated {
     border: 2px solid #f7b731;
-    background-color: #fff8e7;
+    background-color: #fff9ed;
 }
 
 /* =========================
@@ -66,47 +66,31 @@ st.markdown("""
 ========================= */
 
 .code {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 800;
+    margin-bottom: 10px;
 }
 
 .name {
     font-size: 15px;
     font-weight: 700;
-    margin-top: 8px;
     line-height: 1.2;
 }
 
 .team {
     color: #666;
     font-size: 13px;
-    margin-top: 4px;
+    margin-top: 6px;
 }
 
 .badge {
     display: inline-block;
     margin-top: 12px;
-    padding: 4px 10px;
+    padding: 5px 10px;
     border-radius: 999px;
     background-color: rgba(0,0,0,0.06);
     font-size: 12px;
     font-weight: 600;
-}
-
-/* =========================
-   PILLS
-========================= */
-
-button[kind="pills"] {
-    border-radius: 999px !important;
-}
-
-/* =========================
-   POPOVER
-========================= */
-
-button[kind="secondary"] {
-    border-radius: 10px !important;
 }
 
 </style>
@@ -248,42 +232,46 @@ st.divider()
 # PILLS DE SELECCIONES
 # =====================================================
 
-selecciones = df["seleccion"].dropna().unique().tolist()
+# mantener orden ORIGINAL del dataset
+selecciones_final = list(dict.fromkeys(df["seleccion"].dropna().tolist()))
 
-# especiales primero
-fwc = [s for s in selecciones if "Especial" in s]
+pill_labels = []
 
-# resto
-resto = sorted([s for s in selecciones if s not in fwc])
+for seleccion in selecciones_final:
 
-selecciones_final = fwc + resto
+    # coger un ejemplo de código de esa selección
+    codigo_ejemplo = (
+        df[df["seleccion"] == seleccion]["codigo"]
+        .astype(str)
+        .iloc[0]
+    )
 
-def pill_label(nombre):
+    # coger las 3 primeras letras del código
+    label = codigo_ejemplo[:3].upper()
 
-    if nombre == "Especial":
-        return "FWC"
+    # evitar pills duplicadas
+    original = label
+    contador = 2
 
-    palabras = nombre.split()
+    while label in pill_labels:
+        label = f"{original}{contador}"
+        contador += 1
 
-    if len(palabras) == 1:
-        return palabras[0][:3].upper()
+    pill_labels.append(label)
 
-    return "".join([p[0] for p in palabras[:3]]).upper()
-
-
-pill_options = {
-    pill_label(s): s
-    for s in selecciones_final
+pill_map = {
+    pill_labels[i]: selecciones_final[i]
+    for i in range(len(selecciones_final))
 }
 
 pill = st.pills(
     "Selección",
-    list(pill_options.keys()),
+    pill_labels,
     selection_mode="single",
-    default=list(pill_options.keys())[0]
+    default=pill_labels[0]
 )
 
-seleccion_actual = pill_options[pill]
+seleccion_actual = pill_map[pill]
 
 st.divider()
 
@@ -315,12 +303,35 @@ with f2:
 
 df_filtrado = df.copy()
 
-# selección desde pills
+# selección
 df_filtrado = df_filtrado[
     df_filtrado["seleccion"] == seleccion_actual
 ]
 
-# filtro estado
+# buscador
+if busqueda:
+
+    busqueda_normalizada = quitar_tildes(busqueda)
+
+    mask_codigo = (
+        df_filtrado["codigo"]
+        .astype(str)
+        .apply(quitar_tildes)
+        .str.contains(busqueda_normalizada, na=False)
+    )
+
+    mask_nombre = (
+        df_filtrado["nombre"]
+        .astype(str)
+        .apply(quitar_tildes)
+        .str.contains(busqueda_normalizada, na=False)
+    )
+
+    df_filtrado = df_filtrado[
+        mask_codigo | mask_nombre
+    ]
+
+# estado
 if estado == "Los tengo":
 
     df_filtrado = df_filtrado[
@@ -339,29 +350,8 @@ elif estado == "Repetidos":
         df_filtrado["repetidos"] > 0
     ]
 
-# =====================================================
-# BUSCADOR SIN TILDES
-# =====================================================
-
-if busqueda:
-
-    busqueda_normalizada = quitar_tildes(busqueda)
-
-    df_filtrado = df_filtrado[
-        (
-            df_filtrado["codigo"]
-            .astype(str)
-            .apply(quitar_tildes)
-            .str.contains(busqueda_normalizada, na=False)
-        )
-        |
-        (
-            df_filtrado["nombre"]
-            .astype(str)
-            .apply(quitar_tildes)
-            .str.contains(busqueda_normalizada, na=False)
-        )
-    ]
+# mantener orden original
+df_filtrado = df_filtrado.reset_index(drop=True)
 
 st.write(f"Mostrando **{len(df_filtrado)}** cromos")
 
@@ -373,61 +363,63 @@ st.divider()
 
 COLUMNAS = 5
 
-cols = st.columns(COLUMNAS)
+for inicio in range(0, len(df_filtrado), COLUMNAS):
 
-for i, row in df_filtrado.iterrows():
+    fila = df_filtrado.iloc[inicio:inicio + COLUMNAS]
 
-    col = cols[i % COLUMNAS]
+    cols = st.columns(COLUMNAS)
 
-    with col:
+    for col, (i, row) in zip(cols, fila.iterrows()):
 
-        st.markdown(
-            f"""
-            <div class="{clase_card(row)}">
-                <div class="code">{row['codigo']}</div>
-                <div class="name">{row['nombre']}</div>
-                <div class="team">{row['seleccion']}</div>
-                <div class="badge">{estado_texto(row)}</div>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
+        with col:
 
-        with st.popover("⚙️"):
-
-            lo_tengo = st.checkbox(
-                "Lo tengo",
-                value=bool(row["lo_tengo"]),
-                key=f"tengo_{i}"
+            st.markdown(
+                f"""
+                <div class="{clase_card(row)}">
+                    <div class="code">{row['codigo']}</div>
+                    <div class="name">{row['nombre']}</div>
+                    <div class="team">{row['seleccion']}</div>
+                    <div class="badge">{estado_texto(row)}</div>
+                </div>
+                """,
+                unsafe_allow_html=True
             )
 
-            repetidos = st.number_input(
-                "Número de repetidos",
-                min_value=0,
-                value=int(row["repetidos"]),
-                step=1,
-                key=f"rep_{i}"
-            )
+            with st.popover("⚙️"):
 
-            wishlist = st.checkbox(
-                "Wishlist",
-                value=bool(row["wishlist"]),
-                key=f"wish_{i}"
-            )
+                lo_tengo = st.checkbox(
+                    "Lo tengo",
+                    value=bool(row["lo_tengo"]),
+                    key=f"tengo_{i}"
+                )
 
-            if st.button(
-                "Guardar",
-                key=f"save_{i}"
-            ):
+                repetidos = st.number_input(
+                    "Número de repetidos",
+                    min_value=0,
+                    value=int(row["repetidos"]),
+                    step=1,
+                    key=f"rep_{i}"
+                )
 
-                idx = df[
-                    df["codigo"].astype(str) == str(row["codigo"])
-                ].index[0]
+                wishlist = st.checkbox(
+                    "Wishlist",
+                    value=bool(row["wishlist"]),
+                    key=f"wish_{i}"
+                )
 
-                df.at[idx, "lo_tengo"] = lo_tengo
-                df.at[idx, "repetidos"] = repetidos
-                df.at[idx, "wishlist"] = wishlist
+                if st.button(
+                    "Guardar",
+                    key=f"save_{i}"
+                ):
 
-                guardar_datos(df)
+                    idx = df[
+                        df["codigo"].astype(str) == str(row["codigo"])
+                    ].index[0]
 
-                st.rerun()
+                    df.at[idx, "lo_tengo"] = lo_tengo
+                    df.at[idx, "repetidos"] = repetidos
+                    df.at[idx, "wishlist"] = wishlist
+
+                    guardar_datos(df)
+
+                    st.rerun()
