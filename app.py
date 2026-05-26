@@ -218,8 +218,7 @@ def cargar_datos():
 def guardar_datos(df):
     """
     Guarda todo el DataFrame en Google Sheets.
-    Reescribe la hoja completa.
-    Para un álbum de cromos es suficientemente simple y seguro.
+    Mantiene lo_tengo y wishlist como 0/1.
     """
 
     worksheet = conectar_google_sheet()
@@ -231,16 +230,18 @@ def guardar_datos(df):
     df_guardar["seleccion"] = df_guardar["seleccion"].astype(str)
     df_guardar["tipo"] = df_guardar["tipo"].astype(str)
     df_guardar["seccion"] = df_guardar["seccion"].astype(str)
+
     df_guardar["orden_original"] = df_guardar["orden_original"].astype(int)
-    df_guardar["lo_tengo"] = df_guardar["lo_tengo"].astype(bool)
     df_guardar["repetidos"] = df_guardar["repetidos"].astype(int)
-    df_guardar["wishlist"] = df_guardar["wishlist"].astype(bool)
+
+    df_guardar["lo_tengo"] = df_guardar["lo_tengo"].apply(lambda x: 1 if bool(x) else 0)
+    df_guardar["wishlist"] = df_guardar["wishlist"].apply(lambda x: 1 if bool(x) else 0)
 
     worksheet.clear()
 
     worksheet.update(
         [df_guardar.columns.tolist()] +
-        df_guardar.astype(str).values.tolist()
+        df_guardar.values.tolist()
     )
 
 
