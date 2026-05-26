@@ -1,16 +1,25 @@
-import os
 import pandas as pd
 import streamlit as st
 import unicodedata
+import gspread
+from google.oauth2.service_account import Credentials
 
-EXCEL_FILE = "Cromos_Panini_Mundial_2026.xlsx"
-CSV_FILE = "album_guardado.csv"
+
+# =====================================================
+# CONFIGURACIÓN GENERAL
+# =====================================================
 
 st.set_page_config(
     page_title="Álbum Mundial 2026",
     page_icon="⚽",
     layout="wide"
 )
+
+SCOPES = [
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/drive"
+]
+
 
 # =====================================================
 # CSS
@@ -96,8 +105,147 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+
 # =====================================================
-# FUNCIONES
+# CONEXIÓN GOOGLE SHEETS
+# =====================================================
+
+def conectar_google_sheet():
+    credentials = Credentials.from_service_account_info(
+        st.secrets["google_service_account"],
+        scopes=SCOPES
+    )
+
+    gc = gspread.authorize(credentials)
+
+    spreadsheet = gc.open(
+        st.secrets["google_sheet"]["spreadsheet_name"]
+    )
+
+    worksheet = spreadsheet.worksheet(
+        st.secrets["google_sheet"]["worksheet_name"]
+    )
+
+    return worksheet
+
+
+# =====================================================
+# FUNCIONES DE DATOS
+# =====================================================
+
+def convertir_a_bool(valor):
+    """
+    Convierte valores de Google Sheets a booleanos reales.
+    Acepta TRUE/FALSE, true/false, 1/0, sí/no, si/no.
+    """
+
+    if isinstance(valor, bool):
+        return valor
+
+    valor = str(valor).strip().lower()
+
+    return valor in ["true", "1", "sí", "si", "yes", "x"]
+
+
+def cargar_datos():
+    """
+    Lee siempre los datos desde Google Sheets.
+    No usa Excel ni CSV local.
+    """
+
+    worksheet = conectar_google_sheet()
+
+    records = worksheet.get_all_records()
+
+    if not records:
+        st.error(
+            "La hoja de Google Sheets está vacía. "
+            "Debes crear primero las columnas: codigo, nombre, seleccion, tipo, seccion, orden_original, lo_tengo, repetidos, wishlist."
+        )
+        st.stop()
+
+    df = pd.DataFrame(records)
+
+    columnas_necesarias = [
+        "codigo",
+        "nombre",
+        "seleccion",
+        "tipo",
+        "seccion",
+        "orden_original",
+        "lo_tengo",
+        "repetidos",
+        "wishlist"
+    ]
+
+    faltantes = [
+        col for col in columnas_necesarias
+        if col not in df.columns
+    ]
+
+    if faltantes:
+        st.error(
+            f"Faltan columnas en Google Sheets: {faltantes}"
+        )
+        st.stop()
+
+    df = df[columnas_necesarias].copy()
+
+    df["codigo"] = df["codigo"].astype(str)
+    df["nombre"] = df["nombre"].astype(str)
+    df["seleccion"] = df["seleccion"].astype(str)
+    df["tipo"] = df["tipo"].astype(str)
+    df["seccion"] = df["seccion"].astype(str)
+
+    df["orden_original"] = pd.to_numeric(
+        df["orden_original"],
+        errors="coerce"
+    ).fillna(0).astype(int)
+
+    df["repetidos"] = pd.to_numeric(
+        df["repetidos"],
+        errors="coerce"
+    ).fillna(0).astype(int)
+
+    df["lo_tengo"] = df["lo_tengo"].apply(convertir_a_bool)
+    df["wishlist"] = df["wishlist"].apply(convertir_a_bool)
+
+    df = df.sort_values("orden_original").reset_index(drop=True)
+
+    return df
+
+
+def guardar_datos(df):
+    """
+    Guarda todo el DataFrame en Google Sheets.
+    Reescribe la hoja completa.
+    Para un álbum de cromos es suficientemente simple y seguro.
+    """
+
+    worksheet = conectar_google_sheet()
+
+    df_guardar = df.copy()
+
+    df_guardar["codigo"] = df_guardar["codigo"].astype(str)
+    df_guardar["nombre"] = df_guardar["nombre"].astype(str)
+    df_guardar["seleccion"] = df_guardar["seleccion"].astype(str)
+    df_guardar["tipo"] = df_guardar["tipo"].astype(str)
+    df_guardar["seccion"] = df_guardar["seccion"].astype(str)
+    df_guardar["orden_original"] = df_guardar["orden_original"].astype(int)
+    df_guardar["lo_tengo"] = df_guardar["lo_tengo"].astype(bool)
+    df_guardar["repetidos"] = df_guardar["repetidos"].astype(int)
+    df_guardar["wishlist"] = df_guardar["wishlist"].astype(bool)
+
+    worksheet.clear()
+
+    worksheet.update(
+        [df_guardar.columns.tolist()] +
+        df_guardar.astype(str).values.tolist()
+    )
+
+
+# =====================================================
+# FUNCIONES AUXILIARES
 # =====================================================
 
 def quitar_tildes(texto):
@@ -113,66 +261,12 @@ def quitar_tildes(texto):
     ).lower()
 
 
-def crear_csv_desde_excel():
-
-    df = pd.read_excel(
-        EXCEL_FILE,
-        sheet_name="Listado de cromos",
-        header=3
-    )
-
-    df = df.rename(columns={
-        "Nº": "codigo",
-        "Cromo": "nombre",
-        "Selección": "seleccion",
-        "Tipo": "tipo",
-        "Sección": "seccion"
-    })
-
-    df = df[[
-        "codigo",
-        "nombre",
-        "seleccion",
-        "tipo",
-        "seccion"
-    ]].copy()
-
-    df = df.dropna(subset=["codigo", "nombre"])
-
-    df["codigo"] = df["codigo"].astype(str)
-
-    df = df.reset_index(drop=True)
-
-    df["orden_original"] = df.index
-
-    df["lo_tengo"] = False
-    df["repetidos"] = 0
-    df["wishlist"] = False
-
-    df.to_csv(CSV_FILE, index=False)
-
-    return df
-
-
-def cargar_datos():
-
-    if os.path.exists(CSV_FILE):
-        return pd.read_csv(CSV_FILE)
-
-    return crear_csv_desde_excel()
-
-
-def guardar_datos(df):
-
-    df.to_csv(CSV_FILE, index=False)
-
-
 def clase_card(row):
 
-    if row["repetidos"] > 0:
+    if int(row["repetidos"]) > 0:
         return "card card-repeated"
 
-    if row["lo_tengo"]:
+    if bool(row["lo_tengo"]):
         return "card card-owned"
 
     return "card card-missing"
@@ -180,20 +274,21 @@ def clase_card(row):
 
 def estado_texto(row):
 
-    if row["lo_tengo"] and row["repetidos"] > 0:
-        return f"✅ Tengo · 🔁 {row['repetidos']}"
+    if bool(row["lo_tengo"]) and int(row["repetidos"]) > 0:
+        return f"✅ Tengo · 🔁 {int(row['repetidos'])}"
 
-    if row["lo_tengo"]:
+    if bool(row["lo_tengo"]):
         return "✅ Lo tengo"
 
     return "❌ Me falta"
 
 
 # =====================================================
-# CARGAR DATOS
+# CARGAR DATOS DESDE GOOGLE SHEETS
 # =====================================================
 
 df = cargar_datos()
+
 
 # =====================================================
 # HEADER
@@ -202,6 +297,9 @@ df = cargar_datos()
 st.title("⚽ Álbum Panini Mundial 2026")
 
 st.write("Gestiona tus cromos de forma visual.")
+
+st.caption("Los cambios se guardan directamente en Google Sheets.")
+
 
 # =====================================================
 # KPIS
@@ -215,7 +313,7 @@ faltan = total - tengo
 
 repetidos_total = int(df["repetidos"].sum())
 
-porcentaje = round((tengo / total) * 100, 2)
+porcentaje = round((tengo / total) * 100, 2) if total > 0 else 0
 
 c1, c2, c3, c4 = st.columns(4)
 
@@ -224,18 +322,23 @@ c2.metric("Tengo", tengo)
 c3.metric("Faltan", faltan)
 c4.metric("Repetidos", repetidos_total)
 
-st.progress(tengo / total)
+if total > 0:
+    st.progress(tengo / total)
 
 st.write(f"Álbum completado al **{porcentaje}%**")
 
 st.divider()
 
+
 # =====================================================
 # PILLS DE SELECCIONES
 # =====================================================
 
-# mantener orden ORIGINAL del dataset
-selecciones_final = list(dict.fromkeys(df["seleccion"].dropna().tolist()))
+selecciones_final = list(
+    dict.fromkeys(
+        df["seleccion"].dropna().tolist()
+    )
+)
 
 pill_labels = ["TODOS"]
 selecciones_final = ["TODOS"] + selecciones_final
@@ -250,11 +353,9 @@ for seleccion in selecciones_final[1:]:
 
     label = codigo_ejemplo[:3].upper()
 
-    # cambiar 00 por FWC
     if label == "00":
         label = "FWC"
 
-    # evitar duplicados
     original = label
     contador = 2
 
@@ -280,6 +381,7 @@ seleccion_actual = pill_map[pill]
 
 st.divider()
 
+
 # =====================================================
 # ATAJOS
 # =====================================================
@@ -287,7 +389,6 @@ st.divider()
 a1, a2 = st.columns([1, 5])
 
 with a1:
-
     ver_repetidos = st.button("🔁 Repetidos")
 
 
@@ -313,20 +414,19 @@ with f2:
 
     busqueda = st.text_input("Buscar cromo")
 
+
 # =====================================================
 # FILTRADO
 # =====================================================
 
 df_filtrado = df.copy()
 
-# selección
 if seleccion_actual != "TODOS":
 
     df_filtrado = df_filtrado[
         df_filtrado["seleccion"] == seleccion_actual
     ]
 
-# buscador
 if busqueda:
 
     busqueda_normalizada = quitar_tildes(busqueda)
@@ -356,13 +456,12 @@ if busqueda:
         mask_codigo | mask_nombre | mask_seleccion
     ]
 
-# botón repetidos
 if ver_repetidos:
 
     df_filtrado = df_filtrado[
         df_filtrado["repetidos"] > 0
     ]
-# estado
+
 if estado == "Los tengo":
 
     df_filtrado = df_filtrado[
@@ -381,7 +480,6 @@ elif estado == "Repetidos":
         df_filtrado["repetidos"] > 0
     ]
 
-# mantener orden ORIGINAL
 df_filtrado = df_filtrado.sort_values("orden_original")
 
 st.write(f"Mostrando **{len(df_filtrado)}** cromos")
@@ -422,7 +520,7 @@ for inicio in range(0, len(df_filtrado), COLUMNAS):
                 lo_tengo = st.checkbox(
                     "Lo tengo",
                     value=bool(row["lo_tengo"]),
-                    key=f"tengo_{i}"
+                    key=f"tengo_{row['codigo']}"
                 )
 
                 repetidos = st.number_input(
@@ -430,18 +528,18 @@ for inicio in range(0, len(df_filtrado), COLUMNAS):
                     min_value=0,
                     value=int(row["repetidos"]),
                     step=1,
-                    key=f"rep_{i}"
+                    key=f"rep_{row['codigo']}"
                 )
 
                 wishlist = st.checkbox(
                     "Wishlist",
                     value=bool(row["wishlist"]),
-                    key=f"wish_{i}"
+                    key=f"wish_{row['codigo']}"
                 )
 
                 if st.button(
                     "Guardar",
-                    key=f"save_{i}"
+                    key=f"save_{row['codigo']}"
                 ):
 
                     idx = df[
@@ -449,9 +547,11 @@ for inicio in range(0, len(df_filtrado), COLUMNAS):
                     ].index[0]
 
                     df.at[idx, "lo_tengo"] = lo_tengo
-                    df.at[idx, "repetidos"] = repetidos
+                    df.at[idx, "repetidos"] = int(repetidos)
                     df.at[idx, "wishlist"] = wishlist
 
                     guardar_datos(df)
+
+                    st.success("Guardado en Google Sheets")
 
                     st.rerun()
