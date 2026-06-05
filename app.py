@@ -1,14 +1,14 @@
 import base64
 import io
 import unicodedata
-from datetime import datetime
 
 import pandas as pd
 import requests
 import streamlit as st
 
+
 # =====================================================
-# CONFIGURACIÓN GENERAL
+# CONFIGURACIÓN STREAMLIT
 # =====================================================
 
 st.set_page_config(
@@ -17,28 +17,40 @@ st.set_page_config(
     layout="wide"
 )
 
+
 # =====================================================
-# SECRETS / CONFIG GITHUB
+# CONFIGURACIÓN GITHUB
 # =====================================================
 
-GITHUB_TOKEN = st.secrets.get("GITHUB_TOKEN", "")
-GITHUB_REPO = st.secrets.get("GITHUB_REPO", "") 
-GITHUB_BRANCH = st.secrets.get("GITHUB_BRANCH", "main")
-GITHUB_DATA_PATH = st.secrets.get("GITHUB_DATA_PATH", "album_guardado.csv")
+def get_config():
+    try:
+        token = st.secrets["GITHUB_TOKEN"]
+        repo = st.secrets["GITHUB_REPO"]
+        branch = st.secrets.get("GITHUB_BRANCH", "main")
+        data_path = st.secrets.get("GITHUB_DATA_PATH", "album_guardado.csv")
+    except Exception:
+        st.error(
+            "Faltan secrets de GitHub. Revisa GITHUB_TOKEN, GITHUB_REPO, "
+            "GITHUB_BRANCH y GITHUB_DATA_PATH en Streamlit Cloud."
+        )
+        st.stop()
 
-GITHUB_API_URL = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{GITHUB_DATA_PATH}"
+    return token, repo, branch, data_path
 
-COLUMNAS_ESPERADAS = [
-    "codigo",
-    "nombre",
-    "seleccion",
-    "tipo",
-    "seccion",
-    "orden_original",
-    "lo_tengo",
-    "repetidos",
-    "wishlist",
-]
+
+def github_headers():
+    token, _, _, _ = get_config()
+    return {
+        "Authorization": f"Bearer {token}",
+        "Accept": "application/vnd.github+json",
+        "X-GitHub-Api-Version": "2022-11-28",
+    }
+
+
+def github_file_url():
+    _, repo, _, data_path = get_config()
+    return f"https://api.github.com/repos/{repo}/contents/{data_path}"
+
 
 # =====================================================
 # CSS
@@ -47,17 +59,31 @@ COLUMNAS_ESPERADAS = [
 st.markdown(
     """
 <style>
+
 .block-container {
     padding-top: 1.2rem;
     padding-bottom: 2rem;
 }
 
+/* =========================
+   BOTONES
+========================= */
+
+.stButton > button {
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+/* =========================
+   CARDS
+========================= */
+
 .card {
     border-radius: 18px;
     padding: 12px;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
     background-color: white;
-    min-height: 155px;
+    min-height: 150px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.06);
     transition: 0.2s;
 }
@@ -65,6 +91,10 @@ st.markdown(
 .card:hover {
     transform: translateY(-2px);
 }
+
+/* =========================
+   ESTADOS
+========================= */
 
 .card-owned {
     border: 2px solid #2ecc71;
@@ -82,12 +112,16 @@ st.markdown(
 }
 
 .card-wishlist {
-    border: 2px solid #6c5ce7;
-    background-color: #f7f5ff;
+    border: 2px solid #8e44ad;
+    background-color: #faf5ff;
 }
 
+/* =========================
+   TEXTOS
+========================= */
+
 .code {
-    font-size: 21px;
+    font-size: 22px;
     font-weight: 800;
     margin-bottom: 10px;
 }
@@ -114,52 +148,40 @@ st.markdown(
     font-weight: 600;
 }
 
-.small-muted {
-    color: #777;
-    font-size: 13px;
+.save-box {
+    border: 1px solid #eee;
+    padding: 14px;
+    border-radius: 16px;
+    background-color: #fafafa;
+    margin-bottom: 18px;
 }
 
-.stButton button {
-    width: 100%;
+.pending {
+    font-weight: 700;
+    color: #c0392b;
 }
+
+.saved {
+    font-weight: 700;
+    color: #27ae60;
+}
+
 </style>
 """,
     unsafe_allow_html=True,
 )
 
+
 # =====================================================
 # FUNCIONES AUXILIARES
 # =====================================================
 
-
-def comprobar_configuracion():
-    faltan = []
-    if not GITHUB_TOKEN:
-        faltan.append("GITHUB_TOKEN")
-    if not GITHUB_REPO:
-        faltan.append("GITHUB_REPO")
-    if not GITHUB_BRANCH:
-        faltan.append("GITHUB_BRANCH")
-    if not GITHUB_DATA_PATH:
-        faltan.append("GITHUB_DATA_PATH")
-
-    if faltan:
-        st.error("Faltan secrets de Streamlit: " + ", ".join(faltan))
-        st.stop()
-
-
-def github_headers():
-    return {
-        "Authorization": f"Bearer {GITHUB_TOKEN}",
-        "Accept": "application/vnd.github+json",
-        "X-GitHub-Api-Version": "2022-11-28",
-    }
-
-
 def quitar_tildes(texto):
     if pd.isna(texto):
         return ""
+
     texto = str(texto)
+
     return "".join(
         c for c in unicodedata.normalize("NFD", texto)
         if unicodedata.category(c) != "Mn"
@@ -167,27 +189,35 @@ def quitar_tildes(texto):
 
 
 def convertir_bool(valor):
-    """Convierte valores frecuentes de CSV a booleano real."""
     if isinstance(valor, bool):
         return valor
+
     if pd.isna(valor):
         return False
 
-    texto = str(valor).strip().lower()
-    return texto in {"true", "1", "sí", "si", "yes", "y", "t"}
+    valor = str(valor).strip().lower()
+
+    return valor in ["true", "1", "yes", "sí", "si", "x"]
 
 
 def preparar_df(df):
-    """Normaliza columnas y tipos para evitar errores al leer desde GitHub."""
     df = df.copy()
 
-    # Normalizar nombres por si vienen con espacios
-    df.columns = [str(c).strip() for c in df.columns]
+    columnas_necesarias = [
+        "codigo",
+        "nombre",
+        "seleccion",
+        "tipo",
+        "seccion",
+        "orden_original",
+        "lo_tengo",
+        "repetidos",
+        "wishlist",
+    ]
 
-    # Crear columnas ausentes
-    for col in COLUMNAS_ESPERADAS:
+    for col in columnas_necesarias:
         if col not in df.columns:
-            if col in {"lo_tengo", "wishlist"}:
+            if col in ["lo_tengo", "wishlist"]:
                 df[col] = False
             elif col == "repetidos":
                 df[col] = 0
@@ -196,195 +226,233 @@ def preparar_df(df):
             else:
                 df[col] = ""
 
-    # Mantener solo columnas esperadas primero y luego cualquier extra al final
-    extras = [c for c in df.columns if c not in COLUMNAS_ESPERADAS]
-    df = df[COLUMNAS_ESPERADAS + extras]
+    df["codigo"] = df["codigo"].astype(str)
+    df["nombre"] = df["nombre"].fillna("").astype(str)
+    df["seleccion"] = df["seleccion"].fillna("").astype(str)
+    df["tipo"] = df["tipo"].fillna("").astype(str)
+    df["seccion"] = df["seccion"].fillna("").astype(str)
 
-    # Tipos de texto
-    for col in ["codigo", "nombre", "seleccion", "tipo", "seccion"]:
-        df[col] = df[col].fillna("").astype(str)
+    df["lo_tengo"] = df["lo_tengo"].apply(convertir_bool)
+    df["wishlist"] = df["wishlist"].apply(convertir_bool)
 
-    # Tipo orden_original robusto
-    df["orden_original"] = pd.to_numeric(df["orden_original"], errors="coerce")
-    mask_orden = df["orden_original"].isna()
-    df.loc[mask_orden, "orden_original"] = df.index[mask_orden]
-    df["orden_original"] = df["orden_original"].astype(int)
+    df["repetidos"] = pd.to_numeric(
+        df["repetidos"],
+        errors="coerce"
+    ).fillna(0).astype(int)
 
-    # Booleanos robustos
-    df["lo_tengo"] = df["lo_tengo"].apply(convertir_bool).astype(bool)
-    df["wishlist"] = df["wishlist"].apply(convertir_bool).astype(bool)
-
-    # Repetidos robusto
-    df["repetidos"] = pd.to_numeric(df["repetidos"], errors="coerce").fillna(0).astype(int)
-    df.loc[df["repetidos"] < 0, "repetidos"] = 0
-
-    # Evitar filas vacías accidentales
-    df = df[df["codigo"].str.strip() != ""].copy()
-
-    # Orden estable
-    df = df.sort_values("orden_original").reset_index(drop=True)
-
-    return df
-
-
-def leer_csv_desde_github():
-    """Lee el CSV actual desde GitHub y devuelve df + sha del archivo."""
-    comprobar_configuracion()
-
-    response = requests.get(
-        GITHUB_API_URL,
-        headers=github_headers(),
-        params={"ref": GITHUB_BRANCH},
-        timeout=30,
+    df["orden_original"] = pd.to_numeric(
+        df["orden_original"],
+        errors="coerce"
     )
 
-    if response.status_code == 404:
-        st.error(
-            "No encuentro el CSV en GitHub. Revisa que GITHUB_REPO, "
-            "GITHUB_BRANCH y GITHUB_DATA_PATH sean exactos."
-        )
-        st.code(
-            f"Repo: {GITHUB_REPO}\n"
-            f"Rama: {GITHUB_BRANCH}\n"
-            f"Ruta CSV: {GITHUB_DATA_PATH}",
-            language="text",
-        )
-        st.stop()
+    mask = df["orden_original"].isna()
+    df.loc[mask, "orden_original"] = df.index[mask]
 
-    response.raise_for_status()
-    data = response.json()
+    df["orden_original"] = df["orden_original"].astype(int)
 
-    sha = data["sha"]
-    contenido_b64 = data["content"]
-    contenido_csv = base64.b64decode(contenido_b64).decode("utf-8-sig")
-
-    df = pd.read_csv(io.StringIO(contenido_csv))
-    df = preparar_df(df)
-
-    return df, sha
+    return df[columnas_necesarias]
 
 
-def df_a_csv(df):
-    """Convierte el dataframe a CSV limpio para guardar en GitHub."""
-    df_guardar = preparar_df(df)
+def df_to_csv_text(df):
+    df_guardar = df.copy()
 
-    # Guardamos booleanos como TRUE/FALSE para que el CSV sea claro
-    df_guardar["lo_tengo"] = df_guardar["lo_tengo"].map({True: "TRUE", False: "FALSE"})
-    df_guardar["wishlist"] = df_guardar["wishlist"].map({True: "TRUE", False: "FALSE"})
+    df_guardar["lo_tengo"] = df_guardar["lo_tengo"].astype(bool)
+    df_guardar["wishlist"] = df_guardar["wishlist"].astype(bool)
+    df_guardar["repetidos"] = df_guardar["repetidos"].astype(int)
+    df_guardar["orden_original"] = df_guardar["orden_original"].astype(int)
 
     return df_guardar.to_csv(index=False)
 
 
-def guardar_csv_en_github(df, sha_actual):
-    """Sobrescribe el CSV en GitHub creando un commit."""
-    csv_text = df_a_csv(df)
-    contenido_b64 = base64.b64encode(csv_text.encode("utf-8")).decode("utf-8")
+def clase_card(row):
+    if bool(row["wishlist"]):
+        return "card card-wishlist"
 
-    mensaje = "Actualizar checklist de cromos"
-    fecha = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    if int(row["repetidos"]) > 0:
+        return "card card-repeated"
+
+    if bool(row["lo_tengo"]):
+        return "card card-owned"
+
+    return "card card-missing"
+
+
+def estado_texto(row):
+    partes = []
+
+    if bool(row["lo_tengo"]):
+        partes.append("✅ Tengo")
+    else:
+        partes.append("❌ Falta")
+
+    if int(row["repetidos"]) > 0:
+        partes.append(f"🔁 {int(row['repetidos'])}")
+
+    if bool(row["wishlist"]):
+        partes.append("⭐ Wishlist")
+
+    return " · ".join(partes)
+
+
+# =====================================================
+# FUNCIONES GITHUB
+# =====================================================
+
+def leer_csv_desde_github():
+    _, _, branch, _ = get_config()
+
+    response = requests.get(
+        github_file_url(),
+        headers=github_headers(),
+        params={"ref": branch},
+        timeout=30,
+    )
+
+    response.raise_for_status()
+
+    data = response.json()
+
+    sha = data["sha"]
+    contenido_base64 = data["content"]
+    contenido = base64.b64decode(contenido_base64).decode("utf-8")
+
+    df = pd.read_csv(io.StringIO(contenido))
+
+    return preparar_df(df), sha
+
+
+def guardar_csv_en_github(df, sha_actual):
+    _, _, branch, data_path = get_config()
+
+    csv_text = df_to_csv_text(df)
+    contenido_base64 = base64.b64encode(
+        csv_text.encode("utf-8")
+    ).decode("utf-8")
 
     payload = {
-        "message": f"{mensaje} - {fecha}",
-        "content": contenido_b64,
+        "message": "Actualizar checklist de cromos",
+        "content": contenido_base64,
         "sha": sha_actual,
-        "branch": GITHUB_BRANCH,
+        "branch": branch,
     }
 
     response = requests.put(
-        GITHUB_API_URL,
+        github_file_url(),
         headers=github_headers(),
         json=payload,
         timeout=30,
     )
 
-    if response.status_code == 409:
-        st.error(
-            "GitHub ha detectado un conflicto porque el CSV cambió desde que abriste la app. "
-            "Recarga la página y vuelve a guardar."
-        )
-        st.stop()
-
     response.raise_for_status()
+
     return response.json()["content"]["sha"]
 
 
-def clase_card(row):
-    if bool(row.get("wishlist", False)):
-        return "card card-wishlist"
-    if int(row.get("repetidos", 0)) > 0:
-        return "card card-repeated"
-    if bool(row.get("lo_tengo", False)):
-        return "card card-owned"
-    return "card card-missing"
-
-
-def estado_texto(row):
-    lo_tengo = bool(row.get("lo_tengo", False))
-    repetidos = int(row.get("repetidos", 0))
-    wishlist = bool(row.get("wishlist", False))
-
-    partes = []
-    partes.append("✅ Tengo" if lo_tengo else "❌ Falta")
-    if repetidos > 0:
-        partes.append(f"🔁 {repetidos}")
-    if wishlist:
-        partes.append("⭐ Wishlist")
-    return " · ".join(partes)
-
-
-def get_sha_actual():
-    return st.session_state.get("github_sha")
-
-
-def set_sha_actual(sha):
-    st.session_state["github_sha"] = sha
-
-
-def cargar_datos():
-    df, sha = leer_csv_desde_github()
-    set_sha_actual(sha)
-    return df
-
-
-def guardar_cambio(df, idx, lo_tengo, repetidos, wishlist):
-    df = df.copy()
-    df.at[idx, "lo_tengo"] = bool(lo_tengo)
-    df.at[idx, "repetidos"] = int(repetidos)
-    df.at[idx, "wishlist"] = bool(wishlist)
-
-    sha_nuevo = guardar_csv_en_github(df, get_sha_actual())
-    set_sha_actual(sha_nuevo)
-
-    st.success("Guardado en GitHub correctamente.")
-    st.cache_data.clear()
-    st.rerun()
-
 # =====================================================
-# CARGA DE DATOS
+# ESTADO DE SESIÓN
 # =====================================================
 
-try:
-    df = cargar_datos()
-except Exception as e:
-    st.error("No he podido leer el CSV desde GitHub.")
-    st.exception(e)
-    st.stop()
+def inicializar_estado():
+    if "df" not in st.session_state or "sha" not in st.session_state:
+        try:
+            df, sha = leer_csv_desde_github()
+            st.session_state.df = df
+            st.session_state.sha = sha
+            st.session_state.cambios_pendientes = False
+        except Exception as e:
+            st.error("No he podido leer el CSV desde GitHub.")
+            st.exception(e)
+            st.stop()
+
+    if "cambios_pendientes" not in st.session_state:
+        st.session_state.cambios_pendientes = False
+
+
+def recargar_desde_github():
+    try:
+        df, sha = leer_csv_desde_github()
+        st.session_state.df = df
+        st.session_state.sha = sha
+        st.session_state.cambios_pendientes = False
+        st.success("Datos recargados desde GitHub.")
+    except Exception as e:
+        st.error("No he podido recargar desde GitHub.")
+        st.exception(e)
+
+
+def guardar_todos_los_cambios():
+    try:
+        nuevo_sha = guardar_csv_en_github(
+            st.session_state.df,
+            st.session_state.sha
+        )
+
+        st.session_state.sha = nuevo_sha
+        st.session_state.cambios_pendientes = False
+        st.success("Cambios guardados correctamente en GitHub.")
+
+    except requests.exceptions.HTTPError as e:
+        st.error(
+            "No he podido guardar en GitHub. Puede que el archivo haya cambiado "
+            "desde otra sesión. Pulsa 'Recargar desde GitHub' y vuelve a intentarlo."
+        )
+        st.exception(e)
+
+    except Exception as e:
+        st.error("No he podido guardar los cambios.")
+        st.exception(e)
+
+
+def aplicar_cambio_por_codigo(codigo, lo_tengo, repetidos, wishlist):
+    df = st.session_state.df.copy()
+
+    idx_list = df[df["codigo"].astype(str) == str(codigo)].index
+
+    if len(idx_list) == 0:
+        return
+
+    idx = idx_list[0]
+
+    valor_actual_tengo = bool(df.at[idx, "lo_tengo"])
+    valor_actual_rep = int(df.at[idx, "repetidos"])
+    valor_actual_wish = bool(df.at[idx, "wishlist"])
+
+    if (
+        valor_actual_tengo != bool(lo_tengo)
+        or valor_actual_rep != int(repetidos)
+        or valor_actual_wish != bool(wishlist)
+    ):
+        df.at[idx, "lo_tengo"] = bool(lo_tengo)
+        df.at[idx, "repetidos"] = int(repetidos)
+        df.at[idx, "wishlist"] = bool(wishlist)
+
+        st.session_state.df = df
+        st.session_state.cambios_pendientes = True
+
+
+# =====================================================
+# INICIO APP
+# =====================================================
+
+inicializar_estado()
+
+df = st.session_state.df
+
 
 # =====================================================
 # HEADER
 # =====================================================
 
 st.title("⚽ Álbum Panini Mundial 2026")
+
 st.write("Checklist compartida de cromos guardada directamente en GitHub.")
 
-with st.expander("⚙️ Configuración actual", expanded=False):
-    st.code(
-        f"Repo: {GITHUB_REPO}\n"
-        f"Rama: {GITHUB_BRANCH}\n"
-        f"CSV: {GITHUB_DATA_PATH}\n"
-        f"Cromos cargados: {len(df)}",
-        language="text",
-    )
+with st.expander("⚙️ Configuración actual"):
+    _, repo, branch, data_path = get_config()
+    st.write(f"**Repositorio:** `{repo}`")
+    st.write(f"**Rama:** `{branch}`")
+    st.write(f"**Archivo de datos:** `{data_path}`")
+
 
 # =====================================================
 # KPIS
@@ -395,73 +463,133 @@ tengo = int(df["lo_tengo"].sum())
 faltan = total - tengo
 repetidos_total = int(df["repetidos"].sum())
 wishlist_total = int(df["wishlist"].sum())
-porcentaje = round((tengo / total) * 100, 2) if total else 0
+
+porcentaje = round((tengo / total) * 100, 2) if total > 0 else 0
 
 c1, c2, c3, c4, c5 = st.columns(5)
+
 c1.metric("Total", total)
 c2.metric("Tengo", tengo)
 c3.metric("Faltan", faltan)
 c4.metric("Repetidos", repetidos_total)
 c5.metric("Wishlist", wishlist_total)
 
-st.progress(tengo / total if total else 0)
+if total > 0:
+    st.progress(tengo / total)
+
 st.write(f"Álbum completado al **{porcentaje}%**")
+
+
+# =====================================================
+# BOTÓN GENERAL DE GUARDADO
+# =====================================================
+
 st.divider()
 
+st.markdown('<div class="save-box">', unsafe_allow_html=True)
+
+g1, g2, g3 = st.columns([1.4, 1.4, 4])
+
+with g1:
+    if st.button("💾 Guardar todos los cambios", use_container_width=True):
+        guardar_todos_los_cambios()
+        st.rerun()
+
+with g2:
+    if st.button("🔄 Recargar desde GitHub", use_container_width=True):
+        recargar_desde_github()
+        st.rerun()
+
+with g3:
+    if st.session_state.cambios_pendientes:
+        st.markdown(
+            '<span class="pending">Hay cambios pendientes sin guardar.</span>',
+            unsafe_allow_html=True,
+        )
+    else:
+        st.markdown(
+            '<span class="saved">No hay cambios pendientes.</span>',
+            unsafe_allow_html=True,
+        )
+
+st.markdown("</div>", unsafe_allow_html=True)
+
+
 # =====================================================
-# PILLS / FILTROS
+# PILLS DE SELECCIONES
 # =====================================================
 
-selecciones_en_orden = list(dict.fromkeys(df["seleccion"].dropna().astype(str).tolist()))
-selecciones_final = ["TODOS"] + selecciones_en_orden
+st.divider()
+
+selecciones_final = list(dict.fromkeys(df["seleccion"].dropna().tolist()))
 
 pill_labels = ["TODOS"]
-for seleccion in selecciones_en_orden:
-    codigo_ejemplo = df[df["seleccion"] == seleccion]["codigo"].astype(str).iloc[0]
-    label = codigo_ejemplo[:3].upper()
+selecciones_final = ["TODOS"] + selecciones_final
+
+for seleccion in selecciones_final[1:]:
+    subset = df[df["seleccion"] == seleccion]
+
+    if len(subset) == 0:
+        label = seleccion[:3].upper()
+    else:
+        codigo_ejemplo = subset["codigo"].astype(str).iloc[0]
+        label = codigo_ejemplo[:3].upper()
 
     if label == "00":
         label = "FWC"
 
     original = label
     contador = 2
+
     while label in pill_labels:
         label = f"{original}{contador}"
         contador += 1
 
     pill_labels.append(label)
 
-pill_map = {pill_labels[i]: selecciones_final[i] for i in range(len(selecciones_final))}
+pill_map = {
+    pill_labels[i]: selecciones_final[i]
+    for i in range(len(selecciones_final))
+}
 
-if hasattr(st, "pills"):
-    pill = st.pills(
-        "Selección",
-        pill_labels,
-        selection_mode="single",
-        default="TODOS",
-    )
-else:
-    pill = st.selectbox("Selección", pill_labels, index=0)
+pill = st.pills(
+    "Selección",
+    pill_labels,
+    selection_mode="single",
+    default="TODOS",
+)
 
-seleccion_actual = pill_map.get(pill, "TODOS")
+seleccion_actual = pill_map[pill]
+
+
+# =====================================================
+# FILTROS
+# =====================================================
 
 st.divider()
 
-f1, f2, f3 = st.columns([1, 2, 1])
+f1, f2, f3 = st.columns([1.2, 2.5, 1.2])
 
 with f1:
     estado = st.selectbox(
         "Estado",
-        ["Todos", "Los tengo", "Me faltan", "Repetidos", "Wishlist"],
+        [
+            "Todos",
+            "Los tengo",
+            "Me faltan",
+            "Repetidos",
+            "Wishlist",
+        ],
     )
 
 with f2:
     busqueda = st.text_input("Buscar por código, nombre o selección")
 
 with f3:
-    if st.button("🔄 Recargar desde GitHub"):
-        st.cache_data.clear()
-        st.rerun()
+    st.write("")
+    st.write("")
+    ver_repetidos = st.button("🔁 Ver repetidos", use_container_width=True)
+
 
 # =====================================================
 # FILTRADO
@@ -470,102 +598,145 @@ with f3:
 df_filtrado = df.copy()
 
 if seleccion_actual != "TODOS":
-    df_filtrado = df_filtrado[df_filtrado["seleccion"] == seleccion_actual]
+    df_filtrado = df_filtrado[
+        df_filtrado["seleccion"] == seleccion_actual
+    ]
 
 if busqueda:
     busqueda_normalizada = quitar_tildes(busqueda)
 
-    mask_codigo = df_filtrado["codigo"].astype(str).apply(quitar_tildes).str.contains(
-        busqueda_normalizada, na=False
-    )
-    mask_nombre = df_filtrado["nombre"].astype(str).apply(quitar_tildes).str.contains(
-        busqueda_normalizada, na=False
-    )
-    mask_seleccion = df_filtrado["seleccion"].astype(str).apply(quitar_tildes).str.contains(
-        busqueda_normalizada, na=False
+    mask_codigo = (
+        df_filtrado["codigo"]
+        .astype(str)
+        .apply(quitar_tildes)
+        .str.contains(busqueda_normalizada, na=False)
     )
 
-    df_filtrado = df_filtrado[mask_codigo | mask_nombre | mask_seleccion]
+    mask_nombre = (
+        df_filtrado["nombre"]
+        .astype(str)
+        .apply(quitar_tildes)
+        .str.contains(busqueda_normalizada, na=False)
+    )
+
+    mask_seleccion = (
+        df_filtrado["seleccion"]
+        .astype(str)
+        .apply(quitar_tildes)
+        .str.contains(busqueda_normalizada, na=False)
+    )
+
+    df_filtrado = df_filtrado[
+        mask_codigo | mask_nombre | mask_seleccion
+    ]
+
+if ver_repetidos:
+    df_filtrado = df_filtrado[
+        df_filtrado["repetidos"] > 0
+    ]
 
 if estado == "Los tengo":
-    df_filtrado = df_filtrado[df_filtrado["lo_tengo"]]
+    df_filtrado = df_filtrado[
+        df_filtrado["lo_tengo"] == True
+    ]
+
 elif estado == "Me faltan":
-    df_filtrado = df_filtrado[~df_filtrado["lo_tengo"]]
+    df_filtrado = df_filtrado[
+        df_filtrado["lo_tengo"] == False
+    ]
+
 elif estado == "Repetidos":
-    df_filtrado = df_filtrado[df_filtrado["repetidos"] > 0]
+    df_filtrado = df_filtrado[
+        df_filtrado["repetidos"] > 0
+    ]
+
 elif estado == "Wishlist":
-    df_filtrado = df_filtrado[df_filtrado["wishlist"]]
+    df_filtrado = df_filtrado[
+        df_filtrado["wishlist"] == True
+    ]
 
 df_filtrado = df_filtrado.sort_values("orden_original")
 
 st.write(f"Mostrando **{len(df_filtrado)}** cromos")
+
 st.divider()
+
 
 # =====================================================
 # GRID DE CROMOS
 # =====================================================
 
-COLUMNAS = 5
+COLUMNAS = 4
 
-if df_filtrado.empty:
-    st.info("No hay cromos que coincidan con los filtros.")
-else:
-    for inicio in range(0, len(df_filtrado), COLUMNAS):
-        fila = df_filtrado.iloc[inicio: inicio + COLUMNAS]
-        cols = st.columns(COLUMNAS)
+for inicio in range(0, len(df_filtrado), COLUMNAS):
+    fila = df_filtrado.iloc[inicio:inicio + COLUMNAS]
+    cols = st.columns(COLUMNAS)
 
-        for col, (idx, row) in zip(cols, fila.iterrows()):
-            with col:
-                st.markdown(
-                    f"""
-                    <div class=\"{clase_card(row)}\">
-                        <div class=\"code\">{row['codigo']}</div>
-                        <div class=\"name\">{row['nombre']}</div>
-                        <div class=\"team\">{row['seleccion']} · {row['tipo']}</div>
-                        <div class=\"badge\">{estado_texto(row)}</div>
-                    </div>
-                    """,
-                    unsafe_allow_html=True,
+    for col, (i, row) in zip(cols, fila.iterrows()):
+        with col:
+            st.markdown(
+                f"""
+                <div class="{clase_card(row)}">
+                    <div class="code">{row['codigo']}</div>
+                    <div class="name">{row['nombre']}</div>
+                    <div class="team">{row['seleccion']}</div>
+                    <div class="badge">{estado_texto(row)}</div>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+
+            with st.popover("⚙️ Editar"):
+                key_base = str(row["codigo"])
+
+                lo_tengo = st.checkbox(
+                    "Lo tengo",
+                    value=bool(row["lo_tengo"]),
+                    key=f"tengo_{key_base}",
                 )
 
-                with st.popover("⚙️ Editar"):
-                    lo_tengo = st.checkbox(
-                        "Lo tengo",
-                        value=bool(row["lo_tengo"]),
-                        key=f"tengo_{idx}_{row['codigo']}",
-                    )
+                repetidos = st.number_input(
+                    "Número de repetidos",
+                    min_value=0,
+                    value=int(row["repetidos"]),
+                    step=1,
+                    key=f"rep_{key_base}",
+                )
 
-                    repetidos = st.number_input(
-                        "Número de repetidos",
-                        min_value=0,
-                        value=int(row["repetidos"]),
-                        step=1,
-                        key=f"rep_{idx}_{row['codigo']}",
-                    )
+                wishlist = st.checkbox(
+                    "Wishlist",
+                    value=bool(row["wishlist"]),
+                    key=f"wish_{key_base}",
+                )
 
-                    wishlist = st.checkbox(
-                        "Wishlist",
-                        value=bool(row["wishlist"]),
-                        key=f"wish_{idx}_{row['codigo']}",
-                    )
+                aplicar_cambio_por_codigo(
+                    row["codigo"],
+                    lo_tengo,
+                    repetidos,
+                    wishlist,
+                )
 
-                    if st.button("Guardar", key=f"save_{idx}_{row['codigo']}"):
-                        try:
-                            guardar_cambio(df, idx, lo_tengo, repetidos, wishlist)
-                        except Exception as e:
-                            st.error("No se ha podido guardar el cambio en GitHub.")
-                            st.exception(e)
-                            st.stop()
 
 # =====================================================
-# DESCARGA OPCIONAL
+# BOTÓN DE GUARDADO ABAJO
 # =====================================================
 
 st.divider()
-with st.expander("📥 Descargar copia actual del CSV", expanded=False):
-    st.download_button(
-        "Descargar album_guardado.csv",
-        data=df_a_csv(df),
-        file_name="album_guardado.csv",
-        mime="text/csv",
-    )
+
+b1, b2, b3 = st.columns([1.5, 1.5, 4])
+
+with b1:
+    if st.button("💾 Guardar todos los cambios", key="guardar_abajo", use_container_width=True):
+        guardar_todos_los_cambios()
+        st.rerun()
+
+with b2:
+    if st.button("🔄 Recargar desde GitHub", key="recargar_abajo", use_container_width=True):
+        recargar_desde_github()
+        st.rerun()
+
+with b3:
+    if st.session_state.cambios_pendientes:
+        st.warning("Hay cambios pendientes sin guardar.")
+    else:
+        st.success("No hay cambios pendientes.")
