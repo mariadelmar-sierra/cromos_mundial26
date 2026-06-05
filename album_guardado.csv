@@ -708,25 +708,25 @@ IRQ17,Osama Rashid,Irak,Base,Selecciones,705,False,0,False
 IRQ18,Ali Al-Hamadi,Irak,Base,Selecciones,706,True,0,False
 IRQ19,Aimar Sher,Irak,Base,Selecciones,707,True,0,False
 IRQ20,Mohanad Ali,Irak,Base,Selecciones,708,False,0,False
-NOR1,Escudo del equipo,Noruega,FOIL,Selecciones,709,False,0,False
-NOR2,Ørjan Nyland,Noruega,Base,Selecciones,710,False,0,False
-NOR3,Julian Ryerson,Noruega,Base,Selecciones,711,False,0,False
+NOR1,Escudo del equipo,Noruega,FOIL,Selecciones,709,True,0,False
+NOR2,Ørjan Nyland,Noruega,Base,Selecciones,710,True,0,False
+NOR3,Julian Ryerson,Noruega,Base,Selecciones,711,True,0,False
 NOR4,Leo Østigård,Noruega,Base,Selecciones,712,False,0,False
 NOR5,Kristoffer Ajer,Noruega,Base,Selecciones,713,False,0,False
 NOR6,Marcus Holmgren Pedersen,Noruega,Base,Selecciones,714,False,0,False
 NOR7,David Møller Wolfe,Noruega,Base,Selecciones,715,False,0,False
 NOR8,Torbjørn Heggem,Noruega,Base,Selecciones,716,False,0,False
 NOR9,Morten Thorsby,Noruega,Base,Selecciones,717,False,0,False
-NOR10,Martin Ødegaard,Noruega,Base,Selecciones,718,False,0,False
-NOR11,Sander Berge,Noruega,Base,Selecciones,719,False,0,False
-NOR12,Andreas Schjelderup,Noruega,Base,Selecciones,720,False,0,False
+NOR10,Martin Ødegaard,Noruega,Base,Selecciones,718,True,0,False
+NOR11,Sander Berge,Noruega,Base,Selecciones,719,True,0,False
+NOR12,Andreas Schjelderup,Noruega,Base,Selecciones,720,True,0,False
 NOR13,Foto de equipo,Noruega,Base,Selecciones,721,False,0,False
 NOR14,Patrick Berg,Noruega,Base,Selecciones,722,False,0,False
 NOR15,Erling Haaland,Noruega,Base,Selecciones,723,False,0,False
-NOR16,Alexander Sørloth,Noruega,Base,Selecciones,724,False,0,False
+NOR16,Alexander Sørloth,Noruega,Base,Selecciones,724,True,0,False
 NOR17,Aron Dønnum,Noruega,Base,Selecciones,725,False,0,False
 NOR18,Jørgen Strand Larsen,Noruega,Base,Selecciones,726,False,0,False
-NOR19,Antonio Nusa,Noruega,Base,Selecciones,727,False,0,False
+NOR19,Antonio Nusa,Noruega,Base,Selecciones,727,True,0,False
 NOR20,Oscar Bobb,Noruega,Base,Selecciones,728,False,0,False
 ARG1,Escudo del equipo,Argentina,FOIL,Selecciones,729,False,0,False
 ARG2,Emiliano Martínez,Argentina,Base,Selecciones,730,False,0,False
