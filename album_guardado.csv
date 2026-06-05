@@ -811,79 +811,79 @@ JOR20,Ibrahim Sabra,Jordania,Base,Selecciones,808,False,0,False
 POR1,Escudo del equipo,Portugal,FOIL,Selecciones,809,False,0,False
 POR2,Diogo Costa,Portugal,Base,Selecciones,810,False,0,False
 POR3,José Sá,Portugal,Base,Selecciones,811,False,0,False
-POR4,Rúben Dias,Portugal,Base,Selecciones,812,False,0,False
-POR5,João Cancelo,Portugal,Base,Selecciones,813,False,0,False
+POR4,Rúben Dias,Portugal,Base,Selecciones,812,True,0,False
+POR5,João Cancelo,Portugal,Base,Selecciones,813,True,0,False
 POR6,Diogo Dalot,Portugal,Base,Selecciones,814,False,0,False
-POR7,Nuno Mendes,Portugal,Base,Selecciones,815,False,0,False
+POR7,Nuno Mendes,Portugal,Base,Selecciones,815,True,0,False
 POR8,Gonçalo Inácio,Portugal,Base,Selecciones,816,False,0,False
-POR9,Bernardo Silva,Portugal,Base,Selecciones,817,False,0,False
-POR10,Bruno Fernandes,Portugal,Base,Selecciones,818,False,0,False
-POR11,Rúben Neves,Portugal,Base,Selecciones,819,False,0,False
+POR9,Bernardo Silva,Portugal,Base,Selecciones,817,True,0,False
+POR10,Bruno Fernandes,Portugal,Base,Selecciones,818,True,0,False
+POR11,Rúben Neves,Portugal,Base,Selecciones,819,True,0,False
 POR12,Vitinha,Portugal,Base,Selecciones,820,False,0,False
-POR13,Foto de equipo,Portugal,Base,Selecciones,821,False,0,False
+POR13,Foto de equipo,Portugal,Base,Selecciones,821,True,0,False
 POR14,João Neves,Portugal,Base,Selecciones,822,False,0,False
 POR15,Cristiano Ronaldo,Portugal,Base,Selecciones,823,False,0,False
-POR16,Francisco Trincão,Portugal,Base,Selecciones,824,False,0,False
+POR16,Francisco Trincão,Portugal,Base,Selecciones,824,True,0,False
 POR17,João Félix,Portugal,Base,Selecciones,825,False,0,False
-POR18,Gonçalo Ramos,Portugal,Base,Selecciones,826,False,0,False
+POR18,Gonçalo Ramos,Portugal,Base,Selecciones,826,True,0,False
 POR19,Pedro Neto,Portugal,Base,Selecciones,827,False,0,False
-POR20,Rafael Leão,Portugal,Base,Selecciones,828,False,0,False
-COD1,Escudo del equipo,RD Congo,FOIL,Selecciones,829,False,0,False
+POR20,Rafael Leão,Portugal,Base,Selecciones,828,True,0,False
+COD1,Escudo del equipo,RD Congo,FOIL,Selecciones,829,True,0,False
 COD2,Lionel Mpasi,RD Congo,Base,Selecciones,830,False,0,False
 COD3,Aaron Wan-Bissaka,RD Congo,Base,Selecciones,831,False,0,False
-COD4,Axel Tuanzebe,RD Congo,Base,Selecciones,832,False,0,False
+COD4,Axel Tuanzebe,RD Congo,Base,Selecciones,832,True,0,False
 COD5,Arthur Masuaku,RD Congo,Base,Selecciones,833,False,0,False
 COD6,Chancel Mbemba,RD Congo,Base,Selecciones,834,False,0,False
 COD7,Joris Kayembe,RD Congo,Base,Selecciones,835,False,0,False
 COD8,Charles Pickel,RD Congo,Base,Selecciones,836,False,0,False
-COD9,Ngal'ayel Mukau,RD Congo,Base,Selecciones,837,False,0,False
-COD10,Edo Kayembe,RD Congo,Base,Selecciones,838,False,0,False
+COD9,Ngal'ayel Mukau,RD Congo,Base,Selecciones,837,True,0,False
+COD10,Edo Kayembe,RD Congo,Base,Selecciones,838,True,0,False
 COD11,Samuel Moutoussamy,RD Congo,Base,Selecciones,839,False,0,False
-COD12,Noah Sadiki,RD Congo,Base,Selecciones,840,False,0,False
+COD12,Noah Sadiki,RD Congo,Base,Selecciones,840,True,0,False
 COD13,Foto de equipo,RD Congo,Base,Selecciones,841,False,0,False
-COD14,Théo Bongonda,RD Congo,Base,Selecciones,842,False,0,False
+COD14,Théo Bongonda,RD Congo,Base,Selecciones,842,True,0,False
 COD15,Meschak Elia,RD Congo,Base,Selecciones,843,False,0,False
-COD16,Yoane Wissa,RD Congo,Base,Selecciones,844,False,0,False
-COD17,Brian Cipenga,RD Congo,Base,Selecciones,845,False,0,False
-COD18,Fiston Mayele,RD Congo,Base,Selecciones,846,False,0,False
+COD16,Yoane Wissa,RD Congo,Base,Selecciones,844,True,0,False
+COD17,Brian Cipenga,RD Congo,Base,Selecciones,845,True,0,False
+COD18,Fiston Mayele,RD Congo,Base,Selecciones,846,True,0,False
 COD19,Cédric Bakambu,RD Congo,Base,Selecciones,847,False,0,False
-COD20,Nathanaël Mbuku,RD Congo,Base,Selecciones,848,False,0,False
-UZB1,Escudo del equipo,Uzbekistán,FOIL,Selecciones,849,False,0,False
+COD20,Nathanaël Mbuku,RD Congo,Base,Selecciones,848,True,0,False
+UZB1,Escudo del equipo,Uzbekistán,FOIL,Selecciones,849,True,0,False
 UZB2,Utkir Yusupov,Uzbekistán,Base,Selecciones,850,False,0,False
-UZB3,Farrukh Saifiev,Uzbekistán,Base,Selecciones,851,False,0,False
+UZB3,Farrukh Saifiev,Uzbekistán,Base,Selecciones,851,True,0,False
 UZB4,Sherzod Nasrullaev,Uzbekistán,Base,Selecciones,852,False,0,False
-UZB5,Umar Eshmurodov,Uzbekistán,Base,Selecciones,853,False,0,False
+UZB5,Umar Eshmurodov,Uzbekistán,Base,Selecciones,853,True,0,False
 UZB6,Husniddin Aliqulov,Uzbekistán,Base,Selecciones,854,False,0,False
 UZB7,Rustamjon Ashurmatov,Uzbekistán,Base,Selecciones,855,False,0,False
 UZB8,Khojiakbar Alijonov,Uzbekistán,Base,Selecciones,856,False,0,False
-UZB9,Abdukodir Khusanov,Uzbekistán,Base,Selecciones,857,False,0,False
+UZB9,Abdukodir Khusanov,Uzbekistán,Base,Selecciones,857,True,0,False
 UZB10,Odiljon Hamrobekov,Uzbekistán,Base,Selecciones,858,False,0,False
 UZB11,Otabek Shukurov,Uzbekistán,Base,Selecciones,859,False,0,False
 UZB12,Jamshid Iskanderov,Uzbekistán,Base,Selecciones,860,False,0,False
 UZB13,Foto de equipo,Uzbekistán,Base,Selecciones,861,False,0,False
-UZB14,Azizbek Turgunboev,Uzbekistán,Base,Selecciones,862,False,0,False
+UZB14,Azizbek Turgunboev,Uzbekistán,Base,Selecciones,862,True,0,False
 UZB15,Khojimat Erkinov,Uzbekistán,Base,Selecciones,863,False,0,False
 UZB16,Eldor Shomurodov,Uzbekistán,Base,Selecciones,864,False,0,False
 UZB17,Oston Urunov,Uzbekistán,Base,Selecciones,865,False,0,False
 UZB18,Jaloliddin Masharipov,Uzbekistán,Base,Selecciones,866,False,0,False
-UZB19,Igor Sergeev,Uzbekistán,Base,Selecciones,867,False,0,False
+UZB19,Igor Sergeev,Uzbekistán,Base,Selecciones,867,True,0,False
 UZB20,Abbosbek Fayzullaev,Uzbekistán,Base,Selecciones,868,False,0,False
 COL1,Escudo del equipo,Colombia,FOIL,Selecciones,869,False,0,False
 COL2,Camilo Vargas,Colombia,Base,Selecciones,870,False,0,False
 COL3,David Ospina,Colombia,Base,Selecciones,871,False,0,False
 COL4,Dávinson Sánchez,Colombia,Base,Selecciones,872,False,0,False
-COL5,Yerry Mina,Colombia,Base,Selecciones,873,False,0,False
+COL5,Yerry Mina,Colombia,Base,Selecciones,873,True,0,False
 COL6,Daniel Muñoz,Colombia,Base,Selecciones,874,False,0,False
 COL7,Johan Mojica,Colombia,Base,Selecciones,875,False,0,False
 COL8,Jhon Lucumí,Colombia,Base,Selecciones,876,False,0,False
 COL9,Santiago Arias,Colombia,Base,Selecciones,877,False,0,False
 COL10,Jefferson Lerma,Colombia,Base,Selecciones,878,False,0,False
-COL11,Kevin Castaño,Colombia,Base,Selecciones,879,False,0,False
+COL11,Kevin Castaño,Colombia,Base,Selecciones,879,True,0,False
 COL12,Richard Ríos,Colombia,Base,Selecciones,880,False,0,False
 COL13,Foto de equipo,Colombia,Base,Selecciones,881,False,0,False
 COL14,James Rodríguez,Colombia,Base,Selecciones,882,False,0,False
-COL15,Juan Fernando Quintero,Colombia,Base,Selecciones,883,False,0,False
-COL16,Jorge Carrascal,Colombia,Base,Selecciones,884,False,0,False
+COL15,Juan Fernando Quintero,Colombia,Base,Selecciones,883,True,0,False
+COL16,Jorge Carrascal,Colombia,Base,Selecciones,884,True,0,False
 COL17,Jhon Arias,Colombia,Base,Selecciones,885,False,0,False
 COL18,Jhon Córdoba,Colombia,Base,Selecciones,886,False,0,False
 COL19,Luis Suárez,Colombia,Base,Selecciones,887,False,0,False
