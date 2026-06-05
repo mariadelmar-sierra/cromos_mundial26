@@ -888,12 +888,12 @@ COL17,Jhon Arias,Colombia,Base,Selecciones,885,False,0,False
 COL18,Jhon Córdoba,Colombia,Base,Selecciones,886,False,0,False
 COL19,Luis Suárez,Colombia,Base,Selecciones,887,False,0,False
 COL20,Luis Díaz,Colombia,Base,Selecciones,888,False,0,False
-ENG1,Escudo del equipo,Inglaterra,FOIL,Selecciones,889,False,0,False
+ENG1,Escudo del equipo,Inglaterra,FOIL,Selecciones,889,True,0,False
 ENG2,Jordan Pickford,Inglaterra,Base,Selecciones,890,False,0,False
-ENG3,John Stones,Inglaterra,Base,Selecciones,891,False,0,False
+ENG3,John Stones,Inglaterra,Base,Selecciones,891,True,0,False
 ENG4,Marc Guéhi,Inglaterra,Base,Selecciones,892,False,0,False
-ENG5,Ezri Konsa,Inglaterra,Base,Selecciones,893,False,0,False
-ENG6,Trent Alexander-Arnold,Inglaterra,Base,Selecciones,894,False,0,False
+ENG5,Ezri Konsa,Inglaterra,Base,Selecciones,893,True,0,False
+ENG6,Trent Alexander-Arnold,Inglaterra,Base,Selecciones,894,True,0,False
 ENG7,Reece James,Inglaterra,Base,Selecciones,895,False,0,False
 ENG8,Dan Burn,Inglaterra,Base,Selecciones,896,False,0,False
 ENG9,Jordan Henderson,Inglaterra,Base,Selecciones,897,False,0,False
@@ -902,7 +902,7 @@ ENG11,Jude Bellingham,Inglaterra,Base,Selecciones,899,False,0,False
 ENG12,Cole Palmer,Inglaterra,Base,Selecciones,900,False,0,False
 ENG13,Foto de equipo,Inglaterra,Base,Selecciones,901,False,0,False
 ENG14,Morgan Rogers,Inglaterra,Base,Selecciones,902,False,0,False
-ENG15,Anthony Gordon,Inglaterra,Base,Selecciones,903,False,0,False
+ENG15,Anthony Gordon,Inglaterra,Base,Selecciones,903,True,0,False
 ENG16,Phil Foden,Inglaterra,Base,Selecciones,904,False,0,False
 ENG17,Bukayo Saka,Inglaterra,Base,Selecciones,905,False,0,False
 ENG18,Harry Kane,Inglaterra,Base,Selecciones,906,False,0,False
@@ -911,33 +911,33 @@ ENG20,Ollie Watkins,Inglaterra,Base,Selecciones,908,False,0,False
 CRO1,Escudo del equipo,Croacia,FOIL,Selecciones,909,False,0,False
 CRO2,Dominik Livaković,Croacia,Base,Selecciones,910,False,0,False
 CRO3,Duje Caleta-Car,Croacia,Base,Selecciones,911,False,0,False
-CRO4,Josko Gvardiol,Croacia,Base,Selecciones,912,False,0,False
+CRO4,Josko Gvardiol,Croacia,Base,Selecciones,912,True,0,False
 CRO5,Josip Stanišić,Croacia,Base,Selecciones,913,False,0,False
 CRO6,Luka Vušković,Croacia,Base,Selecciones,914,False,0,False
 CRO7,Josip Sutalo,Croacia,Base,Selecciones,915,False,0,False
 CRO8,Kristijan Jakic,Croacia,Base,Selecciones,916,False,0,False
 CRO9,Luka Modrić,Croacia,Base,Selecciones,917,False,0,False
-CRO10,Mateo Kovacic,Croacia,Base,Selecciones,918,False,0,False
-CRO11,Martin Baturina,Croacia,Base,Selecciones,919,False,0,False
+CRO10,Mateo Kovacic,Croacia,Base,Selecciones,918,True,0,False
+CRO11,Martin Baturina,Croacia,Base,Selecciones,919,True,0,False
 CRO12,Lovro Majer,Croacia,Base,Selecciones,920,False,0,False
 CRO13,Foto de equipo,Croacia,Base,Selecciones,921,False,0,False
 CRO14,Mario Pasalic,Croacia,Base,Selecciones,922,False,0,False
-CRO15,Petar Sucic,Croacia,Base,Selecciones,923,False,0,False
-CRO16,Ivan Perišić,Croacia,Base,Selecciones,924,False,0,False
+CRO15,Petar Sucic,Croacia,Base,Selecciones,923,True,0,False
+CRO16,Ivan Perišić,Croacia,Base,Selecciones,924,True,0,False
 CRO17,Marco Pasalic,Croacia,Base,Selecciones,925,False,0,False
 CRO18,Ante Budimir,Croacia,Base,Selecciones,926,False,0,False
-CRO19,Andrej Kramarić,Croacia,Base,Selecciones,927,False,0,False
+CRO19,Andrej Kramarić,Croacia,Base,Selecciones,927,True,0,False
 CRO20,Franjo Ivanovic,Croacia,Base,Selecciones,928,False,0,False
-GHA1,Escudo del equipo,Ghana,FOIL,Selecciones,929,False,0,False
-GHA2,Lawrence Ati-Zigi,Ghana,Base,Selecciones,930,False,0,False
+GHA1,Escudo del equipo,Ghana,FOIL,Selecciones,929,True,0,False
+GHA2,Lawrence Ati-Zigi,Ghana,Base,Selecciones,930,True,0,False
 GHA3,Tariq Lamptey,Ghana,Base,Selecciones,931,False,0,False
 GHA4,Mohammed Salisu,Ghana,Base,Selecciones,932,False,0,False
-GHA5,Alidu Seidu,Ghana,Base,Selecciones,933,False,0,False
+GHA5,Alidu Seidu,Ghana,Base,Selecciones,933,True,0,False
 GHA6,Alexander Djiku,Ghana,Base,Selecciones,934,False,0,False
-GHA7,Gideon Mensah,Ghana,Base,Selecciones,935,False,0,False
-GHA8,Caleb Yirenkyi,Ghana,Base,Selecciones,936,False,0,False
-GHA9,Abdul Fatawu Issahaku,Ghana,Base,Selecciones,937,False,0,False
-GHA10,Thomas Partey,Ghana,Base,Selecciones,938,False,0,False
+GHA7,Gideon Mensah,Ghana,Base,Selecciones,935,True,0,False
+GHA8,Caleb Yirenkyi,Ghana,Base,Selecciones,936,True,0,False
+GHA9,Abdul Fatawu Issahaku,Ghana,Base,Selecciones,937,True,0,False
+GHA10,Thomas Partey,Ghana,Base,Selecciones,938,True,0,False
 GHA11,Salis Abdul Samed,Ghana,Base,Selecciones,939,False,0,False
 GHA12,Kamaldeen Sulemana,Ghana,Base,Selecciones,940,False,0,False
 GHA13,Foto de equipo,Ghana,Base,Selecciones,941,False,0,False
@@ -945,7 +945,7 @@ GHA14,Mohammed Kudus,Ghana,Base,Selecciones,942,False,0,False
 GHA15,Iñaki Williams,Ghana,Base,Selecciones,943,False,0,False
 GHA16,Jordan Ayew,Ghana,Base,Selecciones,944,False,0,False
 GHA17,André Ayew,Ghana,Base,Selecciones,945,False,0,False
-GHA18,Joseph Paintsil,Ghana,Base,Selecciones,946,False,0,False
+GHA18,Joseph Paintsil,Ghana,Base,Selecciones,946,True,0,False
 GHA19,Osman Bukari,Ghana,Base,Selecciones,947,False,0,False
 GHA20,Antoine Semenyo,Ghana,Base,Selecciones,948,False,0,False
 PAN1,Escudo del equipo,Panamá,FOIL,Selecciones,949,False,0,False
@@ -954,9 +954,9 @@ PAN3,Luis Mejía,Panamá,Base,Selecciones,951,False,0,False
 PAN4,Fidel Escobar,Panamá,Base,Selecciones,952,False,0,False
 PAN5,Andrés Andrade,Panamá,Base,Selecciones,953,False,0,False
 PAN6,Michael Amir Murillo,Panamá,Base,Selecciones,954,False,0,False
-PAN7,Eric Davis,Panamá,Base,Selecciones,955,False,0,False
-PAN8,José Córdoba,Panamá,Base,Selecciones,956,False,0,False
-PAN9,César Blackman,Panamá,Base,Selecciones,957,False,0,False
+PAN7,Eric Davis,Panamá,Base,Selecciones,955,True,0,False
+PAN8,José Córdoba,Panamá,Base,Selecciones,956,True,0,False
+PAN9,César Blackman,Panamá,Base,Selecciones,957,True,0,False
 PAN10,Cristian Martínez,Panamá,Base,Selecciones,958,False,0,False
 PAN11,Aníbal Godoy,Panamá,Base,Selecciones,959,False,0,False
 PAN12,Adalberto Carrasquilla,Panamá,Base,Selecciones,960,False,0,False
@@ -964,18 +964,18 @@ PAN13,Foto de equipo,Panamá,Base,Selecciones,961,False,0,False
 PAN14,Édgar Bárcenas,Panamá,Base,Selecciones,962,False,0,False
 PAN15,Carlos Harvey,Panamá,Base,Selecciones,963,False,0,False
 PAN16,Ismael Díaz,Panamá,Base,Selecciones,964,False,0,False
-PAN17,José Fajardo,Panamá,Base,Selecciones,965,False,0,False
-PAN18,Cecilio Waterman,Panamá,Base,Selecciones,966,False,0,False
+PAN17,José Fajardo,Panamá,Base,Selecciones,965,True,0,False
+PAN18,Cecilio Waterman,Panamá,Base,Selecciones,966,True,0,False
 PAN19,José Luis Rodríguez,Panamá,Base,Selecciones,967,False,0,False
 PAN20,Alberto Quintero,Panamá,Base,Selecciones,968,False,0,False
-FWC9,Italia 1934,Especial,FOIL,Historia del Mundial,969,False,0,False
+FWC9,Italia 1934,Especial,FOIL,Historia del Mundial,969,True,0,False
 FWC10,Uruguay 1950,Especial,FOIL,Historia del Mundial,970,False,0,False
 FWC11,Alemania Occidental 1954,Especial,FOIL,Historia del Mundial,971,False,0,False
 FWC12,Brasil 1962,Especial,FOIL,Historia del Mundial,972,False,0,False
 FWC13,Alemania Occidental 1974,Especial,FOIL,Historia del Mundial,973,False,0,False
-FWC14,Argentina 1986,Especial,FOIL,Historia del Mundial,974,False,0,False
+FWC14,Argentina 1986,Especial,FOIL,Historia del Mundial,974,True,0,False
 FWC15,Brasil 1994,Especial,FOIL,Historia del Mundial,975,False,0,False
 FWC16,Brasil 2002,Especial,FOIL,Historia del Mundial,976,False,0,False
 FWC17,Italia 2006,Especial,FOIL,Historia del Mundial,977,False,0,False
-FWC18,Alemania 2014,Especial,FOIL,Historia del Mundial,978,False,0,False
-FWC19,Argentina 2022,Especial,FOIL,Historia del Mundial,979,False,0,False
+FWC18,Alemania 2014,Especial,FOIL,Historia del Mundial,978,True,0,False
+FWC19,Argentina 2022,Especial,FOIL,Historia del Mundial,979,True,0,False
