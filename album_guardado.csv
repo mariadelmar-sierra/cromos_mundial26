@@ -9,25 +9,25 @@ FWC6,Canadá - Países y Ciudades Anfitrionas,Especial,FOIL,Introducción,6,Fals
 FWC7,México - Países y Ciudades Anfitrionas,Especial,FOIL,Introducción,7,True,0,False
 FWC8,EE. UU. - Países y Ciudades Anfitrionas,Especial,FOIL,Introducción,8,False,0,False
 MEX1,Escudo del equipo,México,FOIL,Selecciones,9,False,0,False
-MEX2,Luis Malagón,México,Base,Selecciones,10,False,0,False
-MEX3,Johan Vásquez,México,Base,Selecciones,11,False,0,False
+MEX2,Luis Malagón,México,Base,Selecciones,10,True,0,False
+MEX3,Johan Vásquez,México,Base,Selecciones,11,True,0,False
 MEX4,Jorge Sánchez,México,Base,Selecciones,12,False,0,False
 MEX5,César Montes,México,Base,Selecciones,13,False,0,False
 MEX6,Jesús Gallardo,México,Base,Selecciones,14,False,0,False
-MEX7,Israel Reyes,México,Base,Selecciones,15,False,0,False
-MEX8,Diego Lainez,México,Base,Selecciones,16,False,0,False
+MEX7,Israel Reyes,México,Base,Selecciones,15,True,0,False
+MEX8,Diego Lainez,México,Base,Selecciones,16,True,0,False
 MEX9,Carlos Rodríguez,México,Base,Selecciones,17,False,0,False
 MEX10,Edson Álvarez,México,Base,Selecciones,18,False,0,False
 MEX11,Orbelín Pineda,México,Base,Selecciones,19,False,0,False
 MEX12,Marcel Ruiz,México,Base,Selecciones,20,False,0,False
-MEX13,Foto de equipo,México,Base,Selecciones,21,False,0,False
+MEX13,Foto de equipo,México,Base,Selecciones,21,True,0,False
 MEX14,Érick Sánchez,México,Base,Selecciones,22,False,0,False
-MEX15,Hirving Lozano,México,Base,Selecciones,23,False,0,False
+MEX15,Hirving Lozano,México,Base,Selecciones,23,True,0,False
 MEX16,Santiago Giménez,México,Base,Selecciones,24,False,0,False
 MEX17,Raúl Jiménez,México,Base,Selecciones,25,False,0,False
 MEX18,Alexis Vega,México,Base,Selecciones,26,False,0,False
 MEX19,Roberto Alvarado,México,Base,Selecciones,27,False,0,False
-MEX20,César Huerta,México,Base,Selecciones,28,False,0,False
+MEX20,César Huerta,México,Base,Selecciones,28,True,0,False
 RSA1,Escudo del equipo,Sudáfrica,FOIL,Selecciones,29,False,0,False
 RSA2,Ronwen Williams,Sudáfrica,Base,Selecciones,30,False,0,False
 RSA3,Sipho Chaine,Sudáfrica,Base,Selecciones,31,False,0,False
