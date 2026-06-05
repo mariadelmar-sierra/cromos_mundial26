@@ -414,15 +414,15 @@ NED3,Virgil van Dijk,Países Bajos,Base,Selecciones,411,False,0,False
 NED4,Micky van de Ven,Países Bajos,Base,Selecciones,412,False,0,False
 NED5,Jurriën Timber,Países Bajos,Base,Selecciones,413,False,0,False
 NED6,Denzel Dumfries,Países Bajos,Base,Selecciones,414,False,0,False
-NED7,Nathan Aké,Países Bajos,Base,Selecciones,415,False,0,False
+NED7,Nathan Aké,Países Bajos,Base,Selecciones,415,True,0,False
 NED8,Jeremie Frimpong,Países Bajos,Base,Selecciones,416,False,0,False
 NED9,Jan Paul van Hecke,Países Bajos,Base,Selecciones,417,False,0,False
 NED10,Tijjani Reijnders,Países Bajos,Base,Selecciones,418,False,0,False
 NED11,Ryan Gravenberch,Países Bajos,Base,Selecciones,419,False,0,False
-NED12,Teun Koopmeiners,Países Bajos,Base,Selecciones,420,False,0,False
+NED12,Teun Koopmeiners,Países Bajos,Base,Selecciones,420,True,0,False
 NED13,Foto de equipo,Países Bajos,Base,Selecciones,421,False,0,False
 NED14,Frenkie de Jong,Países Bajos,Base,Selecciones,422,False,0,False
-NED15,Xavi Simons,Países Bajos,Base,Selecciones,423,False,0,False
+NED15,Xavi Simons,Países Bajos,Base,Selecciones,423,True,0,False
 NED16,Justin Kluivert,Países Bajos,Base,Selecciones,424,False,0,False
 NED17,Memphis Depay,Países Bajos,Base,Selecciones,425,False,0,False
 NED18,Donyell Malen,Países Bajos,Base,Selecciones,426,False,0,False
@@ -430,64 +430,64 @@ NED19,Wout Weghorst,Países Bajos,Base,Selecciones,427,False,0,False
 NED20,Cody Gakpo,Países Bajos,Base,Selecciones,428,False,0,False
 JPN1,Escudo del equipo,Japón,FOIL,Selecciones,429,False,0,False
 JPN2,Zion Suzuki,Japón,Base,Selecciones,430,False,0,False
-JPN3,Henry Hiroki Mochizuki,Japón,Base,Selecciones,431,False,0,False
+JPN3,Henry Hiroki Mochizuki,Japón,Base,Selecciones,431,True,0,False
 JPN4,Ayumu Seko,Japón,Base,Selecciones,432,False,0,False
 JPN5,Junnosuke Suzuki,Japón,Base,Selecciones,433,False,0,False
 JPN6,Shogo Taniguchi,Japón,Base,Selecciones,434,False,0,False
-JPN7,Tsuyoshi Watanabe,Japón,Base,Selecciones,435,False,0,False
+JPN7,Tsuyoshi Watanabe,Japón,Base,Selecciones,435,True,0,False
 JPN8,Kaishu Sano,Japón,Base,Selecciones,436,False,0,False
-JPN9,Yuki Soma,Japón,Base,Selecciones,437,False,0,False
+JPN9,Yuki Soma,Japón,Base,Selecciones,437,True,0,False
 JPN10,Ao Tanaka,Japón,Base,Selecciones,438,False,0,False
 JPN11,Daichi Kamada,Japón,Base,Selecciones,439,False,0,False
-JPN12,Takefusa Kubo,Japón,Base,Selecciones,440,False,0,False
+JPN12,Takefusa Kubo,Japón,Base,Selecciones,440,True,0,False
 JPN13,Foto de equipo,Japón,Base,Selecciones,441,False,0,False
 JPN14,Ritsu Doan,Japón,Base,Selecciones,442,False,0,False
 JPN15,Keito Nakamura,Japón,Base,Selecciones,443,False,0,False
-JPN16,Takumi Minamino,Japón,Base,Selecciones,444,False,0,False
+JPN16,Takumi Minamino,Japón,Base,Selecciones,444,True,0,False
 JPN17,Shuto Machino,Japón,Base,Selecciones,445,False,0,False
-JPN18,Junya Ito,Japón,Base,Selecciones,446,False,0,False
-JPN19,Koki Ogawa,Japón,Base,Selecciones,447,False,0,False
+JPN18,Junya Ito,Japón,Base,Selecciones,446,True,0,False
+JPN19,Koki Ogawa,Japón,Base,Selecciones,447,True,0,False
 JPN20,Ayase Ueda,Japón,Base,Selecciones,448,False,0,False
 SWE1,Escudo del equipo,Suecia,FOIL,Selecciones,449,False,0,False
 SWE2,Victor Johansson,Suecia,Base,Selecciones,450,False,0,False
 SWE3,Isak Hien,Suecia,Base,Selecciones,451,False,0,False
-SWE4,Gabriel Gudmundsson,Suecia,Base,Selecciones,452,False,0,False
+SWE4,Gabriel Gudmundsson,Suecia,Base,Selecciones,452,True,0,False
 SWE5,Emil Holm,Suecia,Base,Selecciones,453,False,0,False
 SWE6,Victor Lindelöf,Suecia,Base,Selecciones,454,False,0,False
-SWE7,Gustaf Lagerbielke,Suecia,Base,Selecciones,455,False,0,False
-SWE8,Lucas Bergvall,Suecia,Base,Selecciones,456,False,0,False
+SWE7,Gustaf Lagerbielke,Suecia,Base,Selecciones,455,True,0,False
+SWE8,Lucas Bergvall,Suecia,Base,Selecciones,456,True,0,False
 SWE9,Hugo Larsson,Suecia,Base,Selecciones,457,False,0,False
 SWE10,Jesper Karlström,Suecia,Base,Selecciones,458,False,0,False
-SWE11,Yasin Ayari,Suecia,Base,Selecciones,459,False,0,False
+SWE11,Yasin Ayari,Suecia,Base,Selecciones,459,True,0,False
 SWE12,Mattias Svanberg,Suecia,Base,Selecciones,460,False,0,False
-SWE13,Foto de equipo,Suecia,Base,Selecciones,461,False,0,False
+SWE13,Foto de equipo,Suecia,Base,Selecciones,461,True,0,False
 SWE14,Daniel Svensson,Suecia,Base,Selecciones,462,False,0,False
 SWE15,Ken Sema,Suecia,Base,Selecciones,463,False,0,False
 SWE16,Roony Bardghji,Suecia,Base,Selecciones,464,False,0,False
 SWE17,Dejan Kulusevski,Suecia,Base,Selecciones,465,False,0,False
 SWE18,Anthony Elanga,Suecia,Base,Selecciones,466,False,0,False
-SWE19,Alexander Isak,Suecia,Base,Selecciones,467,False,0,False
-SWE20,Viktor Gyökeres,Suecia,Base,Selecciones,468,False,0,False
-TUN1,Escudo del equipo,Túnez,FOIL,Selecciones,469,False,0,False
-TUN2,Bechir Ben Said,Túnez,Base,Selecciones,470,False,0,False
+SWE19,Alexander Isak,Suecia,Base,Selecciones,467,True,0,False
+SWE20,Viktor Gyökeres,Suecia,Base,Selecciones,468,True,0,False
+TUN1,Escudo del equipo,Túnez,FOIL,Selecciones,469,True,0,False
+TUN2,Bechir Ben Said,Túnez,Base,Selecciones,470,True,0,False
 TUN3,Aymen Dahmen,Túnez,Base,Selecciones,471,False,0,False
-TUN4,Yan Valery,Túnez,Base,Selecciones,472,False,0,False
+TUN4,Yan Valery,Túnez,Base,Selecciones,472,True,0,False
 TUN5,Montassar Talbi,Túnez,Base,Selecciones,473,False,0,False
-TUN6,Yassine Meriah,Túnez,Base,Selecciones,474,False,0,False
-TUN7,Ali Abdi,Túnez,Base,Selecciones,475,False,0,False
-TUN8,Dylan Bronn,Túnez,Base,Selecciones,476,False,0,False
-TUN9,Ellyes Skhiri,Túnez,Base,Selecciones,477,False,0,False
-TUN10,Aïssa Laïdouni,Túnez,Base,Selecciones,478,False,0,False
+TUN6,Yassine Meriah,Túnez,Base,Selecciones,474,True,0,False
+TUN7,Ali Abdi,Túnez,Base,Selecciones,475,True,0,False
+TUN8,Dylan Bronn,Túnez,Base,Selecciones,476,True,0,False
+TUN9,Ellyes Skhiri,Túnez,Base,Selecciones,477,True,0,False
+TUN10,Aïssa Laïdouni,Túnez,Base,Selecciones,478,True,0,False
 TUN11,Ferjani Sassi,Túnez,Base,Selecciones,479,False,0,False
-TUN12,Mohamed Ali Ben Romdhane,Túnez,Base,Selecciones,480,False,0,False
+TUN12,Mohamed Ali Ben Romdhane,Túnez,Base,Selecciones,480,True,0,False
 TUN13,Foto de equipo,Túnez,Base,Selecciones,481,False,0,False
 TUN14,Hannibal Mejbri,Túnez,Base,Selecciones,482,False,0,False
 TUN15,Elias Achouri,Túnez,Base,Selecciones,483,False,0,False
 TUN16,Elias Saad,Túnez,Base,Selecciones,484,False,0,False
-TUN17,Hazem Mastouri,Túnez,Base,Selecciones,485,False,0,False
+TUN17,Hazem Mastouri,Túnez,Base,Selecciones,485,True,0,False
 TUN18,Ismael Gharbi,Túnez,Base,Selecciones,486,False,0,False
 TUN19,Sayfallah Ltaief,Túnez,Base,Selecciones,487,False,0,False
-TUN20,Naïm Sliti,Túnez,Base,Selecciones,488,False,0,False
+TUN20,Naïm Sliti,Túnez,Base,Selecciones,488,True,0,False
 BEL1,Escudo del equipo,Bélgica,FOIL,Selecciones,489,False,0,False
 BEL2,Thibaut Courtois,Bélgica,Base,Selecciones,490,False,0,False
 BEL3,Arthur Theate,Bélgica,Base,Selecciones,491,False,0,False
