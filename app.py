@@ -1,13 +1,17 @@
-import pandas as pd
-import streamlit as st
+import base64
+import io
 import unicodedata
-import gspread
-from google.oauth2.service_account import Credentials
+from typing import Optional, Tuple
 
+import pandas as pd
+import requests
+import streamlit as st
 
 # =====================================================
-# CONFIGURACIÓN GENERAL
+# CONFIGURACIÓN BÁSICA
 # =====================================================
+
+CSV_FILE = "album_guardado.csv"
 
 st.set_page_config(
     page_title="Álbum Mundial 2026",
@@ -15,27 +19,16 @@ st.set_page_config(
     layout="wide"
 )
 
-SCOPES = [
-    "https://www.googleapis.com/auth/spreadsheets",
-    "https://www.googleapis.com/auth/drive"
-]
-
-
 # =====================================================
 # CSS
 # =====================================================
 
 st.markdown("""
 <style>
-
 .block-container {
     padding-top: 1.2rem;
     padding-bottom: 2rem;
 }
-
-/* =========================
-   CARDS
-========================= */
 
 .card {
     border-radius: 18px;
@@ -50,10 +43,6 @@ st.markdown("""
 .card:hover {
     transform: translateY(-2px);
 }
-
-/* =========================
-   ESTADOS
-========================= */
 
 .card-owned {
     border: 2px solid #2ecc71;
@@ -70,9 +59,10 @@ st.markdown("""
     background-color: #fff9ed;
 }
 
-/* =========================
-   TEXTOS
-========================= */
+.card-wishlist {
+    border: 2px solid #6c5ce7;
+    background-color: #f5f3ff;
+}
 
 .code {
     font-size: 22px;
@@ -102,94 +92,59 @@ st.markdown("""
     font-weight: 600;
 }
 
+.small-note {
+    color: #777;
+    font-size: 13px;
+}
 </style>
 """, unsafe_allow_html=True)
 
-
 # =====================================================
-# CONEXIÓN GOOGLE SHEETS
-# =====================================================
-
-def conectar_google_sheet():
-    credentials = Credentials.from_service_account_info(
-        st.secrets["google_service_account"],
-        scopes=SCOPES
-    )
-
-    gc = gspread.authorize(credentials)
-
-    spreadsheet = gc.open(
-        st.secrets["google_sheet"]["spreadsheet_name"]
-    )
-
-    worksheet = spreadsheet.worksheet(
-        st.secrets["google_sheet"]["worksheet_name"]
-    )
-
-    return worksheet
-
-
-# =====================================================
-# FUNCIONES DE DATOS
+# UTILIDADES
 # =====================================================
 
-def convertir_a_bool(valor):
-    """
-    Convierte valores de Google Sheets a booleanos reales.
-    Acepta TRUE/FALSE, true/false, 1/0, sí/no, si/no.
-    """
+def quitar_tildes(texto) -> str:
+    if pd.isna(texto):
+        return ""
+    texto = str(texto)
+    return "".join(
+        c for c in unicodedata.normalize("NFD", texto)
+        if unicodedata.category(c) != "Mn"
+    ).lower()
 
+
+def limpiar_bool(valor) -> bool:
+    """Convierte valores tipo TRUE/FALSE, 0/1, Sí/No a bool real."""
     if isinstance(valor, bool):
         return valor
+    if pd.isna(valor):
+        return False
+    texto = str(valor).strip().lower()
+    return texto in {"true", "1", "sí", "si", "yes", "y", "x"}
 
-    valor = str(valor).strip().lower()
 
-    return valor in ["true", "1", "sí", "si", "yes", "x"]
+def preparar_df(df: pd.DataFrame) -> pd.DataFrame:
+    """Asegura columnas, tipos y orden estable."""
+    df = df.copy()
 
+    columnas_necesarias = {
+        "codigo": "",
+        "nombre": "",
+        "seleccion": "",
+        "tipo": "",
+        "seccion": "",
+        "orden_original": None,
+        "lo_tengo": False,
+        "repetidos": 0,
+        "wishlist": False,
+    }
 
-def cargar_datos():
-    """
-    Lee siempre los datos desde Google Sheets.
-    No usa Excel ni CSV local.
-    """
-
-    worksheet = conectar_google_sheet()
-
-    records = worksheet.get_all_records()
-
-    if not records:
-        st.error(
-            "La hoja de Google Sheets está vacía. "
-            "Debes crear primero las columnas: codigo, nombre, seleccion, tipo, seccion, orden_original, lo_tengo, repetidos, wishlist."
-        )
-        st.stop()
-
-    df = pd.DataFrame(records)
-
-    columnas_necesarias = [
-        "codigo",
-        "nombre",
-        "seleccion",
-        "tipo",
-        "seccion",
-        "orden_original",
-        "lo_tengo",
-        "repetidos",
-        "wishlist"
-    ]
-
-    faltantes = [
-        col for col in columnas_necesarias
-        if col not in df.columns
-    ]
-
-    if faltantes:
-        st.error(
-            f"Faltan columnas en Google Sheets: {faltantes}"
-        )
-        st.stop()
-
-    df = df[columnas_necesarias].copy()
+    for columna, valor_defecto in columnas_necesarias.items():
+        if columna not in df.columns:
+            if columna == "orden_original":
+                df[columna] = range(len(df))
+            else:
+                df[columna] = valor_defecto
 
     df["codigo"] = df["codigo"].astype(str)
     df["nombre"] = df["nombre"].astype(str)
@@ -197,161 +152,241 @@ def cargar_datos():
     df["tipo"] = df["tipo"].astype(str)
     df["seccion"] = df["seccion"].astype(str)
 
-    df["orden_original"] = pd.to_numeric(
-        df["orden_original"],
-        errors="coerce"
-    ).fillna(0).astype(int)
+    df["orden_original"] = pd.to_numeric(df["orden_original"], errors="coerce")
+    df["orden_original"] = df["orden_original"].fillna(range(len(df))).astype(int)
 
-    df["repetidos"] = pd.to_numeric(
-        df["repetidos"],
-        errors="coerce"
-    ).fillna(0).astype(int)
+    df["lo_tengo"] = df["lo_tengo"].apply(limpiar_bool)
+    df["wishlist"] = df["wishlist"].apply(limpiar_bool)
 
-    df["lo_tengo"] = df["lo_tengo"].apply(convertir_a_bool)
-    df["wishlist"] = df["wishlist"].apply(convertir_a_bool)
+    df["repetidos"] = pd.to_numeric(df["repetidos"], errors="coerce")
+    df["repetidos"] = df["repetidos"].fillna(0).astype(int)
+    df.loc[df["repetidos"] < 0, "repetidos"] = 0
 
-    df = df.sort_values("orden_original").reset_index(drop=True)
+    columnas_finales = [
+        "codigo", "nombre", "seleccion", "tipo", "seccion",
+        "orden_original", "lo_tengo", "repetidos", "wishlist"
+    ]
 
-    return df
+    return df[columnas_finales].sort_values("orden_original").reset_index(drop=True)
 
 
-def guardar_datos(df):
-    """
-    Guarda todo el DataFrame en Google Sheets.
-    Mantiene lo_tengo y wishlist como 0/1.
-    """
+def github_config_ok() -> bool:
+    requeridos = ["GITHUB_TOKEN", "GITHUB_REPO", "GITHUB_BRANCH", "GITHUB_DATA_PATH"]
+    return all(k in st.secrets and str(st.secrets[k]).strip() for k in requeridos)
 
-    worksheet = conectar_google_sheet()
 
-    df_guardar = df.copy()
+def get_github_headers() -> dict:
+    return {
+        "Authorization": f"Bearer {st.secrets['GITHUB_TOKEN']}",
+        "Accept": "application/vnd.github+json",
+        "X-GitHub-Api-Version": "2022-11-28",
+    }
 
-    df_guardar["codigo"] = df_guardar["codigo"].astype(str)
-    df_guardar["nombre"] = df_guardar["nombre"].astype(str)
-    df_guardar["seleccion"] = df_guardar["seleccion"].astype(str)
-    df_guardar["tipo"] = df_guardar["tipo"].astype(str)
-    df_guardar["seccion"] = df_guardar["seccion"].astype(str)
 
-    df_guardar["orden_original"] = df_guardar["orden_original"].astype(int)
-    df_guardar["repetidos"] = df_guardar["repetidos"].astype(int)
+def github_file_url() -> str:
+    repo = st.secrets["GITHUB_REPO"]
+    path = st.secrets["GITHUB_DATA_PATH"]
+    return f"https://api.github.com/repos/{repo}/contents/{path}"
 
-    df_guardar["lo_tengo"] = df_guardar["lo_tengo"].apply(lambda x: 1 if bool(x) else 0)
-    df_guardar["wishlist"] = df_guardar["wishlist"].apply(lambda x: 1 if bool(x) else 0)
 
-    worksheet.clear()
+def leer_csv_desde_github() -> Tuple[pd.DataFrame, Optional[str]]:
+    """Lee el CSV desde GitHub y devuelve df + sha actual del archivo."""
+    url = github_file_url()
+    branch = st.secrets["GITHUB_BRANCH"]
 
-    worksheet.update(
-        [df_guardar.columns.tolist()] +
-        df_guardar.values.tolist()
+    response = requests.get(
+        url,
+        headers=get_github_headers(),
+        params={"ref": branch},
+        timeout=20,
     )
+    response.raise_for_status()
+
+    data = response.json()
+    contenido_b64 = data["content"]
+    sha = data["sha"]
+
+    contenido = base64.b64decode(contenido_b64).decode("utf-8")
+    df = pd.read_csv(io.StringIO(contenido))
+
+    return preparar_df(df), sha
 
 
-# =====================================================
-# FUNCIONES AUXILIARES
-# =====================================================
+def guardar_csv_en_github(df: pd.DataFrame, sha_actual: Optional[str]) -> None:
+    """Sobrescribe el CSV en GitHub creando un commit."""
+    url = github_file_url()
+    branch = st.secrets["GITHUB_BRANCH"]
 
-def quitar_tildes(texto):
+    df_limpio = preparar_df(df)
+    csv_text = df_limpio.to_csv(index=False)
+    contenido_b64 = base64.b64encode(csv_text.encode("utf-8")).decode("utf-8")
 
-    if pd.isna(texto):
-        return ""
+    # Por seguridad, si no tenemos SHA en sesión, lo pedimos justo antes de guardar.
+    if not sha_actual:
+        _, sha_actual = leer_csv_desde_github()
 
-    texto = str(texto)
+    payload = {
+        "message": "Actualizar checklist de cromos",
+        "content": contenido_b64,
+        "sha": sha_actual,
+        "branch": branch,
+    }
 
-    return ''.join(
-        c for c in unicodedata.normalize('NFD', texto)
-        if unicodedata.category(c) != 'Mn'
-    ).lower()
+    response = requests.put(
+        url,
+        headers=get_github_headers(),
+        json=payload,
+        timeout=20,
+    )
+    response.raise_for_status()
+
+    nuevo_sha = response.json()["content"]["sha"]
+    st.session_state["github_sha"] = nuevo_sha
+    st.session_state["df"] = df_limpio
 
 
-def clase_card(row):
+def cargar_datos() -> pd.DataFrame:
+    """Carga datos una sola vez por sesión desde GitHub. El botón Recargar fuerza nueva lectura."""
+    if "df" not in st.session_state:
+        df, sha = leer_csv_desde_github()
+        st.session_state["df"] = df
+        st.session_state["github_sha"] = sha
+    return st.session_state["df"].copy()
 
+
+def clase_card(row) -> str:
+    if bool(row["wishlist"]):
+        return "card card-wishlist"
     if int(row["repetidos"]) > 0:
         return "card card-repeated"
-
     if bool(row["lo_tengo"]):
         return "card card-owned"
-
     return "card card-missing"
 
 
-def estado_texto(row):
-
-    if bool(row["lo_tengo"]) and int(row["repetidos"]) > 0:
-        return f"✅ Tengo · 🔁 {int(row['repetidos'])}"
+def estado_texto(row) -> str:
+    partes = []
 
     if bool(row["lo_tengo"]):
-        return "✅ Lo tengo"
+        partes.append("✅ Lo tengo")
+    else:
+        partes.append("❌ Me falta")
 
-    return "❌ Me falta"
+    if int(row["repetidos"]) > 0:
+        partes.append(f"🔁 {int(row['repetidos'])}")
 
+    if bool(row["wishlist"]):
+        partes.append("⭐ Wishlist")
+
+    return " · ".join(partes)
+
+
+def guardar_cambio_cromo(codigo: str, lo_tengo: bool, repetidos: int, wishlist: bool) -> None:
+    """Actualiza un único cromo en el df de sesión y guarda todo el CSV en GitHub."""
+    df = st.session_state["df"].copy()
+
+    mask = df["codigo"].astype(str) == str(codigo)
+    if not mask.any():
+        st.error(f"No se encontró el cromo {codigo}.")
+        return
+
+    idx = df[mask].index[0]
+    df.at[idx, "lo_tengo"] = bool(lo_tengo)
+    df.at[idx, "repetidos"] = int(repetidos)
+    df.at[idx, "wishlist"] = bool(wishlist)
+
+    guardar_csv_en_github(df, st.session_state.get("github_sha"))
 
 # =====================================================
-# CARGAR DATOS DESDE GOOGLE SHEETS
-# =====================================================
-
-df = cargar_datos()
-
-
-# =====================================================
-# HEADER
+# APP
 # =====================================================
 
 st.title("⚽ Álbum Panini Mundial 2026")
+st.write("Checklist compartida de cromos. Los cambios se guardan en GitHub al pulsar **Guardar**.")
 
-st.write("Gestiona tus cromos de forma visual.")
+if not github_config_ok():
+    st.error("Faltan secretos de GitHub en Streamlit Cloud.")
+    st.markdown(
+        """
+        En **Settings > Secrets** añade algo así:
 
-st.caption("Los cambios se guardan directamente en Google Sheets.")
+        ```toml
+        GITHUB_TOKEN = "ghp_xxxxxxxxxxxxxxxxx"
+        GITHUB_REPO = "tu_usuario/tu_repositorio"
+        GITHUB_BRANCH = "main"
+        GITHUB_DATA_PATH = "album_guardado.csv"
+        ```
+        """
+    )
+    st.stop()
 
+try:
+    df = cargar_datos()
+except Exception as e:
+    st.error("No he podido leer el CSV desde GitHub.")
+    st.exception(e)
+    st.stop()
+
+# =====================================================
+# BOTONES SUPERIORES
+# =====================================================
+
+b1, b2 = st.columns([1, 5])
+
+with b1:
+    if st.button("🔄 Recargar datos"):
+        try:
+            df_recargado, sha = leer_csv_desde_github()
+            st.session_state["df"] = df_recargado
+            st.session_state["github_sha"] = sha
+            st.rerun()
+        except Exception as e:
+            st.error("No he podido recargar los datos desde GitHub.")
+            st.exception(e)
+
+with b2:
+    st.markdown(
+        "<div class='small-note'>Usa este botón si otra persona ha guardado cambios antes de abrir tú la app.</div>",
+        unsafe_allow_html=True,
+    )
+
+st.divider()
 
 # =====================================================
 # KPIS
 # =====================================================
 
 total = len(df)
-
 tengo = int(df["lo_tengo"].sum())
-
 faltan = total - tengo
-
 repetidos_total = int(df["repetidos"].sum())
+wishlist_total = int(df["wishlist"].sum())
+porcentaje = round((tengo / total) * 100, 2) if total else 0
 
-porcentaje = round((tengo / total) * 100, 2) if total > 0 else 0
-
-c1, c2, c3, c4 = st.columns(4)
-
+c1, c2, c3, c4, c5 = st.columns(5)
 c1.metric("Total", total)
 c2.metric("Tengo", tengo)
 c3.metric("Faltan", faltan)
 c4.metric("Repetidos", repetidos_total)
+c5.metric("Wishlist", wishlist_total)
 
-if total > 0:
+if total:
     st.progress(tengo / total)
-
 st.write(f"Álbum completado al **{porcentaje}%**")
 
 st.divider()
-
 
 # =====================================================
 # PILLS DE SELECCIONES
 # =====================================================
 
-selecciones_final = list(
-    dict.fromkeys(
-        df["seleccion"].dropna().tolist()
-    )
-)
-
-pill_labels = ["TODOS"]
+selecciones_final = list(dict.fromkeys(df["seleccion"].dropna().tolist()))
 selecciones_final = ["TODOS"] + selecciones_final
 
+pill_labels = ["TODOS"]
+
 for seleccion in selecciones_final[1:]:
-
-    codigo_ejemplo = (
-        df[df["seleccion"] == seleccion]["codigo"]
-        .astype(str)
-        .iloc[0]
-    )
-
+    codigo_ejemplo = df[df["seleccion"] == seleccion]["codigo"].astype(str).iloc[0]
     label = codigo_ejemplo[:3].upper()
 
     if label == "00":
@@ -359,39 +394,24 @@ for seleccion in selecciones_final[1:]:
 
     original = label
     contador = 2
-
     while label in pill_labels:
         label = f"{original}{contador}"
         contador += 1
 
     pill_labels.append(label)
 
-pill_map = {
-    pill_labels[i]: selecciones_final[i]
-    for i in range(len(selecciones_final))
-}
+pill_map = {pill_labels[i]: selecciones_final[i] for i in range(len(selecciones_final))}
 
 pill = st.pills(
     "Selección",
     pill_labels,
     selection_mode="single",
-    default="TODOS"
+    default="TODOS",
 )
 
-seleccion_actual = pill_map[pill]
+seleccion_actual = pill_map.get(pill, "TODOS")
 
 st.divider()
-
-
-# =====================================================
-# ATAJOS
-# =====================================================
-
-a1, a2 = st.columns([1, 5])
-
-with a1:
-    ver_repetidos = st.button("🔁 Repetidos")
-
 
 # =====================================================
 # FILTROS
@@ -400,21 +420,13 @@ with a1:
 f1, f2 = st.columns([1, 2])
 
 with f1:
-
     estado = st.selectbox(
         "Estado",
-        [
-            "Todos",
-            "Los tengo",
-            "Me faltan",
-            "Repetidos"
-        ]
+        ["Todos", "Los tengo", "Me faltan", "Repetidos", "Wishlist"],
     )
 
 with f2:
-
-    busqueda = st.text_input("Buscar cromo")
-
+    busqueda = st.text_input("Buscar cromo", placeholder="Ej: ESP15, Lamine, España...")
 
 # =====================================================
 # FILTRADO
@@ -423,70 +435,30 @@ with f2:
 df_filtrado = df.copy()
 
 if seleccion_actual != "TODOS":
-
-    df_filtrado = df_filtrado[
-        df_filtrado["seleccion"] == seleccion_actual
-    ]
+    df_filtrado = df_filtrado[df_filtrado["seleccion"] == seleccion_actual]
 
 if busqueda:
-
     busqueda_normalizada = quitar_tildes(busqueda)
 
-    mask_codigo = (
-        df_filtrado["codigo"]
-        .astype(str)
-        .apply(quitar_tildes)
-        .str.contains(busqueda_normalizada, na=False)
-    )
+    mask_codigo = df_filtrado["codigo"].astype(str).apply(quitar_tildes).str.contains(busqueda_normalizada, na=False)
+    mask_nombre = df_filtrado["nombre"].astype(str).apply(quitar_tildes).str.contains(busqueda_normalizada, na=False)
+    mask_seleccion = df_filtrado["seleccion"].astype(str).apply(quitar_tildes).str.contains(busqueda_normalizada, na=False)
 
-    mask_nombre = (
-        df_filtrado["nombre"]
-        .astype(str)
-        .apply(quitar_tildes)
-        .str.contains(busqueda_normalizada, na=False)
-    )
-
-    mask_seleccion = (
-        df_filtrado["seleccion"]
-        .astype(str)
-        .apply(quitar_tildes)
-        .str.contains(busqueda_normalizada, na=False)
-    )
-
-    df_filtrado = df_filtrado[
-        mask_codigo | mask_nombre | mask_seleccion
-    ]
-
-if ver_repetidos:
-
-    df_filtrado = df_filtrado[
-        df_filtrado["repetidos"] > 0
-    ]
+    df_filtrado = df_filtrado[mask_codigo | mask_nombre | mask_seleccion]
 
 if estado == "Los tengo":
-
-    df_filtrado = df_filtrado[
-        df_filtrado["lo_tengo"] == True
-    ]
-
+    df_filtrado = df_filtrado[df_filtrado["lo_tengo"] == True]
 elif estado == "Me faltan":
-
-    df_filtrado = df_filtrado[
-        df_filtrado["lo_tengo"] == False
-    ]
-
+    df_filtrado = df_filtrado[df_filtrado["lo_tengo"] == False]
 elif estado == "Repetidos":
-
-    df_filtrado = df_filtrado[
-        df_filtrado["repetidos"] > 0
-    ]
+    df_filtrado = df_filtrado[df_filtrado["repetidos"] > 0]
+elif estado == "Wishlist":
+    df_filtrado = df_filtrado[df_filtrado["wishlist"] == True]
 
 df_filtrado = df_filtrado.sort_values("orden_original")
 
 st.write(f"Mostrando **{len(df_filtrado)}** cromos")
-
 st.divider()
-
 
 # =====================================================
 # GRID DE CROMOS
@@ -495,33 +467,30 @@ st.divider()
 COLUMNAS = 5
 
 for inicio in range(0, len(df_filtrado), COLUMNAS):
-
     fila = df_filtrado.iloc[inicio:inicio + COLUMNAS]
-
     cols = st.columns(COLUMNAS)
 
-    for col, (i, row) in zip(cols, fila.iterrows()):
+    for col, (_, row) in zip(cols, fila.iterrows()):
+        codigo = str(row["codigo"])
 
         with col:
-
             st.markdown(
                 f"""
                 <div class="{clase_card(row)}">
-                    <div class="code">{row['codigo']}</div>
+                    <div class="code">{codigo}</div>
                     <div class="name">{row['nombre']}</div>
-                    <div class="team">{row['seleccion']}</div>
+                    <div class="team">{row['seleccion']} · {row['tipo']}</div>
                     <div class="badge">{estado_texto(row)}</div>
                 </div>
                 """,
-                unsafe_allow_html=True
+                unsafe_allow_html=True,
             )
 
-            with st.popover("⚙️"):
-
+            with st.popover("⚙️ Editar"):
                 lo_tengo = st.checkbox(
                     "Lo tengo",
                     value=bool(row["lo_tengo"]),
-                    key=f"tengo_{row['codigo']}"
+                    key=f"tengo_{codigo}",
                 )
 
                 repetidos = st.number_input(
@@ -529,30 +498,23 @@ for inicio in range(0, len(df_filtrado), COLUMNAS):
                     min_value=0,
                     value=int(row["repetidos"]),
                     step=1,
-                    key=f"rep_{row['codigo']}"
+                    key=f"rep_{codigo}",
                 )
 
                 wishlist = st.checkbox(
                     "Wishlist",
                     value=bool(row["wishlist"]),
-                    key=f"wish_{row['codigo']}"
+                    key=f"wish_{codigo}",
                 )
 
-                if st.button(
-                    "Guardar",
-                    key=f"save_{row['codigo']}"
-                ):
-
-                    idx = df[
-                        df["codigo"].astype(str) == str(row["codigo"])
-                    ].index[0]
-
-                    df.at[idx, "lo_tengo"] = lo_tengo
-                    df.at[idx, "repetidos"] = int(repetidos)
-                    df.at[idx, "wishlist"] = wishlist
-
-                    guardar_datos(df)
-
-                    st.success("Guardado en Google Sheets")
-
-                    st.rerun()
+                if st.button("Guardar", key=f"save_{codigo}"):
+                    try:
+                        guardar_cambio_cromo(codigo, lo_tengo, repetidos, wishlist)
+                        st.success("Guardado en GitHub")
+                        st.rerun()
+                    except requests.HTTPError as e:
+                        st.error("GitHub no ha aceptado el guardado. Pulsa Recargar datos y vuelve a intentarlo.")
+                        st.exception(e)
+                    except Exception as e:
+                        st.error("No se han podido guardar los cambios.")
+                        st.exception(e)
