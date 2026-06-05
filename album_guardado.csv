@@ -33,8 +33,8 @@ RSA2,Ronwen Williams,Sudáfrica,Base,Selecciones,30,False,0,False
 RSA3,Sipho Chaine,Sudáfrica,Base,Selecciones,31,False,0,False
 RSA4,Aubrey Modiba,Sudáfrica,Base,Selecciones,32,False,0,False
 RSA5,Samukele Kabini,Sudáfrica,Base,Selecciones,33,False,0,False
-RSA6,Mbekezeli Mbokazi,Sudáfrica,Base,Selecciones,34,False,0,False
-RSA7,Khulumani Ndamane,Sudáfrica,Base,Selecciones,35,False,0,False
+RSA6,Mbekezeli Mbokazi,Sudáfrica,Base,Selecciones,34,True,0,False
+RSA7,Khulumani Ndamane,Sudáfrica,Base,Selecciones,35,True,0,False
 RSA8,Siyabonga Ngezana,Sudáfrica,Base,Selecciones,36,False,0,False
 RSA9,Khuliso Mudau,Sudáfrica,Base,Selecciones,37,True,0,False
 RSA10,Nkosinathi Sibisi,Sudáfrica,Base,Selecciones,38,False,0,False
@@ -293,7 +293,7 @@ AUS2,Mathew Ryan,Australia,Base,Selecciones,290,False,0,False
 AUS3,Joe Gauci,Australia,Base,Selecciones,291,False,0,False
 AUS4,Harry Souttar,Australia,Base,Selecciones,292,True,0,False
 AUS5,Alessandro Circati,Australia,Base,Selecciones,293,False,0,False
-AUS6,Jordan Bos,Australia,Base,Selecciones,294,True,0,False
+AUS6,Jordan Bos,Australia,Base,Selecciones,294,True,1,False
 AUS7,Aziz Behich,Australia,Base,Selecciones,295,True,0,False
 AUS8,Cameron Burgess,Australia,Base,Selecciones,296,False,0,False
 AUS9,Lewis Miller,Australia,Base,Selecciones,297,True,1,False
@@ -596,7 +596,7 @@ CPV5,Diney,Cabo Verde,Base,Selecciones,593,False,0,False
 CPV6,Steven Moreira,Cabo Verde,Base,Selecciones,594,False,0,False
 CPV7,Wagner Pina,Cabo Verde,Base,Selecciones,595,True,0,False
 CPV8,João Paulo,Cabo Verde,Base,Selecciones,596,False,0,False
-CPV9,Yannick Semedo,Cabo Verde,Base,Selecciones,597,False,0,False
+CPV9,Yannick Semedo,Cabo Verde,Base,Selecciones,597,True,0,False
 CPV10,Kevin Pina,Cabo Verde,Base,Selecciones,598,False,0,False
 CPV11,Patrick Andrade,Cabo Verde,Base,Selecciones,599,False,0,False
 CPV12,Jamiro Monteiro,Cabo Verde,Base,Selecciones,600,False,0,False
@@ -646,7 +646,7 @@ URU15,Nicolás de la Cruz,Uruguay,Base,Selecciones,643,False,0,False
 URU16,Maxi Araújo,Uruguay,Base,Selecciones,644,False,0,False
 URU17,Darwin Núñez,Uruguay,Base,Selecciones,645,False,0,False
 URU18,Federico Viñas,Uruguay,Base,Selecciones,646,True,0,False
-URU19,Rodrigo Aguirre,Uruguay,Base,Selecciones,647,True,1,False
+URU19,Rodrigo Aguirre,Uruguay,Base,Selecciones,647,True,2,False
 URU20,Facundo Pellistri,Uruguay,Base,Selecciones,648,True,1,False
 FRA1,Escudo del equipo,Francia,FOIL,Selecciones,649,False,0,False
 FRA2,Mike Maignan,Francia,Base,Selecciones,650,False,0,False
@@ -794,7 +794,7 @@ JOR3,Ihsan Haddad,Jordania,Base,Selecciones,791,True,0,False
 JOR4,Mohammad Abu Hashish,Jordania,Base,Selecciones,792,False,0,False
 JOR5,Yazan Al-Arab,Jordania,Base,Selecciones,793,True,1,False
 JOR6,Abdallah Nasib,Jordania,Base,Selecciones,794,False,0,False
-JOR7,Saleem Obaid,Jordania,Base,Selecciones,795,False,0,False
+JOR7,Saleem Obaid,Jordania,Base,Selecciones,795,True,0,False
 JOR8,Mohammad Abualnadi,Jordania,Base,Selecciones,796,True,0,False
 JOR9,Ibrahim Saadeh,Jordania,Base,Selecciones,797,False,0,False
 JOR10,Nizar Al-Rashdan,Jordania,Base,Selecciones,798,True,0,False
@@ -820,7 +820,7 @@ POR9,Bernardo Silva,Portugal,Base,Selecciones,817,True,0,False
 POR10,Bruno Fernandes,Portugal,Base,Selecciones,818,True,1,False
 POR11,Rúben Neves,Portugal,Base,Selecciones,819,True,0,False
 POR12,Vitinha,Portugal,Base,Selecciones,820,False,0,False
-POR13,Foto de equipo,Portugal,Base,Selecciones,821,True,0,False
+POR13,Foto de equipo,Portugal,Base,Selecciones,821,True,1,False
 POR14,João Neves,Portugal,Base,Selecciones,822,False,0,False
 POR15,Cristiano Ronaldo,Portugal,Base,Selecciones,823,False,0,False
 POR16,Francisco Trincão,Portugal,Base,Selecciones,824,True,0,False
