@@ -22,7 +22,7 @@ st.set_page_config(
 # =====================================================
 
 GITHUB_TOKEN = st.secrets.get("GITHUB_TOKEN", "")
-GITHUB_REPO = st.secrets.get("GITHUB_REPO", "")  
+GITHUB_REPO = st.secrets.get("GITHUB_REPO", "") 
 GITHUB_BRANCH = st.secrets.get("GITHUB_BRANCH", "main")
 GITHUB_DATA_PATH = st.secrets.get("GITHUB_DATA_PATH", "album_guardado.csv")
 
