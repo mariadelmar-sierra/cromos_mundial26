@@ -28,7 +28,7 @@ MEX17,Raúl Jiménez,México,Base,Selecciones,25,False,0,False
 MEX18,Alexis Vega,México,Base,Selecciones,26,False,0,False
 MEX19,Roberto Alvarado,México,Base,Selecciones,27,False,0,False
 MEX20,César Huerta,México,Base,Selecciones,28,True,0,False
-RSA1,Escudo del equipo,Sudáfrica,FOIL,Selecciones,29,False,0,False
+RSA1,Escudo del equipo,Sudáfrica,FOIL,Selecciones,29,True,0,False
 RSA2,Ronwen Williams,Sudáfrica,Base,Selecciones,30,False,0,False
 RSA3,Sipho Chaine,Sudáfrica,Base,Selecciones,31,False,0,False
 RSA4,Aubrey Modiba,Sudáfrica,Base,Selecciones,32,False,0,False
@@ -36,11 +36,11 @@ RSA5,Samukele Kabini,Sudáfrica,Base,Selecciones,33,False,0,False
 RSA6,Mbekezeli Mbokazi,Sudáfrica,Base,Selecciones,34,False,0,False
 RSA7,Khulumani Ndamane,Sudáfrica,Base,Selecciones,35,False,0,False
 RSA8,Siyabonga Ngezana,Sudáfrica,Base,Selecciones,36,False,0,False
-RSA9,Khuliso Mudau,Sudáfrica,Base,Selecciones,37,False,0,False
+RSA9,Khuliso Mudau,Sudáfrica,Base,Selecciones,37,True,0,False
 RSA10,Nkosinathi Sibisi,Sudáfrica,Base,Selecciones,38,False,0,False
 RSA11,Teboho Mokoena,Sudáfrica,Base,Selecciones,39,False,0,False
 RSA12,Thalente Mbatha,Sudáfrica,Base,Selecciones,40,False,0,False
-RSA13,Foto de equipo,Sudáfrica,Base,Selecciones,41,False,0,False
+RSA13,Foto de equipo,Sudáfrica,Base,Selecciones,41,True,0,False
 RSA14,Bathusi Aubaas,Sudáfrica,Base,Selecciones,42,False,0,False
 RSA15,Yaya Sithole,Sudáfrica,Base,Selecciones,43,False,0,False
 RSA16,Sipho Mbule,Sudáfrica,Base,Selecciones,44,False,0,False
@@ -51,13 +51,13 @@ RSA20,Oswin Appollis,Sudáfrica,Base,Selecciones,48,False,0,False
 KOR1,Escudo del equipo,Corea del Sur,FOIL,Selecciones,49,False,0,False
 KOR2,Jo Hyeon-woo,Corea del Sur,Base,Selecciones,50,False,0,False
 KOR3,Kim Seung-gyu,Corea del Sur,Base,Selecciones,51,False,0,False
-KOR4,Kim Min-jae,Corea del Sur,Base,Selecciones,52,False,0,False
+KOR4,Kim Min-jae,Corea del Sur,Base,Selecciones,52,True,0,False
 KOR5,Cho Yu-min,Corea del Sur,Base,Selecciones,53,False,0,False
-KOR6,Seol Young-woo,Corea del Sur,Base,Selecciones,54,False,0,False
+KOR6,Seol Young-woo,Corea del Sur,Base,Selecciones,54,True,0,False
 KOR7,Lee Han-beom,Corea del Sur,Base,Selecciones,55,False,0,False
 KOR8,Lee Tae-seok,Corea del Sur,Base,Selecciones,56,False,0,False
-KOR9,Lee Myung-jae,Corea del Sur,Base,Selecciones,57,False,0,False
-KOR10,Lee Jae-sung,Corea del Sur,Base,Selecciones,58,False,0,False
+KOR9,Lee Myung-jae,Corea del Sur,Base,Selecciones,57,True,0,False
+KOR10,Lee Jae-sung,Corea del Sur,Base,Selecciones,58,True,0,False
 KOR11,Hwang In-beom,Corea del Sur,Base,Selecciones,59,False,0,False
 KOR12,Lee Kang-in,Corea del Sur,Base,Selecciones,60,False,0,False
 KOR13,Foto de equipo,Corea del Sur,Base,Selecciones,61,False,0,False
@@ -67,45 +67,45 @@ KOR16,Lee Dong-gyeong,Corea del Sur,Base,Selecciones,64,False,0,False
 KOR17,Cho Gue-sung,Corea del Sur,Base,Selecciones,65,False,0,False
 KOR18,Son Heung-min,Corea del Sur,Base,Selecciones,66,False,0,False
 KOR19,Hwang Hee-chan,Corea del Sur,Base,Selecciones,67,False,0,False
-KOR20,Oh Hyeon-gyu,Corea del Sur,Base,Selecciones,68,False,0,False
+KOR20,Oh Hyeon-gyu,Corea del Sur,Base,Selecciones,68,True,0,False
 CZE1,Escudo del equipo,Chequia,FOIL,Selecciones,69,False,0,False
 CZE2,Matej Kovar,Chequia,Base,Selecciones,70,False,0,False
-CZE3,Jindrich Stanek,Chequia,Base,Selecciones,71,False,0,False
-CZE4,Ladislav Krejci,Chequia,Base,Selecciones,72,False,0,False
-CZE5,Vladimir Coufal,Chequia,Base,Selecciones,73,False,0,False
-CZE6,Jaroslav Zeleny,Chequia,Base,Selecciones,74,False,0,False
+CZE3,Jindrich Stanek,Chequia,Base,Selecciones,71,True,0,False
+CZE4,Ladislav Krejci,Chequia,Base,Selecciones,72,True,0,False
+CZE5,Vladimir Coufal,Chequia,Base,Selecciones,73,True,0,False
+CZE6,Jaroslav Zeleny,Chequia,Base,Selecciones,74,True,0,False
 CZE7,Tomas Holes,Chequia,Base,Selecciones,75,False,0,False
 CZE8,David Zima,Chequia,Base,Selecciones,76,False,0,False
-CZE9,Michal Sadilek,Chequia,Base,Selecciones,77,False,0,False
-CZE10,Lukas Provod,Chequia,Base,Selecciones,78,False,0,False
+CZE9,Michal Sadilek,Chequia,Base,Selecciones,77,True,0,False
+CZE10,Lukas Provod,Chequia,Base,Selecciones,78,True,0,False
 CZE11,Lukas Cerv,Chequia,Base,Selecciones,79,False,0,False
-CZE12,Tomas Soucek,Chequia,Base,Selecciones,80,False,0,False
+CZE12,Tomas Soucek,Chequia,Base,Selecciones,80,True,0,False
 CZE13,Foto de equipo,Chequia,Base,Selecciones,81,False,0,False
 CZE14,Pavel Sulc,Chequia,Base,Selecciones,82,False,0,False
-CZE15,Matej Vydra,Chequia,Base,Selecciones,83,False,0,False
+CZE15,Matej Vydra,Chequia,Base,Selecciones,83,True,0,False
 CZE16,Vasil Kusej,Chequia,Base,Selecciones,84,False,0,False
 CZE17,Tomas Chory,Chequia,Base,Selecciones,85,False,0,False
 CZE18,Vaclav Cerny,Chequia,Base,Selecciones,86,False,0,False
 CZE19,Adam Hlozek,Chequia,Base,Selecciones,87,False,0,False
-CZE20,Patrik Schick,Chequia,Base,Selecciones,88,False,0,False
+CZE20,Patrik Schick,Chequia,Base,Selecciones,88,True,0,False
 CAN1,Escudo del equipo,Canadá,FOIL,Selecciones,89,False,0,False
 CAN2,Dayne St. Clair,Canadá,Base,Selecciones,90,False,0,False
-CAN3,Alphonso Davies,Canadá,Base,Selecciones,91,False,0,False
+CAN3,Alphonso Davies,Canadá,Base,Selecciones,91,True,0,False
 CAN4,Alistair Johnston,Canadá,Base,Selecciones,92,False,0,False
 CAN5,Samuel Adekugbe,Canadá,Base,Selecciones,93,False,0,False
 CAN6,Richie Laryea,Canadá,Base,Selecciones,94,False,0,False
-CAN7,Derek Cornelius,Canadá,Base,Selecciones,95,False,0,False
+CAN7,Derek Cornelius,Canadá,Base,Selecciones,95,True,0,False
 CAN8,Moïse Bombito,Canadá,Base,Selecciones,96,False,0,False
 CAN9,Kamal Miller,Canadá,Base,Selecciones,97,False,0,False
-CAN10,Stephen Eustáquio,Canadá,Base,Selecciones,98,False,0,False
+CAN10,Stephen Eustáquio,Canadá,Base,Selecciones,98,True,0,False
 CAN11,Ismaël Koné,Canadá,Base,Selecciones,99,False,0,False
 CAN12,Jonathan Osorio,Canadá,Base,Selecciones,100,False,0,False
 CAN13,Foto de equipo,Canadá,Base,Selecciones,101,False,0,False
-CAN14,Jacob Shaffelburg,Canadá,Base,Selecciones,102,False,0,False
+CAN14,Jacob Shaffelburg,Canadá,Base,Selecciones,102,True,0,False
 CAN15,Mathieu Choinière,Canadá,Base,Selecciones,103,False,0,False
 CAN16,Niko Sigur,Canadá,Base,Selecciones,104,False,0,False
 CAN17,Tajon Buchanan,Canadá,Base,Selecciones,105,False,0,False
-CAN18,Liam Millar,Canadá,Base,Selecciones,106,False,0,False
+CAN18,Liam Millar,Canadá,Base,Selecciones,106,True,0,False
 CAN19,Cyle Larin,Canadá,Base,Selecciones,107,False,0,False
 CAN20,Jonathan David,Canadá,Base,Selecciones,108,False,0,False
 BIH1,Escudo del equipo,Bosnia y Herzegovina,FOIL,Selecciones,109,False,0,False
