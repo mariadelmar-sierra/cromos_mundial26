@@ -650,63 +650,63 @@ URU19,Rodrigo Aguirre,Uruguay,Base,Selecciones,647,True,0,False
 URU20,Facundo Pellistri,Uruguay,Base,Selecciones,648,True,0,False
 FRA1,Escudo del equipo,Francia,FOIL,Selecciones,649,False,0,False
 FRA2,Mike Maignan,Francia,Base,Selecciones,650,False,0,False
-FRA3,Theo Hernández,Francia,Base,Selecciones,651,False,0,False
+FRA3,Theo Hernández,Francia,Base,Selecciones,651,True,0,False
 FRA4,William Saliba,Francia,Base,Selecciones,652,False,0,False
 FRA5,Jules Koundé,Francia,Base,Selecciones,653,False,0,False
 FRA6,Ibrahima Konaté,Francia,Base,Selecciones,654,False,0,False
-FRA7,Dayot Upamecano,Francia,Base,Selecciones,655,False,0,False
-FRA8,Lucas Digne,Francia,Base,Selecciones,656,False,0,False
-FRA9,Aurélien Tchouaméni,Francia,Base,Selecciones,657,False,0,False
-FRA10,Eduardo Camavinga,Francia,Base,Selecciones,658,False,0,False
+FRA7,Dayot Upamecano,Francia,Base,Selecciones,655,True,0,False
+FRA8,Lucas Digne,Francia,Base,Selecciones,656,True,0,False
+FRA9,Aurélien Tchouaméni,Francia,Base,Selecciones,657,True,0,False
+FRA10,Eduardo Camavinga,Francia,Base,Selecciones,658,True,0,False
 FRA11,Manu Koné,Francia,Base,Selecciones,659,False,0,False
-FRA12,Adrien Rabiot,Francia,Base,Selecciones,660,False,0,False
+FRA12,Adrien Rabiot,Francia,Base,Selecciones,660,True,0,False
 FRA13,Foto de equipo,Francia,Base,Selecciones,661,False,0,False
 FRA14,Michael Olise,Francia,Base,Selecciones,662,False,0,False
 FRA15,Ousmane Dembélé,Francia,Base,Selecciones,663,False,0,False
-FRA16,Bradley Barcola,Francia,Base,Selecciones,664,False,0,False
+FRA16,Bradley Barcola,Francia,Base,Selecciones,664,True,0,False
 FRA17,Désiré Doué,Francia,Base,Selecciones,665,False,0,False
 FRA18,Kingsley Coman,Francia,Base,Selecciones,666,False,0,False
 FRA19,Hugo Ekitike,Francia,Base,Selecciones,667,False,0,False
 FRA20,Kylian Mbappé,Francia,Base,Selecciones,668,False,0,False
-SEN1,Escudo del equipo,Senegal,FOIL,Selecciones,669,False,0,False
+SEN1,Escudo del equipo,Senegal,FOIL,Selecciones,669,True,0,False
 SEN2,Édouard Mendy,Senegal,Base,Selecciones,670,False,0,False
-SEN3,Yehvann Diouf,Senegal,Base,Selecciones,671,False,0,False
+SEN3,Yehvann Diouf,Senegal,Base,Selecciones,671,True,0,False
 SEN4,Moussa Niakhaté,Senegal,Base,Selecciones,672,False,0,False
 SEN5,Abdoulaye Seck,Senegal,Base,Selecciones,673,False,0,False
 SEN6,Ismail Jakobs,Senegal,Base,Selecciones,674,False,0,False
-SEN7,El Hadji Malick Diouf,Senegal,Base,Selecciones,675,False,0,False
-SEN8,Kalidou Koulibaly,Senegal,Base,Selecciones,676,False,0,False
+SEN7,El Hadji Malick Diouf,Senegal,Base,Selecciones,675,True,0,False
+SEN8,Kalidou Koulibaly,Senegal,Base,Selecciones,676,True,0,False
 SEN9,Idrissa Gana Gueye,Senegal,Base,Selecciones,677,False,0,False
-SEN10,Pape Matar Sarr,Senegal,Base,Selecciones,678,False,0,False
+SEN10,Pape Matar Sarr,Senegal,Base,Selecciones,678,True,0,False
 SEN11,Pape Gueye,Senegal,Base,Selecciones,679,False,0,False
 SEN12,Habib Diarra,Senegal,Base,Selecciones,680,False,0,False
-SEN13,Foto de equipo,Senegal,Base,Selecciones,681,False,0,False
+SEN13,Foto de equipo,Senegal,Base,Selecciones,681,True,0,False
 SEN14,Lamine Camara,Senegal,Base,Selecciones,682,False,0,False
-SEN15,Sadio Mané,Senegal,Base,Selecciones,683,False,0,False
+SEN15,Sadio Mané,Senegal,Base,Selecciones,683,True,0,False
 SEN16,Ismaïla Sarr,Senegal,Base,Selecciones,684,False,0,False
-SEN17,Boulaye Dia,Senegal,Base,Selecciones,685,False,0,False
+SEN17,Boulaye Dia,Senegal,Base,Selecciones,685,True,0,False
 SEN18,Iliman Ndiaye,Senegal,Base,Selecciones,686,False,0,False
 SEN19,Nicolas Jackson,Senegal,Base,Selecciones,687,False,0,False
 SEN20,Krépin Diatta,Senegal,Base,Selecciones,688,False,0,False
-IRQ1,Escudo del equipo,Irak,FOIL,Selecciones,689,False,0,False
+IRQ1,Escudo del equipo,Irak,FOIL,Selecciones,689,True,0,False
 IRQ2,Jalal Hassan,Irak,Base,Selecciones,690,False,0,False
 IRQ3,Rebin Sulaka,Irak,Base,Selecciones,691,False,0,False
 IRQ4,Hussein Ali,Irak,Base,Selecciones,692,False,0,False
 IRQ5,Akam Hashem,Irak,Base,Selecciones,693,False,0,False
-IRQ6,Merchas Doski,Irak,Base,Selecciones,694,False,0,False
-IRQ7,Zaid Tahseen,Irak,Base,Selecciones,695,False,0,False
+IRQ6,Merchas Doski,Irak,Base,Selecciones,694,True,0,False
+IRQ7,Zaid Tahseen,Irak,Base,Selecciones,695,True,0,False
 IRQ8,Manaf Younis,Irak,Base,Selecciones,696,False,0,False
-IRQ9,Zidane Iqbal,Irak,Base,Selecciones,697,False,0,False
+IRQ9,Zidane Iqbal,Irak,Base,Selecciones,697,True,0,False
 IRQ10,Amir Al-Ammari,Irak,Base,Selecciones,698,False,0,False
 IRQ11,Ibrahim Bayesh,Irak,Base,Selecciones,699,False,0,False
 IRQ12,Ali Jasim,Irak,Base,Selecciones,700,False,0,False
 IRQ13,Foto de equipo,Irak,Base,Selecciones,701,False,0,False
 IRQ14,Youssef Amyn,Irak,Base,Selecciones,702,False,0,False
-IRQ15,Aymen Hussein,Irak,Base,Selecciones,703,False,0,False
+IRQ15,Aymen Hussein,Irak,Base,Selecciones,703,True,0,False
 IRQ16,Marko Farji,Irak,Base,Selecciones,704,False,0,False
 IRQ17,Osama Rashid,Irak,Base,Selecciones,705,False,0,False
-IRQ18,Ali Al-Hamadi,Irak,Base,Selecciones,706,False,0,False
-IRQ19,Aimar Sher,Irak,Base,Selecciones,707,False,0,False
+IRQ18,Ali Al-Hamadi,Irak,Base,Selecciones,706,True,0,False
+IRQ19,Aimar Sher,Irak,Base,Selecciones,707,True,0,False
 IRQ20,Mohanad Ali,Irak,Base,Selecciones,708,False,0,False
 NOR1,Escudo del equipo,Noruega,FOIL,Selecciones,709,False,0,False
 NOR2,Ørjan Nyland,Noruega,Base,Selecciones,710,False,0,False
