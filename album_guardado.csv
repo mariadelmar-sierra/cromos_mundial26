@@ -78,10 +78,10 @@ CZE7,Tomas Holes,Chequia,Base,Selecciones,75,False,0,False
 CZE8,David Zima,Chequia,Base,Selecciones,76,False,0,False
 CZE9,Michal Sadilek,Chequia,Base,Selecciones,77,True,0,False
 CZE10,Lukas Provod,Chequia,Base,Selecciones,78,True,0,False
-CZE11,Lukas Cerv,Chequia,Base,Selecciones,79,False,0,False
+CZE11,Lukas Cerv,Chequia,Base,Selecciones,79,True,0,False
 CZE12,Tomas Soucek,Chequia,Base,Selecciones,80,True,1,False
 CZE13,Foto de equipo,Chequia,Base,Selecciones,81,False,0,False
-CZE14,Pavel Sulc,Chequia,Base,Selecciones,82,False,0,False
+CZE14,Pavel Sulc,Chequia,Base,Selecciones,82,True,0,False
 CZE15,Matej Vydra,Chequia,Base,Selecciones,83,True,0,False
 CZE16,Vasil Kusej,Chequia,Base,Selecciones,84,False,0,False
 CZE17,Tomas Chory,Chequia,Base,Selecciones,85,False,0,False
@@ -104,7 +104,7 @@ CAN13,Foto de equipo,Canadá,Base,Selecciones,101,False,0,False
 CAN14,Jacob Shaffelburg,Canadá,Base,Selecciones,102,True,1,False
 CAN15,Mathieu Choinière,Canadá,Base,Selecciones,103,False,0,False
 CAN16,Niko Sigur,Canadá,Base,Selecciones,104,False,0,False
-CAN17,Tajon Buchanan,Canadá,Base,Selecciones,105,False,0,False
+CAN17,Tajon Buchanan,Canadá,Base,Selecciones,105,True,0,False
 CAN18,Liam Millar,Canadá,Base,Selecciones,106,True,0,False
 CAN19,Cyle Larin,Canadá,Base,Selecciones,107,False,0,False
 CAN20,Jonathan David,Canadá,Base,Selecciones,108,False,0,False
@@ -113,7 +113,7 @@ BIH2,Nikola Vasilj,Bosnia y Herzegovina,Base,Selecciones,110,False,0,False
 BIH3,Amer Dedic,Bosnia y Herzegovina,Base,Selecciones,111,True,0,False
 BIH4,Sead Kolasinac,Bosnia y Herzegovina,Base,Selecciones,112,False,0,False
 BIH5,Tarik Muharemovic,Bosnia y Herzegovina,Base,Selecciones,113,True,0,False
-BIH6,Nihad Mujakic,Bosnia y Herzegovina,Base,Selecciones,114,True,0,False
+BIH6,Nihad Mujakic,Bosnia y Herzegovina,Base,Selecciones,114,True,1,False
 BIH7,Nikola Katic,Bosnia y Herzegovina,Base,Selecciones,115,True,2,False
 BIH8,Amir Hadziahmetovic,Bosnia y Herzegovina,Base,Selecciones,116,False,0,False
 BIH9,Benjamin Tahirovic,Bosnia y Herzegovina,Base,Selecciones,117,True,0,False
@@ -189,7 +189,7 @@ BRA18,Gabriel Martinelli,Brasil,Base,Selecciones,186,True,0,False
 BRA19,Raphinha,Brasil,Base,Selecciones,187,False,0,False
 BRA20,Estêvão,Brasil,Base,Selecciones,188,False,0,False
 MAR1,Escudo del equipo,Marruecos,FOIL,Selecciones,189,False,0,False
-MAR2,Yassine Bounou,Marruecos,Base,Selecciones,190,False,0,False
+MAR2,Yassine Bounou,Marruecos,Base,Selecciones,190,True,0,False
 MAR3,Munir El Kajoui,Marruecos,Base,Selecciones,191,False,0,False
 MAR4,Achraf Hakimi,Marruecos,Base,Selecciones,192,False,0,False
 MAR5,Noussair Mazraoui,Marruecos,Base,Selecciones,193,False,0,False
@@ -273,7 +273,7 @@ PAR2,Roberto Fernández,Paraguay,Base,Selecciones,270,True,0,False
 PAR3,Orlando Gill,Paraguay,Base,Selecciones,271,True,0,False
 PAR4,Gustavo Gómez,Paraguay,Base,Selecciones,272,True,0,False
 PAR5,Fabián Balbuena,Paraguay,Base,Selecciones,273,True,0,False
-PAR6,Juan José Cáceres,Paraguay,Base,Selecciones,274,False,0,False
+PAR6,Juan José Cáceres,Paraguay,Base,Selecciones,274,True,0,False
 PAR7,Omar Alderete,Paraguay,Base,Selecciones,275,False,0,False
 PAR8,Junior Alonso,Paraguay,Base,Selecciones,276,False,0,False
 PAR9,Mathías Villasanti,Paraguay,Base,Selecciones,277,False,0,False
@@ -299,7 +299,7 @@ AUS8,Cameron Burgess,Australia,Base,Selecciones,296,False,0,False
 AUS9,Lewis Miller,Australia,Base,Selecciones,297,True,1,False
 AUS10,Milos Degenek,Australia,Base,Selecciones,298,False,0,False
 AUS11,Jackson Irvine,Australia,Base,Selecciones,299,True,0,False
-AUS12,Riley McGree,Australia,Base,Selecciones,300,False,0,False
+AUS12,Riley McGree,Australia,Base,Selecciones,300,True,0,False
 AUS13,Foto de equipo,Australia,Base,Selecciones,301,False,0,False
 AUS14,Aiden O'Neill,Australia,Base,Selecciones,302,False,0,False
 AUS15,Connor Metcalfe,Australia,Base,Selecciones,303,False,0,False
@@ -379,7 +379,7 @@ CIV8,Emmanuel Agbadou,Costa de Marfil,Base,Selecciones,376,True,0,False
 CIV9,Ousmane Diomandé,Costa de Marfil,Base,Selecciones,377,True,0,False
 CIV10,Franck Kessié,Costa de Marfil,Base,Selecciones,378,False,0,False
 CIV11,Seko Fofana,Costa de Marfil,Base,Selecciones,379,False,0,False
-CIV12,Ibrahim Sangaré,Costa de Marfil,Base,Selecciones,380,False,0,False
+CIV12,Ibrahim Sangaré,Costa de Marfil,Base,Selecciones,380,True,0,False
 CIV13,Foto de equipo,Costa de Marfil,Base,Selecciones,381,False,0,False
 CIV14,Jean-Philippe Gbamin,Costa de Marfil,Base,Selecciones,382,False,0,False
 CIV15,Amad Diallo,Costa de Marfil,Base,Selecciones,383,True,0,False
@@ -419,7 +419,7 @@ NED8,Jeremie Frimpong,Países Bajos,Base,Selecciones,416,False,0,False
 NED9,Jan Paul van Hecke,Países Bajos,Base,Selecciones,417,False,0,False
 NED10,Tijjani Reijnders,Países Bajos,Base,Selecciones,418,False,0,False
 NED11,Ryan Gravenberch,Países Bajos,Base,Selecciones,419,False,0,False
-NED12,Teun Koopmeiners,Países Bajos,Base,Selecciones,420,True,0,False
+NED12,Teun Koopmeiners,Países Bajos,Base,Selecciones,420,True,1,False
 NED13,Foto de equipo,Países Bajos,Base,Selecciones,421,False,0,False
 NED14,Frenkie de Jong,Países Bajos,Base,Selecciones,422,False,0,False
 NED15,Xavi Simons,Países Bajos,Base,Selecciones,423,True,0,False
@@ -457,7 +457,7 @@ SWE6,Victor Lindelöf,Suecia,Base,Selecciones,454,False,0,False
 SWE7,Gustaf Lagerbielke,Suecia,Base,Selecciones,455,True,0,False
 SWE8,Lucas Bergvall,Suecia,Base,Selecciones,456,True,0,False
 SWE9,Hugo Larsson,Suecia,Base,Selecciones,457,False,0,False
-SWE10,Jesper Karlström,Suecia,Base,Selecciones,458,False,0,False
+SWE10,Jesper Karlström,Suecia,Base,Selecciones,458,True,0,False
 SWE11,Yasin Ayari,Suecia,Base,Selecciones,459,True,0,False
 SWE12,Mattias Svanberg,Suecia,Base,Selecciones,460,False,0,False
 SWE13,Foto de equipo,Suecia,Base,Selecciones,461,True,0,False
@@ -636,7 +636,7 @@ URU5,José María Giménez,Uruguay,Base,Selecciones,633,False,0,False
 URU6,Sebastián Cáceres,Uruguay,Base,Selecciones,634,False,0,False
 URU7,Mathías Olivera,Uruguay,Base,Selecciones,635,False,0,False
 URU8,Guillermo Varela,Uruguay,Base,Selecciones,636,False,0,False
-URU9,Nahitan Nández,Uruguay,Base,Selecciones,637,False,0,False
+URU9,Nahitan Nández,Uruguay,Base,Selecciones,637,True,0,False
 URU10,Federico Valverde,Uruguay,Base,Selecciones,638,False,0,False
 URU11,Giorgian De Arrascaeta,Uruguay,Base,Selecciones,639,False,0,False
 URU12,Rodrigo Bentancur,Uruguay,Base,Selecciones,640,False,0,False
@@ -666,7 +666,7 @@ FRA15,Ousmane Dembélé,Francia,Base,Selecciones,663,False,0,False
 FRA16,Bradley Barcola,Francia,Base,Selecciones,664,True,1,False
 FRA17,Désiré Doué,Francia,Base,Selecciones,665,False,0,False
 FRA18,Kingsley Coman,Francia,Base,Selecciones,666,False,0,False
-FRA19,Hugo Ekitike,Francia,Base,Selecciones,667,False,0,False
+FRA19,Hugo Ekitike,Francia,Base,Selecciones,667,True,0,False
 FRA20,Kylian Mbappé,Francia,Base,Selecciones,668,False,0,False
 SEN1,Escudo del equipo,Senegal,FOIL,Selecciones,669,True,0,False
 SEN2,Édouard Mendy,Senegal,Base,Selecciones,670,False,0,False
@@ -824,7 +824,7 @@ POR13,Foto de equipo,Portugal,Base,Selecciones,821,True,1,False
 POR14,João Neves,Portugal,Base,Selecciones,822,False,0,False
 POR15,Cristiano Ronaldo,Portugal,Base,Selecciones,823,False,0,False
 POR16,Francisco Trincão,Portugal,Base,Selecciones,824,True,0,False
-POR17,João Félix,Portugal,Base,Selecciones,825,False,0,False
+POR17,João Félix,Portugal,Base,Selecciones,825,True,0,False
 POR18,Gonçalo Ramos,Portugal,Base,Selecciones,826,True,2,False
 POR19,Pedro Neto,Portugal,Base,Selecciones,827,False,0,False
 POR20,Rafael Leão,Portugal,Base,Selecciones,828,True,1,False
@@ -907,7 +907,7 @@ ENG16,Phil Foden,Inglaterra,Base,Selecciones,904,False,0,False
 ENG17,Bukayo Saka,Inglaterra,Base,Selecciones,905,False,0,False
 ENG18,Harry Kane,Inglaterra,Base,Selecciones,906,False,0,False
 ENG19,Marcus Rashford,Inglaterra,Base,Selecciones,907,False,0,False
-ENG20,Ollie Watkins,Inglaterra,Base,Selecciones,908,False,0,False
+ENG20,Ollie Watkins,Inglaterra,Base,Selecciones,908,True,0,False
 CRO1,Escudo del equipo,Croacia,FOIL,Selecciones,909,False,0,False
 CRO2,Dominik Livaković,Croacia,Base,Selecciones,910,False,0,False
 CRO3,Duje Caleta-Car,Croacia,Base,Selecciones,911,False,0,False
