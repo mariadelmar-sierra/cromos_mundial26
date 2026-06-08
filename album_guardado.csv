@@ -39,7 +39,7 @@ RSA8,Siyabonga Ngezana,Sudáfrica,Base,Selecciones,36,False,0,False
 RSA9,Khuliso Mudau,Sudáfrica,Base,Selecciones,37,True,0,False
 RSA10,Nkosinathi Sibisi,Sudáfrica,Base,Selecciones,38,False,0,False
 RSA11,Teboho Mokoena,Sudáfrica,Base,Selecciones,39,False,0,False
-RSA12,Thalente Mbatha,Sudáfrica,Base,Selecciones,40,False,0,False
+RSA12,Thalente Mbatha,Sudáfrica,Base,Selecciones,40,True,0,False
 RSA13,Foto de equipo,Sudáfrica,Base,Selecciones,41,True,0,False
 RSA14,Bathusi Aubaas,Sudáfrica,Base,Selecciones,42,False,0,False
 RSA15,Yaya Sithole,Sudáfrica,Base,Selecciones,43,False,0,False
@@ -108,7 +108,7 @@ CAN17,Tajon Buchanan,Canadá,Base,Selecciones,105,True,0,False
 CAN18,Liam Millar,Canadá,Base,Selecciones,106,True,0,False
 CAN19,Cyle Larin,Canadá,Base,Selecciones,107,False,0,False
 CAN20,Jonathan David,Canadá,Base,Selecciones,108,False,0,False
-BIH1,Escudo del equipo,Bosnia y Herzegovina,FOIL,Selecciones,109,False,0,False
+BIH1,Escudo del equipo,Bosnia y Herzegovina,FOIL,Selecciones,109,True,0,False
 BIH2,Nikola Vasilj,Bosnia y Herzegovina,Base,Selecciones,110,False,0,False
 BIH3,Amer Dedic,Bosnia y Herzegovina,Base,Selecciones,111,True,0,False
 BIH4,Sead Kolasinac,Bosnia y Herzegovina,Base,Selecciones,112,False,0,False
@@ -136,8 +136,8 @@ QAT5,Homam Ahmed,Catar,Base,Selecciones,133,False,0,False
 QAT6,Boualem Khoukhi,Catar,Base,Selecciones,134,False,0,False
 QAT7,Pedro Miguel,Catar,Base,Selecciones,135,True,0,False
 QAT8,Tarek Salman,Catar,Base,Selecciones,136,False,0,False
-QAT9,Mohamed Al-Mannai,Catar,Base,Selecciones,137,False,0,False
-QAT10,Karim Boudiaf,Catar,Base,Selecciones,138,False,0,False
+QAT9,Mohamed Al-Mannai,Catar,Base,Selecciones,137,True,0,False
+QAT10,Karim Boudiaf,Catar,Base,Selecciones,138,True,0,False
 QAT11,Assim Madibo,Catar,Base,Selecciones,139,True,0,False
 QAT12,Ahmed Fatehi,Catar,Base,Selecciones,140,False,0,False
 QAT13,Foto de equipo,Catar,Base,Selecciones,141,False,0,False
@@ -212,12 +212,12 @@ HAI1,Escudo del equipo,Haití,FOIL,Selecciones,209,True,0,False
 HAI2,Johny Placide,Haití,Base,Selecciones,210,True,0,False
 HAI3,Carlens Arcus,Haití,Base,Selecciones,211,False,0,False
 HAI4,Martin Expérience,Haití,Base,Selecciones,212,False,0,False
-HAI5,Jean-Kevin Duverne,Haití,Base,Selecciones,213,False,0,False
+HAI5,Jean-Kevin Duverne,Haití,Base,Selecciones,213,True,0,False
 HAI6,Ricardo Adé,Haití,Base,Selecciones,214,True,1,False
 HAI7,Duke Lacroix,Haití,Base,Selecciones,215,False,0,False
 HAI8,Garven Metusala,Haití,Base,Selecciones,216,True,1,False
 HAI9,Hannes Delcroix,Haití,Base,Selecciones,217,False,0,False
-HAI10,Leverton Pierre,Haití,Base,Selecciones,218,True,0,False
+HAI10,Leverton Pierre,Haití,Base,Selecciones,218,True,1,False
 HAI11,Danley Jean Jacques,Haití,Base,Selecciones,219,True,0,False
 HAI12,Jean-Ricner Bellegarde,Haití,Base,Selecciones,220,True,0,False
 HAI13,Foto de equipo,Haití,Base,Selecciones,221,False,0,False
@@ -330,7 +330,7 @@ TUR19,Kerem Aktürkoglu,Turquía,Base,Selecciones,327,True,0,False
 TUR20,Kenan Yildiz,Turquía,Base,Selecciones,328,True,0,False
 GER1,Escudo del equipo,Alemania,FOIL,Selecciones,329,False,0,False
 GER2,Marc-André ter Stegen,Alemania,Base,Selecciones,330,False,0,False
-GER3,Jonathan Tah,Alemania,Base,Selecciones,331,False,0,False
+GER3,Jonathan Tah,Alemania,Base,Selecciones,331,True,0,False
 GER4,David Raum,Alemania,Base,Selecciones,332,True,1,False
 GER5,Nico Schlotterbeck,Alemania,Base,Selecciones,333,True,0,False
 GER6,Antonio Rüdiger,Alemania,Base,Selecciones,334,False,0,False
@@ -338,7 +338,7 @@ GER7,Waldemar Anton,Alemania,Base,Selecciones,335,False,0,False
 GER8,Ridle Baku,Alemania,Base,Selecciones,336,False,0,False
 GER9,Maximilian Mittelstädt,Alemania,Base,Selecciones,337,True,0,False
 GER10,Joshua Kimmich,Alemania,Base,Selecciones,338,False,0,False
-GER11,Florian Wirtz,Alemania,Base,Selecciones,339,False,0,False
+GER11,Florian Wirtz,Alemania,Base,Selecciones,339,True,0,False
 GER12,Felix Nmecha,Alemania,Base,Selecciones,340,False,0,False
 GER13,Foto de equipo,Alemania,Base,Selecciones,341,False,0,False
 GER14,Leon Goretzka,Alemania,Base,Selecciones,342,True,0,False
@@ -432,7 +432,7 @@ JPN1,Escudo del equipo,Japón,FOIL,Selecciones,429,False,0,False
 JPN2,Zion Suzuki,Japón,Base,Selecciones,430,False,0,False
 JPN3,Henry Hiroki Mochizuki,Japón,Base,Selecciones,431,True,0,False
 JPN4,Ayumu Seko,Japón,Base,Selecciones,432,False,0,False
-JPN5,Junnosuke Suzuki,Japón,Base,Selecciones,433,False,0,False
+JPN5,Junnosuke Suzuki,Japón,Base,Selecciones,433,True,0,False
 JPN6,Shogo Taniguchi,Japón,Base,Selecciones,434,False,0,False
 JPN7,Tsuyoshi Watanabe,Japón,Base,Selecciones,435,True,0,False
 JPN8,Kaishu Sano,Japón,Base,Selecciones,436,False,0,False
@@ -475,7 +475,7 @@ TUN4,Yan Valery,Túnez,Base,Selecciones,472,True,0,False
 TUN5,Montassar Talbi,Túnez,Base,Selecciones,473,False,0,False
 TUN6,Yassine Meriah,Túnez,Base,Selecciones,474,True,0,False
 TUN7,Ali Abdi,Túnez,Base,Selecciones,475,True,0,False
-TUN8,Dylan Bronn,Túnez,Base,Selecciones,476,True,0,False
+TUN8,Dylan Bronn,Túnez,Base,Selecciones,476,True,1,False
 TUN9,Ellyes Skhiri,Túnez,Base,Selecciones,477,True,0,False
 TUN10,Aïssa Laïdouni,Túnez,Base,Selecciones,478,True,1,False
 TUN11,Ferjani Sassi,Túnez,Base,Selecciones,479,False,0,False
@@ -611,7 +611,7 @@ CPV20,Bebe,Cabo Verde,Base,Selecciones,608,False,0,False
 KSA1,Escudo del equipo,Arabia Saudí,FOIL,Selecciones,609,False,0,False
 KSA2,Nawaf Alaqidi,Arabia Saudí,Base,Selecciones,610,False,0,False
 KSA3,Abdulrahman Al-Sanbi,Arabia Saudí,Base,Selecciones,611,False,0,False
-KSA4,Saud Abdulhamid,Arabia Saudí,Base,Selecciones,612,False,0,False
+KSA4,Saud Abdulhamid,Arabia Saudí,Base,Selecciones,612,True,0,False
 KSA5,Nawaf Boushal,Arabia Saudí,Base,Selecciones,613,True,0,False
 KSA6,Jihad Thakri,Arabia Saudí,Base,Selecciones,614,False,0,False
 KSA7,Moteb Al-Harbi,Arabia Saudí,Base,Selecciones,615,False,0,False
@@ -835,7 +835,7 @@ COD4,Axel Tuanzebe,RD Congo,Base,Selecciones,832,True,0,False
 COD5,Arthur Masuaku,RD Congo,Base,Selecciones,833,False,0,False
 COD6,Chancel Mbemba,RD Congo,Base,Selecciones,834,False,0,False
 COD7,Joris Kayembe,RD Congo,Base,Selecciones,835,False,0,False
-COD8,Charles Pickel,RD Congo,Base,Selecciones,836,False,0,False
+COD8,Charles Pickel,RD Congo,Base,Selecciones,836,True,0,False
 COD9,Ngal'ayel Mukau,RD Congo,Base,Selecciones,837,True,0,False
 COD10,Edo Kayembe,RD Congo,Base,Selecciones,838,True,0,False
 COD11,Samuel Moutoussamy,RD Congo,Base,Selecciones,839,False,0,False
@@ -844,7 +844,7 @@ COD13,Foto de equipo,RD Congo,Base,Selecciones,841,False,0,False
 COD14,Théo Bongonda,RD Congo,Base,Selecciones,842,True,0,False
 COD15,Meschak Elia,RD Congo,Base,Selecciones,843,False,0,False
 COD16,Yoane Wissa,RD Congo,Base,Selecciones,844,True,0,False
-COD17,Brian Cipenga,RD Congo,Base,Selecciones,845,True,0,False
+COD17,Brian Cipenga,RD Congo,Base,Selecciones,845,True,1,False
 COD18,Fiston Mayele,RD Congo,Base,Selecciones,846,True,0,False
 COD19,Cédric Bakambu,RD Congo,Base,Selecciones,847,False,0,False
 COD20,Nathanaël Mbuku,RD Congo,Base,Selecciones,848,True,0,False
@@ -938,7 +938,7 @@ GHA7,Gideon Mensah,Ghana,Base,Selecciones,935,True,1,False
 GHA8,Caleb Yirenkyi,Ghana,Base,Selecciones,936,True,0,False
 GHA9,Abdul Fatawu Issahaku,Ghana,Base,Selecciones,937,True,0,False
 GHA10,Thomas Partey,Ghana,Base,Selecciones,938,True,0,False
-GHA11,Salis Abdul Samed,Ghana,Base,Selecciones,939,False,0,False
+GHA11,Salis Abdul Samed,Ghana,Base,Selecciones,939,True,0,False
 GHA12,Kamaldeen Sulemana,Ghana,Base,Selecciones,940,False,0,False
 GHA13,Foto de equipo,Ghana,Base,Selecciones,941,False,0,False
 GHA14,Mohammed Kudus,Ghana,Base,Selecciones,942,True,0,False
