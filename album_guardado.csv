@@ -48,7 +48,7 @@ RSA17,Lyle Foster,Sudáfrica,Base,Selecciones,45,False,0,False
 RSA18,Iqraam Rayners,Sudáfrica,Base,Selecciones,46,False,0,False
 RSA19,Mohau Nkota,Sudáfrica,Base,Selecciones,47,False,0,False
 RSA20,Oswin Appollis,Sudáfrica,Base,Selecciones,48,False,0,False
-KOR1,Escudo del equipo,Corea del Sur,FOIL,Selecciones,49,False,0,False
+KOR1,Escudo del equipo,Corea del Sur,FOIL,Selecciones,49,True,0,False
 KOR2,Jo Hyeon-woo,Corea del Sur,Base,Selecciones,50,False,0,False
 KOR3,Kim Seung-gyu,Corea del Sur,Base,Selecciones,51,False,0,False
 KOR4,Kim Min-jae,Corea del Sur,Base,Selecciones,52,True,0,False
@@ -154,7 +154,7 @@ SUI3,Yvon Mvogo,Suiza,Base,Selecciones,151,False,0,False
 SUI4,Manuel Akanji,Suiza,Base,Selecciones,152,False,0,False
 SUI5,Ricardo Rodríguez,Suiza,Base,Selecciones,153,True,0,False
 SUI6,Nico Elvedi,Suiza,Base,Selecciones,154,False,0,False
-SUI7,Aurèle Amenda,Suiza,Base,Selecciones,155,False,0,False
+SUI7,Aurèle Amenda,Suiza,Base,Selecciones,155,True,0,False
 SUI8,Silvan Widmer,Suiza,Base,Selecciones,156,False,0,False
 SUI9,Granit Xhaka,Suiza,Base,Selecciones,157,False,0,False
 SUI10,Denis Zakaria,Suiza,Base,Selecciones,158,False,0,False
@@ -230,7 +230,7 @@ HAI19,Louicius Deedson,Haití,Base,Selecciones,227,True,1,False
 HAI20,Frantzdy Pierrot,Haití,Base,Selecciones,228,True,0,False
 SCO1,Escudo del equipo,Escocia,FOIL,Selecciones,229,True,0,False
 SCO2,Angus Gunn,Escocia,Base,Selecciones,230,False,0,False
-SCO3,Jack Hendry,Escocia,Base,Selecciones,231,False,0,False
+SCO3,Jack Hendry,Escocia,Base,Selecciones,231,True,0,False
 SCO4,Kieran Tierney,Escocia,Base,Selecciones,232,False,0,False
 SCO5,Aaron Hickey,Escocia,Base,Selecciones,233,False,0,False
 SCO6,Andrew Robertson,Escocia,Base,Selecciones,234,False,0,False
@@ -297,7 +297,7 @@ AUS6,Jordan Bos,Australia,Base,Selecciones,294,True,1,False
 AUS7,Aziz Behich,Australia,Base,Selecciones,295,True,0,False
 AUS8,Cameron Burgess,Australia,Base,Selecciones,296,False,0,False
 AUS9,Lewis Miller,Australia,Base,Selecciones,297,True,1,False
-AUS10,Milos Degenek,Australia,Base,Selecciones,298,False,0,False
+AUS10,Milos Degenek,Australia,Base,Selecciones,298,True,0,False
 AUS11,Jackson Irvine,Australia,Base,Selecciones,299,True,0,False
 AUS12,Riley McGree,Australia,Base,Selecciones,300,True,0,False
 AUS13,Foto de equipo,Australia,Base,Selecciones,301,False,0,False
@@ -392,7 +392,7 @@ ECU1,Escudo del equipo,Ecuador,FOIL,Selecciones,389,True,0,False
 ECU2,Hernán Galíndez,Ecuador,Base,Selecciones,390,False,0,False
 ECU3,Gonzalo Valle,Ecuador,Base,Selecciones,391,True,0,False
 ECU4,Piero Hincapié,Ecuador,Base,Selecciones,392,True,1,False
-ECU5,Pervis Estupiñán,Ecuador,Base,Selecciones,393,False,0,False
+ECU5,Pervis Estupiñán,Ecuador,Base,Selecciones,393,True,0,False
 ECU6,Willian Pacho,Ecuador,Base,Selecciones,394,False,0,False
 ECU7,Ángelo Preciado,Ecuador,Base,Selecciones,395,True,0,False
 ECU8,Joel Ordóñez,Ecuador,Base,Selecciones,396,False,0,False
@@ -484,7 +484,7 @@ TUN13,Foto de equipo,Túnez,Base,Selecciones,481,False,0,False
 TUN14,Hannibal Mejbri,Túnez,Base,Selecciones,482,False,0,False
 TUN15,Elias Achouri,Túnez,Base,Selecciones,483,False,0,False
 TUN16,Elias Saad,Túnez,Base,Selecciones,484,False,0,False
-TUN17,Hazem Mastouri,Túnez,Base,Selecciones,485,True,0,False
+TUN17,Hazem Mastouri,Túnez,Base,Selecciones,485,True,1,False
 TUN18,Ismael Gharbi,Túnez,Base,Selecciones,486,False,0,False
 TUN19,Sayfallah Ltaief,Túnez,Base,Selecciones,487,False,0,False
 TUN20,Naïm Sliti,Túnez,Base,Selecciones,488,True,0,False
@@ -614,7 +614,7 @@ KSA3,Abdulrahman Al-Sanbi,Arabia Saudí,Base,Selecciones,611,False,0,False
 KSA4,Saud Abdulhamid,Arabia Saudí,Base,Selecciones,612,True,0,False
 KSA5,Nawaf Boushal,Arabia Saudí,Base,Selecciones,613,True,0,False
 KSA6,Jihad Thakri,Arabia Saudí,Base,Selecciones,614,False,0,False
-KSA7,Moteb Al-Harbi,Arabia Saudí,Base,Selecciones,615,False,0,False
+KSA7,Moteb Al-Harbi,Arabia Saudí,Base,Selecciones,615,True,0,False
 KSA8,Hassan Altambakti,Arabia Saudí,Base,Selecciones,616,False,0,False
 KSA9,Musab Aljuwayr,Arabia Saudí,Base,Selecciones,617,True,0,False
 KSA10,Ziyad Aljohani,Arabia Saudí,Base,Selecciones,618,True,0,False
@@ -685,14 +685,14 @@ SEN14,Lamine Camara,Senegal,Base,Selecciones,682,False,0,False
 SEN15,Sadio Mané,Senegal,Base,Selecciones,683,True,0,False
 SEN16,Ismaïla Sarr,Senegal,Base,Selecciones,684,False,0,False
 SEN17,Boulaye Dia,Senegal,Base,Selecciones,685,True,0,False
-SEN18,Iliman Ndiaye,Senegal,Base,Selecciones,686,False,0,False
+SEN18,Iliman Ndiaye,Senegal,Base,Selecciones,686,True,0,False
 SEN19,Nicolas Jackson,Senegal,Base,Selecciones,687,True,0,False
 SEN20,Krépin Diatta,Senegal,Base,Selecciones,688,False,0,False
 IRQ1,Escudo del equipo,Irak,FOIL,Selecciones,689,True,1,False
 IRQ2,Jalal Hassan,Irak,Base,Selecciones,690,False,0,False
 IRQ3,Rebin Sulaka,Irak,Base,Selecciones,691,False,0,False
-IRQ4,Hussein Ali,Irak,Base,Selecciones,692,False,0,False
-IRQ5,Akam Hashem,Irak,Base,Selecciones,693,False,0,False
+IRQ4,Hussein Ali,Irak,Base,Selecciones,692,True,0,False
+IRQ5,Akam Hashem,Irak,Base,Selecciones,693,True,0,False
 IRQ6,Merchas Doski,Irak,Base,Selecciones,694,True,0,False
 IRQ7,Zaid Tahseen,Irak,Base,Selecciones,695,True,0,False
 IRQ8,Manaf Younis,Irak,Base,Selecciones,696,False,0,False
@@ -727,7 +727,7 @@ NOR16,Alexander Sørloth,Noruega,Base,Selecciones,724,True,0,False
 NOR17,Aron Dønnum,Noruega,Base,Selecciones,725,False,0,False
 NOR18,Jørgen Strand Larsen,Noruega,Base,Selecciones,726,False,0,False
 NOR19,Antonio Nusa,Noruega,Base,Selecciones,727,True,0,False
-NOR20,Oscar Bobb,Noruega,Base,Selecciones,728,False,0,False
+NOR20,Oscar Bobb,Noruega,Base,Selecciones,728,True,0,False
 ARG1,Escudo del equipo,Argentina,FOIL,Selecciones,729,True,0,False
 ARG2,Emiliano Martínez,Argentina,Base,Selecciones,730,True,0,False
 ARG3,Nahuel Molina,Argentina,Base,Selecciones,731,False,0,False
@@ -850,7 +850,7 @@ COD19,Cédric Bakambu,RD Congo,Base,Selecciones,847,False,0,False
 COD20,Nathanaël Mbuku,RD Congo,Base,Selecciones,848,True,0,False
 UZB1,Escudo del equipo,Uzbekistán,FOIL,Selecciones,849,True,0,False
 UZB2,Utkir Yusupov,Uzbekistán,Base,Selecciones,850,False,0,False
-UZB3,Farrukh Saifiev,Uzbekistán,Base,Selecciones,851,True,0,False
+UZB3,Farrukh Saifiev,Uzbekistán,Base,Selecciones,851,True,1,False
 UZB4,Sherzod Nasrullaev,Uzbekistán,Base,Selecciones,852,False,0,False
 UZB5,Umar Eshmurodov,Uzbekistán,Base,Selecciones,853,True,0,False
 UZB6,Husniddin Aliqulov,Uzbekistán,Base,Selecciones,854,False,0,False
@@ -891,7 +891,7 @@ COL20,Luis Díaz,Colombia,Base,Selecciones,888,False,0,False
 ENG1,Escudo del equipo,Inglaterra,FOIL,Selecciones,889,True,1,False
 ENG2,Jordan Pickford,Inglaterra,Base,Selecciones,890,False,0,False
 ENG3,John Stones,Inglaterra,Base,Selecciones,891,True,0,False
-ENG4,Marc Guéhi,Inglaterra,Base,Selecciones,892,False,0,False
+ENG4,Marc Guéhi,Inglaterra,Base,Selecciones,892,True,0,False
 ENG5,Ezri Konsa,Inglaterra,Base,Selecciones,893,True,1,False
 ENG6,Trent Alexander-Arnold,Inglaterra,Base,Selecciones,894,True,0,False
 ENG7,Reece James,Inglaterra,Base,Selecciones,895,False,0,False
@@ -961,7 +961,7 @@ PAN10,Cristian Martínez,Panamá,Base,Selecciones,958,False,0,False
 PAN11,Aníbal Godoy,Panamá,Base,Selecciones,959,False,0,False
 PAN12,Adalberto Carrasquilla,Panamá,Base,Selecciones,960,False,0,False
 PAN13,Foto de equipo,Panamá,Base,Selecciones,961,False,0,False
-PAN14,Édgar Bárcenas,Panamá,Base,Selecciones,962,False,0,False
+PAN14,Édgar Bárcenas,Panamá,Base,Selecciones,962,True,0,False
 PAN15,Carlos Harvey,Panamá,Base,Selecciones,963,False,0,False
 PAN16,Ismael Díaz,Panamá,Base,Selecciones,964,False,0,False
 PAN17,José Fajardo,Panamá,Base,Selecciones,965,True,0,False
