@@ -182,21 +182,20 @@ def crear_pdf_repetidos(df, titulo="Lista de cromos repetidos"):
             )
         )
 
-        data = [["Código", "Nombre", "Tipo", "Repetidos"]]
+        data = [["Código", "Nombre", "Repetidos"]]
 
         for _, row in bloque.iterrows():
             data.append(
                 [
                     Paragraph(str(row["codigo"]), normal_style),
                     Paragraph(str(row["nombre"]), normal_style),
-                    Paragraph(str(row["tipo"]), normal_style),
                     Paragraph(str(int(row["repetidos"])), normal_style),
                 ]
             )
 
         table = Table(
             data,
-            colWidths=[2.2 * cm, 9.0 * cm, 3.0 * cm, 2.4 * cm],
+            colWidths=[2.5 * cm, 11.0 * cm, 3.0 * cm],
             repeatRows=1,
         )
 
@@ -208,6 +207,7 @@ def crear_pdf_repetidos(df, titulo="Lista de cromos repetidos"):
                     ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
                     ("FONTSIZE", (0, 0), (-1, 0), 8),
                     ("ALIGN", (0, 0), (-1, 0), "CENTER"),
+                    ("ALIGN", (2, 1), (2, -1), "CENTER"),
                     ("VALIGN", (0, 0), (-1, -1), "TOP"),
                     ("GRID", (0, 0), (-1, -1), 0.25, colors.HexColor("#dddddd")),
                     ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.white, colors.HexColor("#fafafa")]),
