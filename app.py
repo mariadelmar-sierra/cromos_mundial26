@@ -5,6 +5,7 @@ import unicodedata
 import pandas as pd
 import requests
 import streamlit as st
+from generar_repetidos_pdf import crear_pdf_repetidos
 
 
 # =====================================================
@@ -477,14 +478,14 @@ st.write(f"Álbum completado al **{porcentaje}%**")
 
 
 # =====================================================
-# BOTÓN GENERAL DE GUARDADO
+# BOTONES GENERALES
 # =====================================================
 
 st.divider()
 
 st.markdown('<div class="save-box">', unsafe_allow_html=True)
 
-g1, g2, g3 = st.columns([1.4, 1.4, 4])
+g1, g2, g3, g4 = st.columns([1.45, 1.45, 1.6, 3.5])
 
 with g1:
     if st.button("💾 Guardar todos los cambios", use_container_width=True):
@@ -497,6 +498,20 @@ with g2:
         st.rerun()
 
 with g3:
+    try:
+        pdf_repetidos = crear_pdf_repetidos(st.session_state.df)
+        st.download_button(
+            label="📄 Descargar repetidos PDF",
+            data=pdf_repetidos,
+            file_name="repetidos_album.pdf",
+            mime="application/pdf",
+            use_container_width=True,
+        )
+    except Exception as e:
+        st.error("No se pudo generar el PDF de repetidos.")
+        st.exception(e)
+
+with g4:
     n_pendientes = len(st.session_state.cromos_pendientes)
 
     if st.session_state.cambios_pendientes:
@@ -728,12 +743,12 @@ for inicio in range(0, len(df_filtrado), COLUMNAS):
 
 
 # =====================================================
-# BOTÓN DE GUARDADO ABAJO
+# BOTONES ABAJO
 # =====================================================
 
 st.divider()
 
-b1, b2, b3 = st.columns([1.5, 1.5, 4])
+b1, b2, b3, b4 = st.columns([1.5, 1.5, 1.6, 4])
 
 with b1:
     if st.button(
@@ -754,6 +769,21 @@ with b2:
         st.rerun()
 
 with b3:
+    try:
+        pdf_repetidos_abajo = crear_pdf_repetidos(st.session_state.df)
+        st.download_button(
+            label="📄 Descargar PDF",
+            data=pdf_repetidos_abajo,
+            file_name="repetidos_album.pdf",
+            mime="application/pdf",
+            key="download_pdf_abajo",
+            use_container_width=True,
+        )
+    except Exception as e:
+        st.error("No se pudo generar el PDF.")
+        st.exception(e)
+
+with b4:
     n_pendientes = len(st.session_state.cromos_pendientes)
 
     if st.session_state.cambios_pendientes:
