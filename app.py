@@ -6,6 +6,7 @@ import pandas as pd
 import requests
 import streamlit as st
 from generar_repetidos_pdf import crear_pdf_repetidos
+from generar_faltantes_pdf import crear_pdf_faltantes
 
 
 # =====================================================
@@ -485,15 +486,15 @@ st.divider()
 
 st.markdown('<div class="save-box">', unsafe_allow_html=True)
 
-g1, g2, g3, g4 = st.columns([1.45, 1.45, 1.6, 3.5])
+g1, g2, g3, g4, g5 = st.columns([1.35, 1.35, 1.45, 1.45, 3.2])
 
 with g1:
-    if st.button("💾 Guardar todos los cambios", use_container_width=True):
+    if st.button("💾 Guardar todos", use_container_width=True):
         guardar_todos_los_cambios()
         st.rerun()
 
 with g2:
-    if st.button("🔄 Recargar desde GitHub", use_container_width=True):
+    if st.button("🔄 Recargar", use_container_width=True):
         recargar_desde_github()
         st.rerun()
 
@@ -501,7 +502,7 @@ with g3:
     try:
         pdf_repetidos = crear_pdf_repetidos(st.session_state.df)
         st.download_button(
-            label="📄 Descargar repetidos PDF",
+            label="📄 Repetidos PDF",
             data=pdf_repetidos,
             file_name="repetidos_album.pdf",
             mime="application/pdf",
@@ -512,6 +513,20 @@ with g3:
         st.exception(e)
 
 with g4:
+    try:
+        pdf_faltantes = crear_pdf_faltantes(st.session_state.df)
+        st.download_button(
+            label="📄 Faltantes PDF",
+            data=pdf_faltantes,
+            file_name="faltantes_album.pdf",
+            mime="application/pdf",
+            use_container_width=True,
+        )
+    except Exception as e:
+        st.error("No se pudo generar el PDF de faltantes.")
+        st.exception(e)
+
+with g5:
     n_pendientes = len(st.session_state.cromos_pendientes)
 
     if st.session_state.cambios_pendientes:
@@ -748,11 +763,11 @@ for inicio in range(0, len(df_filtrado), COLUMNAS):
 
 st.divider()
 
-b1, b2, b3, b4 = st.columns([1.5, 1.5, 1.6, 4])
+b1, b2, b3, b4, b5 = st.columns([1.35, 1.35, 1.45, 1.45, 3.2])
 
 with b1:
     if st.button(
-        "💾 Guardar todos los cambios",
+        "💾 Guardar todos",
         key="guardar_abajo",
         use_container_width=True,
     ):
@@ -761,7 +776,7 @@ with b1:
 
 with b2:
     if st.button(
-        "🔄 Recargar desde GitHub",
+        "🔄 Recargar",
         key="recargar_abajo",
         use_container_width=True,
     ):
@@ -772,18 +787,33 @@ with b3:
     try:
         pdf_repetidos_abajo = crear_pdf_repetidos(st.session_state.df)
         st.download_button(
-            label="📄 Descargar PDF",
+            label="📄 Repetidos PDF",
             data=pdf_repetidos_abajo,
             file_name="repetidos_album.pdf",
             mime="application/pdf",
-            key="download_pdf_abajo",
+            key="download_repetidos_abajo",
             use_container_width=True,
         )
     except Exception as e:
-        st.error("No se pudo generar el PDF.")
+        st.error("No se pudo generar el PDF de repetidos.")
         st.exception(e)
 
 with b4:
+    try:
+        pdf_faltantes_abajo = crear_pdf_faltantes(st.session_state.df)
+        st.download_button(
+            label="📄 Faltantes PDF",
+            data=pdf_faltantes_abajo,
+            file_name="faltantes_album.pdf",
+            mime="application/pdf",
+            key="download_faltantes_abajo",
+            use_container_width=True,
+        )
+    except Exception as e:
+        st.error("No se pudo generar el PDF de faltantes.")
+        st.exception(e)
+
+with b5:
     n_pendientes = len(st.session_state.cromos_pendientes)
 
     if st.session_state.cambios_pendientes:
