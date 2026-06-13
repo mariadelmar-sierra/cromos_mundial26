@@ -88,7 +88,7 @@ CZE17,Tomas Chory,Chequia,Base,Selecciones,85,False,0,False
 CZE18,Vaclav Cerny,Chequia,Base,Selecciones,86,False,0,False
 CZE19,Adam Hlozek,Chequia,Base,Selecciones,87,False,0,False
 CZE20,Patrik Schick,Chequia,Base,Selecciones,88,True,1,False
-CAN1,Escudo del equipo,Canadá,FOIL,Selecciones,89,False,0,False
+CAN1,Escudo del equipo,Canadá,FOIL,Selecciones,89,True,0,False
 CAN2,Dayne St. Clair,Canadá,Base,Selecciones,90,False,0,False
 CAN3,Alphonso Davies,Canadá,Base,Selecciones,91,True,0,False
 CAN4,Alistair Johnston,Canadá,Base,Selecciones,92,False,0,False
@@ -203,7 +203,7 @@ MAR12,Eliesse Ben Seghir,Marruecos,Base,Selecciones,200,True,0,False
 MAR13,Foto de equipo,Marruecos,Base,Selecciones,201,False,0,False
 MAR14,Bilal El Khannouss,Marruecos,Base,Selecciones,202,False,0,False
 MAR15,Ismael Saibari,Marruecos,Base,Selecciones,203,False,0,False
-MAR16,Youssef En-Nesyri,Marruecos,Base,Selecciones,204,True,0,False
+MAR16,Youssef En-Nesyri,Marruecos,Base,Selecciones,204,True,1,False
 MAR17,Abde Ezzalzouli,Marruecos,Base,Selecciones,205,False,0,False
 MAR18,Soufiane Rahimi,Marruecos,Base,Selecciones,206,True,0,False
 MAR19,Brahim Díaz,Marruecos,Base,Selecciones,207,True,0,False
@@ -230,7 +230,7 @@ HAI19,Louicius Deedson,Haití,Base,Selecciones,227,True,1,False
 HAI20,Frantzdy Pierrot,Haití,Base,Selecciones,228,True,0,False
 SCO1,Escudo del equipo,Escocia,FOIL,Selecciones,229,True,0,False
 SCO2,Angus Gunn,Escocia,Base,Selecciones,230,False,0,False
-SCO3,Jack Hendry,Escocia,Base,Selecciones,231,True,0,False
+SCO3,Jack Hendry,Escocia,Base,Selecciones,231,True,1,False
 SCO4,Kieran Tierney,Escocia,Base,Selecciones,232,False,0,False
 SCO5,Aaron Hickey,Escocia,Base,Selecciones,233,False,0,False
 SCO6,Andrew Robertson,Escocia,Base,Selecciones,234,False,0,False
@@ -380,7 +380,7 @@ CIV9,Ousmane Diomandé,Costa de Marfil,Base,Selecciones,377,True,0,False
 CIV10,Franck Kessié,Costa de Marfil,Base,Selecciones,378,False,0,False
 CIV11,Seko Fofana,Costa de Marfil,Base,Selecciones,379,False,0,False
 CIV12,Ibrahim Sangaré,Costa de Marfil,Base,Selecciones,380,True,0,False
-CIV13,Foto de equipo,Costa de Marfil,Base,Selecciones,381,False,0,False
+CIV13,Foto de equipo,Costa de Marfil,Base,Selecciones,381,True,0,False
 CIV14,Jean-Philippe Gbamin,Costa de Marfil,Base,Selecciones,382,False,0,False
 CIV15,Amad Diallo,Costa de Marfil,Base,Selecciones,383,True,0,False
 CIV16,Sébastien Haller,Costa de Marfil,Base,Selecciones,384,True,1,False
@@ -454,7 +454,7 @@ SWE3,Isak Hien,Suecia,Base,Selecciones,451,False,0,False
 SWE4,Gabriel Gudmundsson,Suecia,Base,Selecciones,452,True,0,False
 SWE5,Emil Holm,Suecia,Base,Selecciones,453,True,0,False
 SWE6,Victor Lindelöf,Suecia,Base,Selecciones,454,False,0,False
-SWE7,Gustaf Lagerbielke,Suecia,Base,Selecciones,455,True,0,False
+SWE7,Gustaf Lagerbielke,Suecia,Base,Selecciones,455,True,1,False
 SWE8,Lucas Bergvall,Suecia,Base,Selecciones,456,True,0,False
 SWE9,Hugo Larsson,Suecia,Base,Selecciones,457,True,0,False
 SWE10,Jesper Karlström,Suecia,Base,Selecciones,458,True,0,False
@@ -746,7 +746,7 @@ ARG15,Franco Mastantuono,Argentina,Base,Selecciones,743,True,0,False
 ARG16,Nico González,Argentina,Base,Selecciones,744,False,0,False
 ARG17,Lionel Messi,Argentina,Base,Selecciones,745,False,0,False
 ARG18,Lautaro Martínez,Argentina,Base,Selecciones,746,False,0,False
-ARG19,Julián Álvarez,Argentina,Base,Selecciones,747,False,0,False
+ARG19,Julián Álvarez,Argentina,Base,Selecciones,747,True,0,False
 ARG20,Giuliano Simeone,Argentina,Base,Selecciones,748,False,0,False
 ALG1,Escudo del equipo,Argelia,FOIL,Selecciones,749,False,0,False
 ALG2,Alexis Guendouz,Argelia,Base,Selecciones,750,True,0,False
@@ -815,7 +815,7 @@ POR4,Rúben Dias,Portugal,Base,Selecciones,812,True,0,False
 POR5,João Cancelo,Portugal,Base,Selecciones,813,True,1,False
 POR6,Diogo Dalot,Portugal,Base,Selecciones,814,False,0,False
 POR7,Nuno Mendes,Portugal,Base,Selecciones,815,True,0,False
-POR8,Gonçalo Inácio,Portugal,Base,Selecciones,816,False,0,False
+POR8,Gonçalo Inácio,Portugal,Base,Selecciones,816,True,0,False
 POR9,Bernardo Silva,Portugal,Base,Selecciones,817,True,0,False
 POR10,Bruno Fernandes,Portugal,Base,Selecciones,818,True,1,False
 POR11,Rúben Neves,Portugal,Base,Selecciones,819,True,0,False
