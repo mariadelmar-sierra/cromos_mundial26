@@ -1,5 +1,5 @@
 codigo,nombre,seleccion,tipo,seccion,orden_original,lo_tengo,repetidos,wishlist
-00,Logo Panini - We Are Panini,Especial,FOIL,Introducción,0,True,0,False
+00,Logo Panini - We Are Panini,Especial,FOIL,Introducción,0,True,1,False
 FWC1,Emblema Oficial,Especial,FOIL,Introducción,1,False,0,False
 FWC2,Emblema Oficial,Especial,FOIL,Introducción,2,False,0,False
 FWC3,Mascotas Oficiales,Especial,FOIL,Introducción,3,True,0,False
@@ -30,7 +30,7 @@ MEX19,Roberto Alvarado,México,Base,Selecciones,27,False,0,False
 MEX20,César Huerta,México,Base,Selecciones,28,True,0,False
 RSA1,Escudo del equipo,Sudáfrica,FOIL,Selecciones,29,True,0,False
 RSA2,Ronwen Williams,Sudáfrica,Base,Selecciones,30,False,0,False
-RSA3,Sipho Chaine,Sudáfrica,Base,Selecciones,31,False,0,False
+RSA3,Sipho Chaine,Sudáfrica,Base,Selecciones,31,True,0,False
 RSA4,Aubrey Modiba,Sudáfrica,Base,Selecciones,32,False,0,False
 RSA5,Samukele Kabini,Sudáfrica,Base,Selecciones,33,False,0,False
 RSA6,Mbekezeli Mbokazi,Sudáfrica,Base,Selecciones,34,True,0,False
@@ -65,7 +65,7 @@ KOR14,Paik Seung-ho,Corea del Sur,Base,Selecciones,62,True,0,False
 KOR15,Jens Castrop,Corea del Sur,Base,Selecciones,63,False,0,False
 KOR16,Lee Dong-gyeong,Corea del Sur,Base,Selecciones,64,False,0,False
 KOR17,Cho Gue-sung,Corea del Sur,Base,Selecciones,65,False,0,False
-KOR18,Son Heung-min,Corea del Sur,Base,Selecciones,66,False,0,False
+KOR18,Son Heung-min,Corea del Sur,Base,Selecciones,66,True,0,False
 KOR19,Hwang Hee-chan,Corea del Sur,Base,Selecciones,67,False,0,False
 KOR20,Oh Hyeon-gyu,Corea del Sur,Base,Selecciones,68,True,0,False
 CZE1,Escudo del equipo,Chequia,FOIL,Selecciones,69,False,0,False
@@ -116,7 +116,7 @@ BIH5,Tarik Muharemovic,Bosnia y Herzegovina,Base,Selecciones,113,True,0,False
 BIH6,Nihad Mujakic,Bosnia y Herzegovina,Base,Selecciones,114,True,1,False
 BIH7,Nikola Katic,Bosnia y Herzegovina,Base,Selecciones,115,True,2,False
 BIH8,Amir Hadziahmetovic,Bosnia y Herzegovina,Base,Selecciones,116,False,0,False
-BIH9,Benjamin Tahirovic,Bosnia y Herzegovina,Base,Selecciones,117,True,0,False
+BIH9,Benjamin Tahirovic,Bosnia y Herzegovina,Base,Selecciones,117,True,1,False
 BIH10,Armin Gigovic,Bosnia y Herzegovina,Base,Selecciones,118,False,0,False
 BIH11,Ivan Sunjic,Bosnia y Herzegovina,Base,Selecciones,119,True,0,False
 BIH12,Ivan Basic,Bosnia y Herzegovina,Base,Selecciones,120,False,0,False
@@ -180,7 +180,7 @@ BRA9,Lucas Paquetá,Brasil,Base,Selecciones,177,True,0,False
 BRA10,Casemiro,Brasil,Base,Selecciones,178,False,0,False
 BRA11,Bruno Guimarães,Brasil,Base,Selecciones,179,False,0,False
 BRA12,Luiz Henrique,Brasil,Base,Selecciones,180,True,1,False
-BRA13,Foto de equipo,Brasil,Base,Selecciones,181,False,0,False
+BRA13,Foto de equipo,Brasil,Base,Selecciones,181,True,0,False
 BRA14,Vinicius Júnior,Brasil,Base,Selecciones,182,True,0,False
 BRA15,Rodrygo,Brasil,Base,Selecciones,183,False,0,False
 BRA16,João Pedro,Brasil,Base,Selecciones,184,False,0,False
@@ -206,7 +206,7 @@ MAR15,Ismael Saibari,Marruecos,Base,Selecciones,203,False,0,False
 MAR16,Youssef En-Nesyri,Marruecos,Base,Selecciones,204,True,0,False
 MAR17,Abde Ezzalzouli,Marruecos,Base,Selecciones,205,False,0,False
 MAR18,Soufiane Rahimi,Marruecos,Base,Selecciones,206,True,0,False
-MAR19,Brahim Díaz,Marruecos,Base,Selecciones,207,False,0,False
+MAR19,Brahim Díaz,Marruecos,Base,Selecciones,207,True,0,False
 MAR20,Ayoub El Kaabi,Marruecos,Base,Selecciones,208,False,0,False
 HAI1,Escudo del equipo,Haití,FOIL,Selecciones,209,True,0,False
 HAI2,Johny Placide,Haití,Base,Selecciones,210,True,1,False
@@ -356,7 +356,7 @@ CUW5,Jurien Gaari,Curazao,Base,Selecciones,353,True,0,False
 CUW6,Joshua Brenet,Curazao,Base,Selecciones,354,True,0,False
 CUW7,Roshon van Eijma,Curazao,Base,Selecciones,355,False,0,False
 CUW8,Shurandy Sambo,Curazao,Base,Selecciones,356,False,0,False
-CUW9,Livano Comenencia,Curazao,Base,Selecciones,357,True,0,False
+CUW9,Livano Comenencia,Curazao,Base,Selecciones,357,True,1,False
 CUW10,Godfried Roemeratoe,Curazao,Base,Selecciones,358,False,0,False
 CUW11,Juninho Bacuna,Curazao,Base,Selecciones,359,False,0,False
 CUW12,Leandro Bacuna,Curazao,Base,Selecciones,360,False,0,False
@@ -514,7 +514,7 @@ EGY3,Mohamed Hany,Egipto,Base,Selecciones,511,True,1,False
 EGY4,Mohamed Hamdy,Egipto,Base,Selecciones,512,False,0,False
 EGY5,Yasser Ibrahim,Egipto,Base,Selecciones,513,True,0,False
 EGY6,Khaled Sobhi,Egipto,Base,Selecciones,514,True,0,False
-EGY7,Ramy Rabia,Egipto,Base,Selecciones,515,False,0,False
+EGY7,Ramy Rabia,Egipto,Base,Selecciones,515,True,0,False
 EGY8,Hossam Abdelmaguid,Egipto,Base,Selecciones,516,False,0,False
 EGY9,Ahmed Fatouh,Egipto,Base,Selecciones,517,False,0,False
 EGY10,Marwan Attia,Egipto,Base,Selecciones,518,False,0,False
@@ -540,7 +540,7 @@ IRN9,Sadegh Moharrami,Irán,Base,Selecciones,537,True,0,False
 IRN10,Saleh Hardani,Irán,Base,Selecciones,538,False,0,False
 IRN11,Saeed Ezatolahi,Irán,Base,Selecciones,539,False,0,False
 IRN12,Saman Ghoddos,Irán,Base,Selecciones,540,False,0,False
-IRN13,Foto de equipo,Irán,Base,Selecciones,541,False,0,False
+IRN13,Foto de equipo,Irán,Base,Selecciones,541,True,0,False
 IRN14,Omid Noorafkan,Irán,Base,Selecciones,542,False,0,False
 IRN15,Roozbeh Cheshmi,Irán,Base,Selecciones,543,False,0,False
 IRN16,Mohammad Mohebi,Irán,Base,Selecciones,544,False,0,False
@@ -552,7 +552,7 @@ NZL1,Escudo del equipo,Nueva Zelanda,FOIL,Selecciones,549,False,0,False
 NZL2,Max Crocombe,Nueva Zelanda,Base,Selecciones,550,False,0,False
 NZL3,Alex Paulsen,Nueva Zelanda,Base,Selecciones,551,False,0,False
 NZL4,Michael Boxall,Nueva Zelanda,Base,Selecciones,552,False,0,False
-NZL5,Liberato Cacace,Nueva Zelanda,Base,Selecciones,553,True,0,False
+NZL5,Liberato Cacace,Nueva Zelanda,Base,Selecciones,553,True,1,False
 NZL6,Tim Payne,Nueva Zelanda,Base,Selecciones,554,False,0,False
 NZL7,Tyler Bindon,Nueva Zelanda,Base,Selecciones,555,False,0,False
 NZL8,Francis de Vries,Nueva Zelanda,Base,Selecciones,556,False,0,False
@@ -686,7 +686,7 @@ SEN15,Sadio Mané,Senegal,Base,Selecciones,683,True,0,False
 SEN16,Ismaïla Sarr,Senegal,Base,Selecciones,684,False,0,False
 SEN17,Boulaye Dia,Senegal,Base,Selecciones,685,True,0,False
 SEN18,Iliman Ndiaye,Senegal,Base,Selecciones,686,True,0,False
-SEN19,Nicolas Jackson,Senegal,Base,Selecciones,687,True,0,False
+SEN19,Nicolas Jackson,Senegal,Base,Selecciones,687,True,1,False
 SEN20,Krépin Diatta,Senegal,Base,Selecciones,688,False,0,False
 IRQ1,Escudo del equipo,Irak,FOIL,Selecciones,689,True,1,False
 IRQ2,Jalal Hassan,Irak,Base,Selecciones,690,False,0,False
@@ -839,7 +839,7 @@ COD8,Charles Pickel,RD Congo,Base,Selecciones,836,True,0,False
 COD9,Ngal'ayel Mukau,RD Congo,Base,Selecciones,837,True,0,False
 COD10,Edo Kayembe,RD Congo,Base,Selecciones,838,True,0,False
 COD11,Samuel Moutoussamy,RD Congo,Base,Selecciones,839,False,0,False
-COD12,Noah Sadiki,RD Congo,Base,Selecciones,840,True,1,False
+COD12,Noah Sadiki,RD Congo,Base,Selecciones,840,True,2,False
 COD13,Foto de equipo,RD Congo,Base,Selecciones,841,False,0,False
 COD14,Théo Bongonda,RD Congo,Base,Selecciones,842,True,0,False
 COD15,Meschak Elia,RD Congo,Base,Selecciones,843,False,0,False
@@ -914,7 +914,7 @@ CRO3,Duje Caleta-Car,Croacia,Base,Selecciones,911,False,0,False
 CRO4,Josko Gvardiol,Croacia,Base,Selecciones,912,True,0,False
 CRO5,Josip Stanišić,Croacia,Base,Selecciones,913,False,0,False
 CRO6,Luka Vušković,Croacia,Base,Selecciones,914,False,0,False
-CRO7,Josip Sutalo,Croacia,Base,Selecciones,915,False,0,False
+CRO7,Josip Sutalo,Croacia,Base,Selecciones,915,True,0,False
 CRO8,Kristijan Jakic,Croacia,Base,Selecciones,916,False,0,False
 CRO9,Luka Modrić,Croacia,Base,Selecciones,917,False,0,False
 CRO10,Mateo Kovacic,Croacia,Base,Selecciones,918,True,0,False
@@ -938,7 +938,7 @@ GHA7,Gideon Mensah,Ghana,Base,Selecciones,935,True,1,False
 GHA8,Caleb Yirenkyi,Ghana,Base,Selecciones,936,True,0,False
 GHA9,Abdul Fatawu Issahaku,Ghana,Base,Selecciones,937,True,0,False
 GHA10,Thomas Partey,Ghana,Base,Selecciones,938,True,0,False
-GHA11,Salis Abdul Samed,Ghana,Base,Selecciones,939,True,0,False
+GHA11,Salis Abdul Samed,Ghana,Base,Selecciones,939,True,1,False
 GHA12,Kamaldeen Sulemana,Ghana,Base,Selecciones,940,False,0,False
 GHA13,Foto de equipo,Ghana,Base,Selecciones,941,False,0,False
 GHA14,Mohammed Kudus,Ghana,Base,Selecciones,942,True,0,False
