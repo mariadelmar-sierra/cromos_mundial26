@@ -5,8 +5,8 @@ FWC2,Emblema Oficial,Especial,FOIL,Introducción,2,False,0,False
 FWC3,Mascotas Oficiales,Especial,FOIL,Introducción,3,True,0,False
 FWC4,Eslogan Oficial,Especial,FOIL,Introducción,4,True,1,False
 FWC5,Balón Oficial,Especial,FOIL,Introducción,5,True,0,False
-FWC6,Canadá - Países y Ciudades Anfitrionas,Especial,FOIL,Introducción,6,True,1,False
-FWC7,México - Países y Ciudades Anfitrionas,Especial,FOIL,Introducción,7,True,0,False
+FWC6,Canadá - Países y Ciudades Anfitrionas,Especial,FOIL,Introducción,6,True,2,False
+FWC7,México - Países y Ciudades Anfitrionas,Especial,FOIL,Introducción,7,True,1,False
 FWC8,EE. UU. - Países y Ciudades Anfitrionas,Especial,FOIL,Introducción,8,False,0,False
 MEX1,Escudo del equipo,México,FOIL,Selecciones,9,True,0,False
 MEX2,Luis Malagón,México,Base,Selecciones,10,True,0,False
@@ -85,10 +85,10 @@ CZE14,Pavel Sulc,Chequia,Base,Selecciones,82,True,0,False
 CZE15,Matej Vydra,Chequia,Base,Selecciones,83,True,0,False
 CZE16,Vasil Kusej,Chequia,Base,Selecciones,84,False,0,False
 CZE17,Tomas Chory,Chequia,Base,Selecciones,85,False,0,False
-CZE18,Vaclav Cerny,Chequia,Base,Selecciones,86,False,0,False
+CZE18,Vaclav Cerny,Chequia,Base,Selecciones,86,True,0,False
 CZE19,Adam Hlozek,Chequia,Base,Selecciones,87,False,0,False
 CZE20,Patrik Schick,Chequia,Base,Selecciones,88,True,1,False
-CAN1,Escudo del equipo,Canadá,FOIL,Selecciones,89,True,0,False
+CAN1,Escudo del equipo,Canadá,FOIL,Selecciones,89,True,1,False
 CAN2,Dayne St. Clair,Canadá,Base,Selecciones,90,False,0,False
 CAN3,Alphonso Davies,Canadá,Base,Selecciones,91,True,0,False
 CAN4,Alistair Johnston,Canadá,Base,Selecciones,92,False,0,False
@@ -97,12 +97,12 @@ CAN6,Richie Laryea,Canadá,Base,Selecciones,94,False,0,False
 CAN7,Derek Cornelius,Canadá,Base,Selecciones,95,True,1,False
 CAN8,Moïse Bombito,Canadá,Base,Selecciones,96,False,0,False
 CAN9,Kamal Miller,Canadá,Base,Selecciones,97,False,0,False
-CAN10,Stephen Eustáquio,Canadá,Base,Selecciones,98,True,0,False
+CAN10,Stephen Eustáquio,Canadá,Base,Selecciones,98,True,1,False
 CAN11,Ismaël Koné,Canadá,Base,Selecciones,99,False,0,False
 CAN12,Jonathan Osorio,Canadá,Base,Selecciones,100,False,0,False
 CAN13,Foto de equipo,Canadá,Base,Selecciones,101,False,0,False
 CAN14,Jacob Shaffelburg,Canadá,Base,Selecciones,102,True,3,False
-CAN15,Mathieu Choinière,Canadá,Base,Selecciones,103,False,0,False
+CAN15,Mathieu Choinière,Canadá,Base,Selecciones,103,True,0,False
 CAN16,Niko Sigur,Canadá,Base,Selecciones,104,False,0,False
 CAN17,Tajon Buchanan,Canadá,Base,Selecciones,105,True,0,False
 CAN18,Liam Millar,Canadá,Base,Selecciones,106,True,0,False
@@ -321,7 +321,7 @@ TUR10,Ismail Yüksek,Turquía,Base,Selecciones,318,True,0,False
 TUR11,Hakan Çalhanoglu,Turquía,Base,Selecciones,319,True,0,False
 TUR12,Orkun Kökçü,Turquía,Base,Selecciones,320,False,0,False
 TUR13,Foto de equipo,Turquía,Base,Selecciones,321,True,0,False
-TUR14,Arda Güler,Turquía,Base,Selecciones,322,False,0,False
+TUR14,Arda Güler,Turquía,Base,Selecciones,322,True,0,False
 TUR15,Irfan Can Kahveci,Turquía,Base,Selecciones,323,True,1,False
 TUR16,Yunus Akgün,Turquía,Base,Selecciones,324,True,2,False
 TUR17,Can Uzun,Turquía,Base,Selecciones,325,False,0,False
@@ -421,7 +421,7 @@ NED10,Tijjani Reijnders,Países Bajos,Base,Selecciones,418,False,0,False
 NED11,Ryan Gravenberch,Países Bajos,Base,Selecciones,419,False,0,False
 NED12,Teun Koopmeiners,Países Bajos,Base,Selecciones,420,True,2,False
 NED13,Foto de equipo,Países Bajos,Base,Selecciones,421,False,0,False
-NED14,Frenkie de Jong,Países Bajos,Base,Selecciones,422,False,0,False
+NED14,Frenkie de Jong,Países Bajos,Base,Selecciones,422,True,0,False
 NED15,Xavi Simons,Países Bajos,Base,Selecciones,423,True,0,False
 NED16,Justin Kluivert,Países Bajos,Base,Selecciones,424,False,0,False
 NED17,Memphis Depay,Países Bajos,Base,Selecciones,425,False,0,False
@@ -531,7 +531,7 @@ EGY20,Omar Marmoush,Egipto,Base,Selecciones,528,True,1,False
 IRN1,Escudo del equipo,Irán,FOIL,Selecciones,529,True,0,False
 IRN2,Alireza Beiranvand,Irán,Base,Selecciones,530,False,0,False
 IRN3,Morteza Pouraliganji,Irán,Base,Selecciones,531,False,0,False
-IRN4,Ehsan Hajsafi,Irán,Base,Selecciones,532,False,0,False
+IRN4,Ehsan Hajsafi,Irán,Base,Selecciones,532,True,0,False
 IRN5,Milad Mohammadi,Irán,Base,Selecciones,533,True,0,False
 IRN6,Shojae Khalilzadeh,Irán,Base,Selecciones,534,True,0,False
 IRN7,Ramin Rezaeian,Irán,Base,Selecciones,535,False,0,False
@@ -611,7 +611,7 @@ CPV20,Bebe,Cabo Verde,Base,Selecciones,608,False,0,False
 KSA1,Escudo del equipo,Arabia Saudí,FOIL,Selecciones,609,False,0,False
 KSA2,Nawaf Alaqidi,Arabia Saudí,Base,Selecciones,610,False,0,False
 KSA3,Abdulrahman Al-Sanbi,Arabia Saudí,Base,Selecciones,611,False,0,False
-KSA4,Saud Abdulhamid,Arabia Saudí,Base,Selecciones,612,True,1,False
+KSA4,Saud Abdulhamid,Arabia Saudí,Base,Selecciones,612,True,2,False
 KSA5,Nawaf Boushal,Arabia Saudí,Base,Selecciones,613,True,0,False
 KSA6,Jihad Thakri,Arabia Saudí,Base,Selecciones,614,False,0,False
 KSA7,Moteb Al-Harbi,Arabia Saudí,Base,Selecciones,615,True,0,False
@@ -739,7 +739,7 @@ ARG8,Enzo Fernández,Argentina,Base,Selecciones,736,True,0,False
 ARG9,Alexis Mac Allister,Argentina,Base,Selecciones,737,True,1,False
 ARG10,Rodrigo De Paul,Argentina,Base,Selecciones,738,True,0,False
 ARG11,Exequiel Palacios,Argentina,Base,Selecciones,739,False,0,False
-ARG12,Leandro Paredes,Argentina,Base,Selecciones,740,False,0,False
+ARG12,Leandro Paredes,Argentina,Base,Selecciones,740,True,0,False
 ARG13,Foto de equipo,Argentina,Base,Selecciones,741,True,0,False
 ARG14,Nico Paz,Argentina,Base,Selecciones,742,True,0,False
 ARG15,Franco Mastantuono,Argentina,Base,Selecciones,743,True,0,False
@@ -758,7 +758,7 @@ ALG7,Aïssa Mandi,Argelia,Base,Selecciones,755,True,0,False
 ALG8,Ismael Bennacer,Argelia,Base,Selecciones,756,True,1,False
 ALG9,Houssem Aouar,Argelia,Base,Selecciones,757,False,0,False
 ALG10,Hicham Boudaoui,Argelia,Base,Selecciones,758,True,0,False
-ALG11,Ramiz Zerrouki,Argelia,Base,Selecciones,759,False,0,False
+ALG11,Ramiz Zerrouki,Argelia,Base,Selecciones,759,True,0,False
 ALG12,Nabil Bentaleb,Argelia,Base,Selecciones,760,False,0,False
 ALG13,Foto de equipo,Argelia,Base,Selecciones,761,True,0,False
 ALG14,Farés Chaibi,Argelia,Base,Selecciones,762,True,0,False
@@ -796,7 +796,7 @@ JOR5,Yazan Al-Arab,Jordania,Base,Selecciones,793,True,2,False
 JOR6,Abdallah Nasib,Jordania,Base,Selecciones,794,False,0,False
 JOR7,Saleem Obaid,Jordania,Base,Selecciones,795,True,2,False
 JOR8,Mohammad Abualnadi,Jordania,Base,Selecciones,796,True,0,False
-JOR9,Ibrahim Saadeh,Jordania,Base,Selecciones,797,False,0,False
+JOR9,Ibrahim Saadeh,Jordania,Base,Selecciones,797,True,0,False
 JOR10,Nizar Al-Rashdan,Jordania,Base,Selecciones,798,True,0,False
 JOR11,Noor Al-Rawabdeh,Jordania,Base,Selecciones,799,True,0,False
 JOR12,Mohannad Abu Taha,Jordania,Base,Selecciones,800,True,1,False
@@ -819,7 +819,7 @@ POR8,Gonçalo Inácio,Portugal,Base,Selecciones,816,True,0,False
 POR9,Bernardo Silva,Portugal,Base,Selecciones,817,True,0,False
 POR10,Bruno Fernandes,Portugal,Base,Selecciones,818,True,1,False
 POR11,Rúben Neves,Portugal,Base,Selecciones,819,True,0,False
-POR12,Vitinha,Portugal,Base,Selecciones,820,True,0,False
+POR12,Vitinha,Portugal,Base,Selecciones,820,True,1,False
 POR13,Foto de equipo,Portugal,Base,Selecciones,821,True,1,False
 POR14,João Neves,Portugal,Base,Selecciones,822,False,0,False
 POR15,Cristiano Ronaldo,Portugal,Base,Selecciones,823,False,0,False
