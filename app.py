@@ -1,6 +1,7 @@
 import base64
 import io
 import unicodedata
+from datetime import datetime
 
 import pandas as pd
 import requests
@@ -152,6 +153,24 @@ st.markdown(
     color: #27ae60;
 }
 
+.history-box {
+    border: 1px solid #eeeeee;
+    border-radius: 14px;
+    padding: 12px;
+    background-color: #ffffff;
+    margin-bottom: 12px;
+}
+
+.history-title {
+    font-weight: 800;
+    margin-bottom: 4px;
+}
+
+.history-detail {
+    color: #555555;
+    font-size: 14px;
+}
+
 </style>
 """,
     unsafe_allow_html=True,
@@ -281,6 +300,31 @@ def estado_texto(row):
     return " · ".join(partes)
 
 
+def bool_a_texto(valor):
+    return "Sí" if bool(valor) else "No"
+
+
+def formatear_cambio(cambio):
+    detalles = []
+
+    if cambio["antes"]["lo_tengo"] != cambio["despues"]["lo_tengo"]:
+        detalles.append(
+            f"Lo tengo: {bool_a_texto(cambio['antes']['lo_tengo'])} → {bool_a_texto(cambio['despues']['lo_tengo'])}"
+        )
+
+    if cambio["antes"]["repetidos"] != cambio["despues"]["repetidos"]:
+        detalles.append(
+            f"Repetidos: {cambio['antes']['repetidos']} → {cambio['despues']['repetidos']}"
+        )
+
+    if cambio["antes"]["wishlist"] != cambio["despues"]["wishlist"]:
+        detalles.append(
+            f"Wishlist: {bool_a_texto(cambio['antes']['wishlist'])} → {bool_a_texto(cambio['despues']['wishlist'])}"
+        )
+
+    return " · ".join(detalles)
+
+
 # =====================================================
 # FUNCIONES GITHUB
 # =====================================================
@@ -347,6 +391,9 @@ def inicializar_estado():
             st.session_state.sha = sha
             st.session_state.cambios_pendientes = False
             st.session_state.cromos_pendientes = set()
+            st.session_state.detalle_cambios_pendientes = {}
+            st.session_state.ultimo_historial_guardado = []
+            st.session_state.ultimo_historial_fecha = None
         except Exception as e:
             st.error("No he podido leer el CSV desde GitHub.")
             st.exception(e)
@@ -358,6 +405,15 @@ def inicializar_estado():
     if "cromos_pendientes" not in st.session_state:
         st.session_state.cromos_pendientes = set()
 
+    if "detalle_cambios_pendientes" not in st.session_state:
+        st.session_state.detalle_cambios_pendientes = {}
+
+    if "ultimo_historial_guardado" not in st.session_state:
+        st.session_state.ultimo_historial_guardado = []
+
+    if "ultimo_historial_fecha" not in st.session_state:
+        st.session_state.ultimo_historial_fecha = None
+
 
 def recargar_desde_github():
     try:
@@ -366,6 +422,7 @@ def recargar_desde_github():
         st.session_state.sha = sha
         st.session_state.cambios_pendientes = False
         st.session_state.cromos_pendientes = set()
+        st.session_state.detalle_cambios_pendientes = {}
         st.success("Datos recargados desde GitHub.")
     except Exception as e:
         st.error("No he podido recargar desde GitHub.")
@@ -374,6 +431,10 @@ def recargar_desde_github():
 
 def guardar_todos_los_cambios():
     try:
+        historial_que_se_va_a_guardar = list(
+            st.session_state.detalle_cambios_pendientes.values()
+        )
+
         nuevo_sha = guardar_csv_en_github(
             st.session_state.df,
             st.session_state.sha,
@@ -382,6 +443,10 @@ def guardar_todos_los_cambios():
         st.session_state.sha = nuevo_sha
         st.session_state.cambios_pendientes = False
         st.session_state.cromos_pendientes = set()
+        st.session_state.detalle_cambios_pendientes = {}
+        st.session_state.ultimo_historial_guardado = historial_que_se_va_a_guardar
+        st.session_state.ultimo_historial_fecha = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+
         st.success("Cambios guardados correctamente en GitHub.")
 
     except requests.exceptions.HTTPError as e:
@@ -406,24 +471,36 @@ def aplicar_cambio_por_codigo(codigo, lo_tengo, repetidos, wishlist):
 
     idx = idx_list[0]
 
-    valor_actual_tengo = bool(df.at[idx, "lo_tengo"])
-    valor_actual_rep = int(df.at[idx, "repetidos"])
-    valor_actual_wish = bool(df.at[idx, "wishlist"])
+    antes = {
+        "lo_tengo": bool(df.at[idx, "lo_tengo"]),
+        "repetidos": int(df.at[idx, "repetidos"]),
+        "wishlist": bool(df.at[idx, "wishlist"]),
+    }
 
-    hay_cambio = (
-        valor_actual_tengo != bool(lo_tengo)
-        or valor_actual_rep != int(repetidos)
-        or valor_actual_wish != bool(wishlist)
-    )
+    despues = {
+        "lo_tengo": bool(lo_tengo),
+        "repetidos": int(repetidos),
+        "wishlist": bool(wishlist),
+    }
+
+    hay_cambio = antes != despues
 
     if hay_cambio:
-        df.at[idx, "lo_tengo"] = bool(lo_tengo)
-        df.at[idx, "repetidos"] = int(repetidos)
-        df.at[idx, "wishlist"] = bool(wishlist)
+        df.at[idx, "lo_tengo"] = despues["lo_tengo"]
+        df.at[idx, "repetidos"] = despues["repetidos"]
+        df.at[idx, "wishlist"] = despues["wishlist"]
 
         st.session_state.df = df
         st.session_state.cambios_pendientes = True
         st.session_state.cromos_pendientes.add(str(codigo))
+
+        st.session_state.detalle_cambios_pendientes[str(codigo)] = {
+            "codigo": str(codigo),
+            "nombre": str(df.at[idx, "nombre"]),
+            "seleccion": str(df.at[idx, "seleccion"]),
+            "antes": antes,
+            "despues": despues,
+        }
 
     return hay_cambio
 
@@ -541,6 +618,55 @@ with g5:
         )
 
 st.markdown("</div>", unsafe_allow_html=True)
+
+
+# =====================================================
+# HISTORIAL DE CAMBIOS
+# =====================================================
+
+with st.expander("🕘 Historial del último guardar cambios", expanded=False):
+    historial = st.session_state.ultimo_historial_guardado
+    fecha = st.session_state.ultimo_historial_fecha
+
+    if not historial:
+        st.info("Todavía no se ha guardado ningún cambio en esta sesión.")
+    else:
+        st.write(f"Último guardado: **{fecha}**")
+        st.write(f"Cambios guardados: **{len(historial)}** cromo(s)")
+
+        for cambio in historial:
+            detalle = formatear_cambio(cambio)
+            st.markdown(
+                f"""
+                <div class="history-box">
+                    <div class="history-title">{cambio['codigo']} · {cambio['nombre']}</div>
+                    <div class="history-detail">{cambio['seleccion']}</div>
+                    <div class="history-detail">{detalle}</div>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+
+with st.expander("✏️ Cambios pendientes antes de guardar", expanded=False):
+    pendientes = list(st.session_state.detalle_cambios_pendientes.values())
+
+    if not pendientes:
+        st.info("No hay cambios pendientes.")
+    else:
+        st.write(f"Pendientes: **{len(pendientes)}** cromo(s)")
+
+        for cambio in pendientes:
+            detalle = formatear_cambio(cambio)
+            st.markdown(
+                f"""
+                <div class="history-box">
+                    <div class="history-title">{cambio['codigo']} · {cambio['nombre']}</div>
+                    <div class="history-detail">{cambio['seleccion']}</div>
+                    <div class="history-detail">{detalle}</div>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
 
 
 # =====================================================
