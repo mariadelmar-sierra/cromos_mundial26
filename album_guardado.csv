@@ -81,7 +81,7 @@ CZE10,Lukas Provod,Chequia,Base,Selecciones,78,True,0,False
 CZE11,Lukas Cerv,Chequia,Base,Selecciones,79,True,0,False
 CZE12,Tomas Soucek,Chequia,Base,Selecciones,80,True,1,False
 CZE13,Foto de equipo,Chequia,Base,Selecciones,81,False,0,False
-CZE14,Pavel Sulc,Chequia,Base,Selecciones,82,True,0,False
+CZE14,Pavel Sulc,Chequia,Base,Selecciones,82,True,1,False
 CZE15,Matej Vydra,Chequia,Base,Selecciones,83,True,0,False
 CZE16,Vasil Kusej,Chequia,Base,Selecciones,84,False,0,False
 CZE17,Tomas Chory,Chequia,Base,Selecciones,85,True,0,False
@@ -178,7 +178,7 @@ BRA7,Danilo,Brasil,Base,Selecciones,175,True,1,False
 BRA8,Wesley,Brasil,Base,Selecciones,176,False,0,False
 BRA9,Lucas Paquetá,Brasil,Base,Selecciones,177,True,0,False
 BRA10,Casemiro,Brasil,Base,Selecciones,178,False,0,False
-BRA11,Bruno Guimarães,Brasil,Base,Selecciones,179,False,0,False
+BRA11,Bruno Guimarães,Brasil,Base,Selecciones,179,True,0,False
 BRA12,Luiz Henrique,Brasil,Base,Selecciones,180,True,2,False
 BRA13,Foto de equipo,Brasil,Base,Selecciones,181,True,1,False
 BRA14,Vinicius Júnior,Brasil,Base,Selecciones,182,True,0,False
@@ -237,7 +237,7 @@ SCO6,Andrew Robertson,Escocia,Base,Selecciones,234,False,0,False
 SCO7,Scott McKenna,Escocia,Base,Selecciones,235,False,0,False
 SCO8,John Souttar,Escocia,Base,Selecciones,236,False,0,False
 SCO9,Anthony Ralston,Escocia,Base,Selecciones,237,False,0,False
-SCO10,Grant Hanley,Escocia,Base,Selecciones,238,True,0,False
+SCO10,Grant Hanley,Escocia,Base,Selecciones,238,True,1,False
 SCO11,Scott McTominay,Escocia,Base,Selecciones,239,False,0,False
 SCO12,Billy Gilmour,Escocia,Base,Selecciones,240,True,0,False
 SCO13,Foto de equipo,Escocia,Base,Selecciones,241,True,0,False
@@ -289,7 +289,7 @@ PAR18,Ramón Sosa,Paraguay,Base,Selecciones,286,True,0,False
 PAR19,Ángel Romero,Paraguay,Base,Selecciones,287,False,0,False
 PAR20,Antonio Sanabria,Paraguay,Base,Selecciones,288,False,0,False
 AUS1,Escudo del equipo,Australia,FOIL,Selecciones,289,True,0,False
-AUS2,Mathew Ryan,Australia,Base,Selecciones,290,False,0,False
+AUS2,Mathew Ryan,Australia,Base,Selecciones,290,True,0,False
 AUS3,Joe Gauci,Australia,Base,Selecciones,291,False,0,False
 AUS4,Harry Souttar,Australia,Base,Selecciones,292,True,1,False
 AUS5,Alessandro Circati,Australia,Base,Selecciones,293,False,0,False
@@ -338,7 +338,7 @@ GER7,Waldemar Anton,Alemania,Base,Selecciones,335,False,0,False
 GER8,Ridle Baku,Alemania,Base,Selecciones,336,True,0,False
 GER9,Maximilian Mittelstädt,Alemania,Base,Selecciones,337,True,1,False
 GER10,Joshua Kimmich,Alemania,Base,Selecciones,338,False,0,False
-GER11,Florian Wirtz,Alemania,Base,Selecciones,339,True,0,False
+GER11,Florian Wirtz,Alemania,Base,Selecciones,339,True,1,False
 GER12,Felix Nmecha,Alemania,Base,Selecciones,340,True,0,False
 GER13,Foto de equipo,Alemania,Base,Selecciones,341,True,0,False
 GER14,Leon Goretzka,Alemania,Base,Selecciones,342,True,0,False
@@ -421,7 +421,7 @@ NED10,Tijjani Reijnders,Países Bajos,Base,Selecciones,418,False,0,False
 NED11,Ryan Gravenberch,Países Bajos,Base,Selecciones,419,False,0,False
 NED12,Teun Koopmeiners,Países Bajos,Base,Selecciones,420,True,3,False
 NED13,Foto de equipo,Países Bajos,Base,Selecciones,421,False,0,False
-NED14,Frenkie de Jong,Países Bajos,Base,Selecciones,422,True,0,False
+NED14,Frenkie de Jong,Países Bajos,Base,Selecciones,422,True,1,False
 NED15,Xavi Simons,Países Bajos,Base,Selecciones,423,True,0,False
 NED16,Justin Kluivert,Países Bajos,Base,Selecciones,424,False,0,False
 NED17,Memphis Depay,Países Bajos,Base,Selecciones,425,False,0,False
@@ -575,7 +575,7 @@ ESP4,Aymeric Laporte,España,Base,Selecciones,572,True,0,False
 ESP5,Dean Huijsen,España,Base,Selecciones,573,True,1,False
 ESP6,Pedro Porro,España,Base,Selecciones,574,False,0,False
 ESP7,Dani Carvajal,España,Base,Selecciones,575,False,0,False
-ESP8,Marc Cucurella,España,Base,Selecciones,576,True,1,False
+ESP8,Marc Cucurella,España,Base,Selecciones,576,True,2,False
 ESP9,Martín Zubimendi,España,Base,Selecciones,577,False,0,False
 ESP10,Rodri,España,Base,Selecciones,578,False,0,False
 ESP11,Pedri,España,Base,Selecciones,579,True,0,False
@@ -632,7 +632,7 @@ URU1,Escudo del equipo,Uruguay,FOIL,Selecciones,629,True,0,False
 URU2,Sergio Rochet,Uruguay,Base,Selecciones,630,True,0,False
 URU3,Santiago Mele,Uruguay,Base,Selecciones,631,True,0,False
 URU4,Ronald Araújo,Uruguay,Base,Selecciones,632,True,0,False
-URU5,José María Giménez,Uruguay,Base,Selecciones,633,True,0,False
+URU5,José María Giménez,Uruguay,Base,Selecciones,633,True,1,False
 URU6,Sebastián Cáceres,Uruguay,Base,Selecciones,634,False,0,False
 URU7,Mathías Olivera,Uruguay,Base,Selecciones,635,False,0,False
 URU8,Guillermo Varela,Uruguay,Base,Selecciones,636,False,0,False
@@ -734,7 +734,7 @@ ARG3,Nahuel Molina,Argentina,Base,Selecciones,731,True,0,False
 ARG4,Cristian Romero,Argentina,Base,Selecciones,732,False,0,False
 ARG5,Nicolás Otamendi,Argentina,Base,Selecciones,733,False,0,False
 ARG6,Nicolás Tagliafico,Argentina,Base,Selecciones,734,False,0,False
-ARG7,Leonardo Balerdi,Argentina,Base,Selecciones,735,True,1,False
+ARG7,Leonardo Balerdi,Argentina,Base,Selecciones,735,True,2,False
 ARG8,Enzo Fernández,Argentina,Base,Selecciones,736,True,0,False
 ARG9,Alexis Mac Allister,Argentina,Base,Selecciones,737,True,1,False
 ARG10,Rodrigo De Paul,Argentina,Base,Selecciones,738,True,1,False
@@ -795,7 +795,7 @@ JOR4,Mohammad Abu Hashish,Jordania,Base,Selecciones,792,False,0,False
 JOR5,Yazan Al-Arab,Jordania,Base,Selecciones,793,True,2,False
 JOR6,Abdallah Nasib,Jordania,Base,Selecciones,794,False,0,False
 JOR7,Saleem Obaid,Jordania,Base,Selecciones,795,True,1,False
-JOR8,Mohammad Abualnadi,Jordania,Base,Selecciones,796,True,0,False
+JOR8,Mohammad Abualnadi,Jordania,Base,Selecciones,796,True,1,False
 JOR9,Ibrahim Saadeh,Jordania,Base,Selecciones,797,True,0,False
 JOR10,Nizar Al-Rashdan,Jordania,Base,Selecciones,798,True,0,False
 JOR11,Noor Al-Rawabdeh,Jordania,Base,Selecciones,799,True,0,False
@@ -805,7 +805,7 @@ JOR14,Amer Jamous,Jordania,Base,Selecciones,802,False,0,False
 JOR15,Musa Al-Taamari,Jordania,Base,Selecciones,803,False,0,False
 JOR16,Yazan Al-Naimat,Jordania,Base,Selecciones,804,True,1,False
 JOR17,Mahmoud Al-Mardi,Jordania,Base,Selecciones,805,True,2,False
-JOR18,Ali Olwan,Jordania,Base,Selecciones,806,False,0,False
+JOR18,Ali Olwan,Jordania,Base,Selecciones,806,True,0,False
 JOR19,Mohammad Abu Zrayq,Jordania,Base,Selecciones,807,True,0,False
 JOR20,Ibrahim Sabra,Jordania,Base,Selecciones,808,False,0,False
 POR1,Escudo del equipo,Portugal,FOIL,Selecciones,809,True,0,False
@@ -814,7 +814,7 @@ POR3,José Sá,Portugal,Base,Selecciones,811,True,0,False
 POR4,Rúben Dias,Portugal,Base,Selecciones,812,True,0,False
 POR5,João Cancelo,Portugal,Base,Selecciones,813,True,1,False
 POR6,Diogo Dalot,Portugal,Base,Selecciones,814,False,0,False
-POR7,Nuno Mendes,Portugal,Base,Selecciones,815,True,2,False
+POR7,Nuno Mendes,Portugal,Base,Selecciones,815,True,3,False
 POR8,Gonçalo Inácio,Portugal,Base,Selecciones,816,True,0,False
 POR9,Bernardo Silva,Portugal,Base,Selecciones,817,True,0,False
 POR10,Bruno Fernandes,Portugal,Base,Selecciones,818,True,1,False
@@ -886,7 +886,7 @@ COL15,Juan Fernando Quintero,Colombia,Base,Selecciones,883,True,1,False
 COL16,Jorge Carrascal,Colombia,Base,Selecciones,884,True,0,False
 COL17,Jhon Arias,Colombia,Base,Selecciones,885,True,0,False
 COL18,Jhon Córdoba,Colombia,Base,Selecciones,886,False,0,False
-COL19,Luis Suárez,Colombia,Base,Selecciones,887,False,0,False
+COL19,Luis Suárez,Colombia,Base,Selecciones,887,True,0,False
 COL20,Luis Díaz,Colombia,Base,Selecciones,888,False,0,False
 ENG1,Escudo del equipo,Inglaterra,FOIL,Selecciones,889,True,2,False
 ENG2,Jordan Pickford,Inglaterra,Base,Selecciones,890,False,0,False
@@ -949,7 +949,7 @@ GHA18,Joseph Paintsil,Ghana,Base,Selecciones,946,True,0,False
 GHA19,Osman Bukari,Ghana,Base,Selecciones,947,True,0,False
 GHA20,Antoine Semenyo,Ghana,Base,Selecciones,948,False,0,False
 PAN1,Escudo del equipo,Panamá,FOIL,Selecciones,949,False,0,False
-PAN2,Orlando Mosquera,Panamá,Base,Selecciones,950,True,1,False
+PAN2,Orlando Mosquera,Panamá,Base,Selecciones,950,True,2,False
 PAN3,Luis Mejía,Panamá,Base,Selecciones,951,False,0,False
 PAN4,Fidel Escobar,Panamá,Base,Selecciones,952,True,1,False
 PAN5,Andrés Andrade,Panamá,Base,Selecciones,953,False,0,False
