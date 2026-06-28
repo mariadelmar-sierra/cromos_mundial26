@@ -8,10 +8,10 @@ FWC5,Balón Oficial,Especial,FOIL,Introducción,5,True,0,False
 FWC6,Canadá - Países y Ciudades Anfitrionas,Especial,FOIL,Introducción,6,True,2,False
 FWC7,México - Países y Ciudades Anfitrionas,Especial,FOIL,Introducción,7,True,1,False
 FWC8,EE. UU. - Países y Ciudades Anfitrionas,Especial,FOIL,Introducción,8,True,0,False
-MEX1,Escudo del equipo,México,FOIL,Selecciones,9,True,0,False
+MEX1,Escudo del equipo,México,FOIL,Selecciones,9,True,1,False
 MEX2,Luis Malagón,México,Base,Selecciones,10,True,0,False
 MEX3,Johan Vásquez,México,Base,Selecciones,11,True,0,False
-MEX4,Jorge Sánchez,México,Base,Selecciones,12,True,0,False
+MEX4,Jorge Sánchez,México,Base,Selecciones,12,True,1,False
 MEX5,César Montes,México,Base,Selecciones,13,False,0,False
 MEX6,Jesús Gallardo,México,Base,Selecciones,14,False,0,False
 MEX7,Israel Reyes,México,Base,Selecciones,15,True,1,False
@@ -31,7 +31,7 @@ MEX20,César Huerta,México,Base,Selecciones,28,True,1,False
 RSA1,Escudo del equipo,Sudáfrica,FOIL,Selecciones,29,True,4,False
 RSA2,Ronwen Williams,Sudáfrica,Base,Selecciones,30,False,0,False
 RSA3,Sipho Chaine,Sudáfrica,Base,Selecciones,31,True,2,False
-RSA4,Aubrey Modiba,Sudáfrica,Base,Selecciones,32,True,0,False
+RSA4,Aubrey Modiba,Sudáfrica,Base,Selecciones,32,True,1,False
 RSA5,Samukele Kabini,Sudáfrica,Base,Selecciones,33,False,0,False
 RSA6,Mbekezeli Mbokazi,Sudáfrica,Base,Selecciones,34,True,0,False
 RSA7,Khulumani Ndamane,Sudáfrica,Base,Selecciones,35,True,1,False
@@ -120,8 +120,8 @@ BIH9,Benjamin Tahirovic,Bosnia y Herzegovina,Base,Selecciones,117,True,2,False
 BIH10,Armin Gigovic,Bosnia y Herzegovina,Base,Selecciones,118,False,0,False
 BIH11,Ivan Sunjic,Bosnia y Herzegovina,Base,Selecciones,119,True,0,False
 BIH12,Ivan Basic,Bosnia y Herzegovina,Base,Selecciones,120,False,0,False
-BIH13,Foto de equipo,Bosnia y Herzegovina,Base,Selecciones,121,True,1,False
-BIH14,Dzenis Burnic,Bosnia y Herzegovina,Base,Selecciones,122,True,0,False
+BIH13,Foto de equipo,Bosnia y Herzegovina,Base,Selecciones,121,True,2,False
+BIH14,Dzenis Burnic,Bosnia y Herzegovina,Base,Selecciones,122,True,1,False
 BIH15,Esmir Bajraktarevic,Bosnia y Herzegovina,Base,Selecciones,123,True,0,False
 BIH16,Amar Memic,Bosnia y Herzegovina,Base,Selecciones,124,True,0,False
 BIH17,Ermedin Demirovic,Bosnia y Herzegovina,Base,Selecciones,125,False,0,False
@@ -132,7 +132,7 @@ QAT1,Escudo del equipo,Catar,FOIL,Selecciones,129,True,0,False
 QAT2,Meshaal Barsham,Catar,Base,Selecciones,130,False,0,False
 QAT3,Sultan Albrake,Catar,Base,Selecciones,131,True,1,False
 QAT4,Lucas Mendes,Catar,Base,Selecciones,132,False,0,False
-QAT5,Homam Ahmed,Catar,Base,Selecciones,133,False,0,False
+QAT5,Homam Ahmed,Catar,Base,Selecciones,133,True,0,False
 QAT6,Boualem Khoukhi,Catar,Base,Selecciones,134,False,0,False
 QAT7,Pedro Miguel,Catar,Base,Selecciones,135,True,0,False
 QAT8,Tarek Salman,Catar,Base,Selecciones,136,True,0,False
@@ -536,7 +536,7 @@ IRN5,Milad Mohammadi,Irán,Base,Selecciones,533,True,1,False
 IRN6,Shojae Khalilzadeh,Irán,Base,Selecciones,534,True,1,False
 IRN7,Ramin Rezaeian,Irán,Base,Selecciones,535,False,0,False
 IRN8,Hossein Kanaani,Irán,Base,Selecciones,536,True,1,False
-IRN9,Sadegh Moharrami,Irán,Base,Selecciones,537,True,0,False
+IRN9,Sadegh Moharrami,Irán,Base,Selecciones,537,True,1,False
 IRN10,Saleh Hardani,Irán,Base,Selecciones,538,False,0,False
 IRN11,Saeed Ezatolahi,Irán,Base,Selecciones,539,True,0,False
 IRN12,Saman Ghoddos,Irán,Base,Selecciones,540,True,0,False
@@ -649,7 +649,7 @@ URU18,Federico Viñas,Uruguay,Base,Selecciones,646,True,0,False
 URU19,Rodrigo Aguirre,Uruguay,Base,Selecciones,647,True,2,False
 URU20,Facundo Pellistri,Uruguay,Base,Selecciones,648,True,1,False
 FRA1,Escudo del equipo,Francia,FOIL,Selecciones,649,True,1,False
-FRA2,Mike Maignan,Francia,Base,Selecciones,650,False,0,False
+FRA2,Mike Maignan,Francia,Base,Selecciones,650,True,0,False
 FRA3,Theo Hernández,Francia,Base,Selecciones,651,True,2,False
 FRA4,William Saliba,Francia,Base,Selecciones,652,False,0,False
 FRA5,Jules Koundé,Francia,Base,Selecciones,653,True,0,False
@@ -786,7 +786,7 @@ AUT15,Nicolas Seiwald,Austria,Base,Selecciones,783,True,0,False
 AUT16,Romano Schmid,Austria,Base,Selecciones,784,True,0,False
 AUT17,Patrick Wimmer,Austria,Base,Selecciones,785,False,0,False
 AUT18,Christoph Baumgartner,Austria,Base,Selecciones,786,False,0,False
-AUT19,Michael Gregoritsch,Austria,Base,Selecciones,787,True,2,False
+AUT19,Michael Gregoritsch,Austria,Base,Selecciones,787,True,3,False
 AUT20,Marko Arnautović,Austria,Base,Selecciones,788,False,0,False
 JOR1,Escudo del equipo,Jordania,FOIL,Selecciones,789,False,0,False
 JOR2,Yazeed Abulaila,Jordania,Base,Selecciones,790,False,0,False
@@ -827,13 +827,13 @@ POR16,Francisco Trincão,Portugal,Base,Selecciones,824,True,1,False
 POR17,João Félix,Portugal,Base,Selecciones,825,True,0,False
 POR18,Gonçalo Ramos,Portugal,Base,Selecciones,826,True,2,False
 POR19,Pedro Neto,Portugal,Base,Selecciones,827,True,0,False
-POR20,Rafael Leão,Portugal,Base,Selecciones,828,True,1,False
+POR20,Rafael Leão,Portugal,Base,Selecciones,828,True,2,False
 COD1,Escudo del equipo,RD Congo,FOIL,Selecciones,829,True,1,False
 COD2,Lionel Mpasi,RD Congo,Base,Selecciones,830,True,1,False
 COD3,Aaron Wan-Bissaka,RD Congo,Base,Selecciones,831,False,0,False
 COD4,Axel Tuanzebe,RD Congo,Base,Selecciones,832,True,0,False
 COD5,Arthur Masuaku,RD Congo,Base,Selecciones,833,False,0,False
-COD6,Chancel Mbemba,RD Congo,Base,Selecciones,834,False,0,False
+COD6,Chancel Mbemba,RD Congo,Base,Selecciones,834,True,0,False
 COD7,Joris Kayembe,RD Congo,Base,Selecciones,835,False,0,False
 COD8,Charles Pickel,RD Congo,Base,Selecciones,836,True,1,False
 COD9,Ngal'ayel Mukau,RD Congo,Base,Selecciones,837,True,1,False
@@ -922,7 +922,7 @@ CRO11,Martin Baturina,Croacia,Base,Selecciones,919,True,0,False
 CRO12,Lovro Majer,Croacia,Base,Selecciones,920,False,0,False
 CRO13,Foto de equipo,Croacia,Base,Selecciones,921,False,0,False
 CRO14,Mario Pasalic,Croacia,Base,Selecciones,922,False,0,False
-CRO15,Petar Sucic,Croacia,Base,Selecciones,923,True,0,False
+CRO15,Petar Sucic,Croacia,Base,Selecciones,923,True,1,False
 CRO16,Ivan Perišić,Croacia,Base,Selecciones,924,True,2,False
 CRO17,Marco Pasalic,Croacia,Base,Selecciones,925,True,0,False
 CRO18,Ante Budimir,Croacia,Base,Selecciones,926,False,0,False
@@ -938,7 +938,7 @@ GHA7,Gideon Mensah,Ghana,Base,Selecciones,935,True,1,False
 GHA8,Caleb Yirenkyi,Ghana,Base,Selecciones,936,True,0,False
 GHA9,Abdul Fatawu Issahaku,Ghana,Base,Selecciones,937,True,1,False
 GHA10,Thomas Partey,Ghana,Base,Selecciones,938,True,0,False
-GHA11,Salis Abdul Samed,Ghana,Base,Selecciones,939,True,1,False
+GHA11,Salis Abdul Samed,Ghana,Base,Selecciones,939,True,2,False
 GHA12,Kamaldeen Sulemana,Ghana,Base,Selecciones,940,False,0,False
 GHA13,Foto de equipo,Ghana,Base,Selecciones,941,False,0,False
 GHA14,Mohammed Kudus,Ghana,Base,Selecciones,942,True,0,False
@@ -975,7 +975,7 @@ FWC12,Brasil 1962,Especial,FOIL,Historia del Mundial,972,False,0,False
 FWC13,Alemania Occidental 1974,Especial,FOIL,Historia del Mundial,973,False,0,False
 FWC14,Argentina 1986,Especial,FOIL,Historia del Mundial,974,True,0,False
 FWC15,Brasil 1994,Especial,FOIL,Historia del Mundial,975,False,0,False
-FWC16,Brasil 2002,Especial,FOIL,Historia del Mundial,976,True,0,False
+FWC16,Brasil 2002,Especial,FOIL,Historia del Mundial,976,True,1,False
 FWC17,Italia 2006,Especial,FOIL,Historia del Mundial,977,False,0,False
 FWC18,Alemania 2014,Especial,FOIL,Historia del Mundial,978,True,2,False
 FWC19,Argentina 2022,Especial,FOIL,Historia del Mundial,979,True,0,False
